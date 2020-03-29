@@ -33,7 +33,7 @@
     "*.*ignore": false,
 
     // Linting and formatting config
-    ".*rc.json": false,
+    ".*rc.json": true,
     ".editorconfig": true
   },
 
