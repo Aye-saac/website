@@ -1,6 +1,6 @@
+import { mount } from "enzyme"
 import React from "react"
 import { Provider } from "react-redux"
-import { mount } from "enzyme"
 import configureStore from "redux-mock-store"
 
 import { actionTypes } from "../../features/counter"

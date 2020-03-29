@@ -1,4 +1,4 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./actionTypes"
+import { DECREMENT_COUNTER, INCREMENT_COUNTER } from "./actionTypes"
 import counterReducer from "./counterReducer"
 import { CounterActionTypes } from "./types"
 
