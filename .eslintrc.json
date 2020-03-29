@@ -1,7 +1,15 @@
 {
   "root": true,
+
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "simple-import-sort",
+    "unicorn"
+  ],
+
   "extends": [
     "plugin:prettier/recommended",
     "airbnb-typescript",
@@ -9,12 +17,57 @@
     "prettier/@typescript-eslint",
     "prettier/react"
   ],
+
   "rules": {
+    "camelcase": "off",
+    "no-console": "warn",
+    "no-unused-vars": "off",
+    "no-nested-ternary": "off",
+
     // Make prettier code formatting suggestions more verbose.
-    "prettier/prettier": ["warn"],
+    "prettier/prettier": ["error"],
+
     // Disable <Fragment> => <> replacement. Feel free to change
     "react/jsx-fragments": "off",
+
+    "react/prop-types": "off",
+    "react/forbid-prop-types": "off",
+
     // Disable prefer default export
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+
+    "import/first": "error",
+
+    // Sort imports
+    "import/order": "off",
+    "sort-imports": "off",
+    "simple-import-sort/sort": ["error"],
+
+    // Eslint plugin unicorn
+    "unicorn/catch-error-name": "error",
+    "unicorn/no-abusive-eslint-disable": "error",
+    "unicorn/no-array-instanceof": "error",
+    "unicorn/no-for-loop": "error",
+    "unicorn/no-nested-ternary": "error",
+    "unicorn/no-unreadable-array-destructuring": "error",
+    "unicorn/no-zero-fractions": "error",
+    "unicorn/prefer-add-event-listener": "error",
+    "unicorn/prefer-dataset": "error",
+    "unicorn/prefer-event-key": "error",
+    "unicorn/prefer-flat-map": "error",
+    "unicorn/prefer-includes": "error",
+    "unicorn/prefer-modern-dom-apis": "error",
+    "unicorn/prefer-negative-index": "error",
+    "unicorn/prefer-node-append": "error",
+    "unicorn/prefer-node-remove": "error",
+    "unicorn/prefer-query-selector": "error",
+    "unicorn/prefer-reflect-apply": "error",
+    "unicorn/prefer-spread": "error",
+    "unicorn/prefer-starts-ends-with": "error",
+    "unicorn/prefer-string-slice": "error",
+    "unicorn/prefer-text-content": "error",
+    "unicorn/prefer-trim-start-end": "error",
+    "unicorn/prefer-type-error": "error",
+    "unicorn/regex-shorthand": "error"
   }
 }
