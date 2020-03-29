@@ -30,7 +30,7 @@
     "tsconfig.json": true,
 
     // Ignore files
-    "*.*ignore": true,
+    "*.*ignore": false,
 
     // Linting and formatting config
     ".*rc.json": false,
