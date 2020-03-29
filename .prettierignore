@@ -1,0 +1,5 @@
+# Ignore root files
+CHANGELOG.md
+README.md
+.github/
+src/config/*.json

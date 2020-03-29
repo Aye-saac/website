@@ -1,0 +1,65 @@
+{
+  "search.exclude": {
+    "**/node_modules": true
+  },
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+
+    // Dependencies
+    "**/node_modules": true,
+
+    // Yarn files
+    ".yarnrc.yml": true,
+    "**/yarn.lock": true,
+    "**/yarn-error.log": true,
+    ".yarn/": true,
+
+    // Project metadata
+    "CHANGELOG.md": false,
+    "LICENSE": false,
+
+    // Testing side effects
+    "coverage/": true,
+
+    // Typescript configuration
+    "tsconfig.json": true,
+
+    // Ignore files
+    "*.*ignore": true,
+
+    // Linting and formatting config
+    ".*rc.json": true,
+    ".editorconfig": true
+  },
+
+  // Add rulers to editor
+  "editor.rulers": [80, 90],
+
+  // Default tab size for editor
+  "editor.tabSize": 2,
+
+  // Force line endings to LF
+  "files.eol": "\n",
+
+  // Disable VSCode Telemetry
+  "telemetry.enableTelemetry": false,
+
+  // Set Yarn as the default package manager
+  "npm.packageManager": "yarn",
+
+  // Use workspace version of TypeScript instead of built-in one
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  // Format all documents with prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Enable all linting
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}
