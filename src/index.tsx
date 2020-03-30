@@ -1,5 +1,3 @@
-import "./index.css"
-
 import React from "react"
 import { Provider } from "react-redux"
 import ReactDOM from "react-dom"
@@ -7,12 +5,13 @@ import ReactDOM from "react-dom"
 import { ThemeProvider } from "theme-ui"
 
 import { store } from "Store"
-import theme from "Styles"
+import theme, { GlobalStyle } from "Styles"
 
 import App from "./App"
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyle />
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <App />

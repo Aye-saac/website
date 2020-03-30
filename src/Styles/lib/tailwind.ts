@@ -182,6 +182,7 @@ const fontWeights = {
   bold: "700",
   extrabold: "800",
   black: "900",
+
   body: "400",
   heading: "700",
 }

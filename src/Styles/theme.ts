@@ -1,5 +1,16 @@
 import { layout } from "./components"
-import { sizes } from "./lib/tailwind"
+import {
+  breakpoints,
+  fontSizes,
+  fontWeights,
+  letterSpacings,
+  lineHeights,
+  radii,
+  sizes,
+  space,
+  zIndices,
+} from "./lib/tailwind"
+import { fonts } from "./variables"
 
 // const colors = {
 //   coolGray: [
@@ -27,19 +38,16 @@ const buttons = {
 }
 
 export default {
-  fonts: {
-    body: "system-ui, sans-serif",
-    heading: "system-ui, sans-serif",
-    monospace: "Menlo, monospace",
-  },
-  colors: {
-    background: "#121212",
-    surface: "#121212",
+  fonts,
 
+  colors: {
     // Theme
     primary: "#f2c9a2",
     primaryVariant: "#d0ad8b",
     secondary: "#a0c8ef",
+
+    background: "#121212",
+    surface: "#121212",
 
     // States
     error: "#cf6679",
@@ -52,18 +60,30 @@ export default {
     onError: "#000000",
   },
 
-  sizes,
-
   styles: {
     root: {
       fontFamily: "body",
-      // lineHeight: "body",
-      // fontWeight: "body",
+      lineHeight: "body",
+      fontWeight: "body",
       backgroundColor: "background",
       color: "onBackground",
+
+      fontSmoothing: "auto",
     },
     ...layout,
   },
 
+  // Variables
+  breakpoints,
+  fontSizes,
+  fontWeights,
+  letterSpacings,
+  lineHeights,
+  radii,
+  space,
+  zIndices,
+  sizes,
+
+  // Components
   buttons,
 }
