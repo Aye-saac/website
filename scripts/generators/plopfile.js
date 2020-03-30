@@ -56,7 +56,7 @@ const generateFeature = {
       message: "What is the feature called?",
     },
   ],
-  actions(data) {
+  actions() {
     const actions = []
 
     const featuresPath = `${projectSrc}/Features`
@@ -74,7 +74,7 @@ const generateFeature = {
     })
 
     // Create `Features/index.ts` (if it doesn't exist)
-    actions.push(addInjectableIndexAction(featuresPath, data.name, "camelCase"))
+    actions.push(addInjectableIndexAction(featuresPath, "name", "camelCase"))
 
     // Add modules to `Features/index.ts`
     actions.push({
@@ -84,7 +84,7 @@ const generateFeature = {
       template: `import * as {{camelCase name}} from "./{{camelCase name}}"`,
     })
 
-    actions.push(addExportAction(featuresPath, data.name, "camelCase"))
+    actions.push(addExportAction(featuresPath, "name", "camelCase"))
   },
 }
 
@@ -121,11 +121,11 @@ const generateHelper = {
     })
 
     // Create `Helpers/index.ts` (if it doesn't exist)
-    actions.push(addInjectableIndexAction(helperPath, data.name, "camelCase"))
+    actions.push(addInjectableIndexAction(helperPath, "name", "camelCase"))
 
     // Add modules to `Helpers/index.ts`
-    actions.push(addImportAction(helperPath, data.name, "camelCase"))
-    actions.push(addExportAction(helperPath, data.name, "camelCase"))
+    actions.push(addImportAction(helperPath, "name", "camelCase"))
+    actions.push(addExportAction(helperPath, "name", "camelCase"))
 
     return actions
   },
@@ -136,7 +136,7 @@ const generateStyleComponent = {
   prompts: [
     { type: "input", name: "name", message: "What is the component name?" },
   ],
-  actions(data) {
+  actions() {
     const actions = []
 
     const styleComponentPath = `${projectSrc}/Styles/components`
@@ -149,12 +149,12 @@ const generateStyleComponent = {
 
     // Create `Styles/components/index.ts` (if it doesn't exist)
     actions.push(
-      addInjectableIndexAction(styleComponentPath, data.name, "camelCase"),
+      addInjectableIndexAction(styleComponentPath, "name", "camelCase"),
     )
 
     // Add modules to `Styles/components/index.ts`
-    actions.push(addImportAction(styleComponentPath, data.name, "camelCase"))
-    actions.push(addExportAction(styleComponentPath, data.name, "camelCase"))
+    actions.push(addImportAction(styleComponentPath, "name", "camelCase"))
+    actions.push(addExportAction(styleComponentPath, "name", "camelCase"))
 
     return actions
   },
@@ -219,34 +219,30 @@ const generateComponent = {
     })
 
     if (data.wantStyle) {
-      actions.push(generateStyleComponent.actions(data))
+      const styleComponentPath = `${projectSrc}/Styles/components`
 
-      // const styleComponentPath = `${projectSrc}/Styles/components`
+      actions.push({
+        type: "add",
+        path: `${styleComponentPath}/{{camelCase name}}.ts`,
+        templateFile: `${plopTemplates}/Component/styleComponent.ts.hbs`,
+      })
 
-      // actions.push({
-      //   type: "add",
-      //   path: `${styleComponentPath}/{{camelCase name}}.ts`,
-      //   templateFile: `${plopTemplates}/Component/styleComponent.ts.hbs`,
-      // })
+      // Create `Styles/components/index.ts` (if it doesn't exist)
+      actions.push(
+        addInjectableIndexAction(styleComponentPath, "name", "camelCase"),
+      )
 
-      // // Create `Styles/components/index.ts` (if it doesn't exist)
-      // actions.push(
-      //   addInjectableIndexAction(styleComponentPath, data.name, "camelCase"),
-      // )
-
-      // // Add modules to `Styles/components/index.ts`
-      // actions.push(addImportAction(styleComponentPath, data.name, "camelCase"))
-      // actions.push(addExportAction(styleComponentPath, data.name, "camelCase"))
+      // Add modules to `Styles/components/index.ts`
+      actions.push(addImportAction(styleComponentPath, "name", "camelCase"))
+      actions.push(addExportAction(styleComponentPath, "name", "camelCase"))
     }
 
     // Create `Components/index.ts` (if it doesn't exist)
-    actions.push(
-      addInjectableIndexAction(componentPath, data.name, "pascalCase"),
-    )
+    actions.push(addInjectableIndexAction(componentPath, "name", "pascalCase"))
 
     // Add modules to `Components/index.ts`
-    actions.push(addImportAction(componentPath, data.name, "pascalCase"))
-    actions.push(addExportAction(componentPath, data.name, "pascalCase"))
+    actions.push(addImportAction(componentPath, "name", "pascalCase"))
+    actions.push(addExportAction(componentPath, "name", "pascalCase"))
 
     return actions
   },
