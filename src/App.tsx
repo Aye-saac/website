@@ -2,7 +2,7 @@ import React from "react"
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-import Permission from "./pages/Permission"
+import Permission from "./Pages/Permission"
 
 const App: React.FC = () => {
   return (
