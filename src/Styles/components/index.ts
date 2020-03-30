@@ -1,9 +1,9 @@
 /* PLOP_INJECT_IMPORT */
-import button from "./button"
+import buttons from "./buttons"
 import layout from "./layout"
 
 export {
   /* PLOP_INJECT_EXPORT */
-  button,
+  buttons,
   layout,
 }

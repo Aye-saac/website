@@ -1,4 +1,4 @@
-import { layout } from "./components"
+import { buttons, layout } from "./components"
 import {
   breakpoints,
   fontSizes,
@@ -27,37 +27,7 @@ import { fonts } from "./variables"
 //   ],
 // }
 
-const buttons = {
-  primary: {
-    color: "onPrimary",
-    bg: "primary",
-
-    borderRadius: "lg",
-
-    py: 3,
-    px: 4,
-
-    minWidth: "sm",
-    width: "fit-content",
-
-    display: "flex",
-    justifyContent: "space-between",
-
-    textAlign: "left",
-
-    cursor: "pointer",
-
-    transition: "0.15s ease background",
-
-    "&:hover": {
-      bg: "primaryVariant",
-    },
-  },
-}
-
 export default {
-  fonts,
-
   colors: {
     // Theme
     primary: "#f2c9a2",
@@ -91,7 +61,7 @@ export default {
     ...layout,
   },
 
-  // Variables
+  // Variables: Tailwind
   breakpoints,
   fontSizes,
   fontWeights,
@@ -101,6 +71,9 @@ export default {
   space,
   zIndices,
   sizes,
+
+  // Variables: Own set
+  fonts,
 
   // Components
   buttons,
