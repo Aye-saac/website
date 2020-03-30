@@ -3465,6 +3465,7 @@ __metadata:
     prettier: ^2.0.0
     react: ^16.13.1
     react-dom: ^16.13.1
+    react-feather: ^2.0.3
     react-is: ^16.13.1
     react-redux: ^7.1.3
     react-router-dom: ^5.1.2
@@ -13419,6 +13420,17 @@ __metadata:
   version: 6.0.7
   resolution: "react-error-overlay@npm:6.0.7"
   checksum: 2/35533e193f9ca6dbb5cffe6c52b748dc68dbab0b9e54cb5c12cd0d8fb48ee6dea67eb33d1a3e4483d0dc16664a22b3c4f7f86441daa6774d18501d1dbd0c8283
+  languageName: node
+  linkType: hard
+
+"react-feather@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "react-feather@npm:2.0.3"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ^16.8.6
+  checksum: 2/ce27b629238331307dd2602d585fdbd692fc959d6eb3d293421553de0c750769c34cc76b2cb86162efac65027833f2f0e6f2a95278141eac4029c7e3d1f6f5e5
   languageName: node
   linkType: hard
 

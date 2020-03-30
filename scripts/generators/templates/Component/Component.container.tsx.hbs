@@ -1,6 +1,9 @@
 import React from 'react'
-
-import { Box } from "Components"
+{{#if isAtomComponent}}
+  import { Box } from "theme-ui"
+{{else}}
+  import { Box } from "Components/atoms"
+{{/if}}
 
 
 {{#if isLinkedWithView}}

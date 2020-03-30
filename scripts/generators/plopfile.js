@@ -134,13 +134,13 @@ const generateHelper = {
 const generateStyleComponent = {
   description: "Generate new style object for theme-ui",
   prompts: [
-    { type: "input", name: "name", message: "What is the object name?" },
     {
       type: "list",
       name: "styleType",
       message: "What type of style?",
       choices: ["Component", "Variable"],
     },
+    { type: "input", name: "name", message: "What is the object name?" },
   ],
   actions() {
     const actions = []
@@ -169,6 +169,12 @@ const generateStyleComponent = {
 const generateComponent = {
   description: "Create a reusable component",
   prompts: [
+    {
+      type: "list",
+      name: "componentType",
+      message: "What type of component?",
+      choices: ["Atom", "Molecule", "Organism", "Template"],
+    },
     { type: "input", name: "name", message: "What is the component name?" },
     {
       type: "confirm",
@@ -194,13 +200,16 @@ const generateComponent = {
       return actions
     }
 
-    const componentPath = `${projectSrc}/Components`
+    const componentPath = `${projectSrc}/Components/{{lowerCase componentType}}s`
 
     if (data.wantView) {
       actions.push({
         type: "add",
         path: `${componentPath}/{{pascalCase name}}/{{pascalCase name}}.view.tsx`,
         templateFile: `${plopTemplates}/Component/Component.view.tsx.hbs`,
+        data: {
+          isAtomComponent: data.componentType === "Atom",
+        },
       })
     }
 
@@ -210,6 +219,7 @@ const generateComponent = {
         path: `${componentPath}/{{pascalCase name}}/{{pascalCase name}}.container.tsx`,
         templateFile: `${plopTemplates}/Component/Component.container.tsx.hbs`,
         data: {
+          isAtomComponent: data.componentType === "Atom",
           isLinkedWithView: data.wantView && data.wantContainer,
         },
       })

@@ -4,7 +4,6 @@ import {
   AspectRatio,
   Badge,
   Box,
-  Button,
   Card,
   Checkbox,
   Close,
@@ -26,12 +25,14 @@ import {
   Textarea,
 } from "theme-ui"
 
+import Button from "./Button"
+
 export type SxStyleProp = ThemeUISxStyleProp
 
 export {
   /* PLOP_INJECT_EXPORT */
-  Input,
   Button,
+  Input,
   Text,
   // Section,
   // Container,

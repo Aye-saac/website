@@ -39,6 +39,7 @@
     // Disable <Fragment> => <> replacement. Feel free to change
     "react/jsx-fragments": "off",
 
+    "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "react/forbid-prop-types": "off",
 

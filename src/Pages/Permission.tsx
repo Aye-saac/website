@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 
-import { Box, Button, Heading, Text } from "Components"
+import { Box, Button, Heading, Text } from "Components/atoms"
 
 import { Link } from "react-router-dom"
 
