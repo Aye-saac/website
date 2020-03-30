@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { configureStore } from "@reduxjs/toolkit"
 
 import { counterReducer } from "Features/counter"

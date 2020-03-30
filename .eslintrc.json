@@ -109,9 +109,16 @@
 
   "overrides": [
     {
-      "files": "src/features",
+      "files": "src/Features/**/*",
       "rules": {
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "import/no-cycle": "off"
+      }
+    },
+    {
+      "files": "src/Store/**/*",
+      "rules": {
+        "import/no-cycle": "off"
       }
     }
   ]
