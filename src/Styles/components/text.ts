@@ -1,10 +1,15 @@
 import { SxStyleProp } from "theme-ui"
 
-const projectName: SxStyleProp = {
-  color: "starWhite",
+const h2 = {
   fontWeight: 800,
   fontSize: [5, 6, 6],
   mb: 1,
+  color: "nearWhite",
+}
+
+const projectName: SxStyleProp = {
+  ...h2,
+  color: "starWhite",
 }
 
 const projectSummary: SxStyleProp = {
@@ -24,6 +29,7 @@ const primary: SxStyleProp = {
 const text: SxStyleProp = {
   primary,
   heading: {
+    h2,
     projectName,
     projectSummary,
   },
