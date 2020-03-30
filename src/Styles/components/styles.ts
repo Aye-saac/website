@@ -22,11 +22,7 @@ const root = {
 }
 
 const a = {
-  color: "primary",
   textDecoration: "none",
-  ":hover": {
-    textDecoration: "underline",
-  },
 }
 
 const h1 = {
