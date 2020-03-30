@@ -4,7 +4,7 @@ import React from "react"
 import { Provider } from "react-redux"
 import ReactDOM from "react-dom"
 
-import { ThemeProvider } from "theme-ui"
+import { Styled, ThemeProvider } from "theme-ui"
 
 import { store } from "Store"
 import theme, { GlobalStyle } from "Styles"
@@ -16,7 +16,9 @@ ReactDOM.render(
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <App />
+        <Styled.root>
+          <App />
+        </Styled.root>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>,
