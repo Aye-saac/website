@@ -55,6 +55,9 @@ export default {
   fonts,
 
   // Components
+
+  layout,
+
   buttons,
 
   text,
