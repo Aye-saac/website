@@ -37,7 +37,7 @@
     "prettier/prettier": ["error"],
 
     // Disable <Fragment> => <> replacement. Feel free to change
-    "react/jsx-fragments": "off",
+    "react/jsx-fragments": "error",
 
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",

@@ -1,15 +1,22 @@
-import React, { Fragment } from "react"
+import React from "react"
 
-import { Box, Button, Heading, Section, Text } from "Components/atoms"
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  Section,
+  Text,
+} from "Components/atoms"
 
 import { FiChevronRight } from "react-icons/fi"
 import { Link } from "react-router-dom"
 
 const IntroductionPage: React.FC = () => {
   return (
-    <Fragment>
+    <>
       <Section>
-        <Box variant="styles.container">
+        <Container>
           <Heading as="h1" variant="heading.projectName">
             Ayesaac.
           </Heading>
@@ -27,9 +34,9 @@ const IntroductionPage: React.FC = () => {
               <Button IconComponent={FiChevronRight}>Continue</Button>
             </Box>
           </Link>
-        </Box>
+        </Container>
       </Section>
-    </Fragment>
+    </>
   )
 }
 
