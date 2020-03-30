@@ -1,7 +1,9 @@
 import React from "react"
+
+import { Navbar } from "Components/Navbar"
+
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 
-import { Navbar } from "./components/Navbar"
 import { About } from "./pages/About"
 import { Home } from "./pages/Home"
 
