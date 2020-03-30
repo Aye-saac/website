@@ -1,14 +1,16 @@
 import React from "react"
 
-import { BrowserRouter, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-import Home from "./pages/Home"
+import Permission from "./pages/Permission"
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Route path="/" component={Home} exact />
-    </BrowserRouter>
+    <Router>
+      <Switch>
+        <Route path="/" component={Permission} exact />
+      </Switch>
+    </Router>
   )
 }
 
