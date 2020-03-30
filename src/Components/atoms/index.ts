@@ -26,15 +26,16 @@ import {
 } from "theme-ui"
 
 import Button from "./Button"
+import Section from "./Section"
 
 export type SxStyleProp = ThemeUISxStyleProp
 
 export {
   /* PLOP_INJECT_EXPORT */
+  Section,
   Button,
   Input,
   Text,
-  // Section,
   // Container,
   Alert,
   Box,

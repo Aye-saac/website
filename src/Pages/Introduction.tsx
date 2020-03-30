@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 
-import { Box, Button, Heading, Text } from "Components/atoms"
+import { Box, Button, Heading, Section, Text } from "Components/atoms"
 
 import { FiChevronRight } from "react-icons/fi"
 import { Link } from "react-router-dom"
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 const IntroductionPage: React.FC = () => {
   return (
     <Fragment>
-      <Box variant="styles.pageWrapper">
+      <Section>
         <Box variant="styles.container">
           <Heading as="h1" variant="heading.projectName">
             Ayesaac.
@@ -28,7 +28,7 @@ const IntroductionPage: React.FC = () => {
             </Box>
           </Link>
         </Box>
-      </Box>
+      </Section>
     </Fragment>
   )
 }

@@ -1,11 +1,11 @@
 import React, { Fragment } from "react"
 
-import { Box, Heading, Text } from "Components/atoms"
+import { Box, Heading, Section, Text } from "Components/atoms"
 
 const QuestionPage: React.FC = () => {
   return (
     <Fragment>
-      <Box variant="styles.pageWrapper">
+      <Section>
         <Box variant="styles.container">
           <Heading as="h2" variant="heading.h2">
             The ask.
@@ -15,7 +15,7 @@ const QuestionPage: React.FC = () => {
             instructions of how to use it.
           </Text>
         </Box>
-      </Box>
+      </Section>
     </Fragment>
   )
 }

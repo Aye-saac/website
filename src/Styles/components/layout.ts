@@ -1,6 +1,6 @@
 import { SxStyleProp } from "theme-ui"
 
-const pageWrapper: SxStyleProp = {
+const section: SxStyleProp = {
   maxWidth: "5xl",
   margin: "0 auto",
   my: 5,
@@ -12,7 +12,7 @@ const container: SxStyleProp = {
 
 const layout: SxStyleProp = {
   container,
-  pageWrapper,
+  section,
 }
 
 export default layout

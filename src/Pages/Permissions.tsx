@@ -1,13 +1,13 @@
 import React, { Fragment } from "react"
 
-import { Box, Button, Heading, Text } from "Components/atoms"
+import { Box, Button, Heading, Section, Text } from "Components/atoms"
 
 import { Link as RouteLink } from "react-router-dom"
 
 const PermissionsPage: React.FC = () => {
   return (
     <Fragment>
-      <Box variant="styles.pageWrapper">
+      <Section>
         <Box variant="styles.container">
           <Heading as="h2" variant="heading.h2">
             Permissions.
@@ -21,7 +21,7 @@ const PermissionsPage: React.FC = () => {
             <Button>Continue</Button>
           </RouteLink>
         </Box>
-      </Box>
+      </Section>
     </Fragment>
   )
 }
