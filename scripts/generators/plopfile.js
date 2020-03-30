@@ -132,14 +132,20 @@ const generateHelper = {
 }
 
 const generateStyleComponent = {
-  description: "Generate new component for theme-ui",
+  description: "Generate new style object for theme-ui",
   prompts: [
-    { type: "input", name: "name", message: "What is the component name?" },
+    { type: "input", name: "name", message: "What is the object name?" },
+    {
+      type: "list",
+      name: "styleType",
+      message: "What type of style?",
+      choices: ["Component", "Variable"],
+    },
   ],
   actions() {
     const actions = []
 
-    const styleComponentPath = `${projectSrc}/Styles/components`
+    const styleComponentPath = `${projectSrc}/Styles/{{lowerCase styleType}}s`
 
     actions.push({
       type: "add",
