@@ -3459,6 +3459,7 @@ __metadata:
     eslint-plugin-unicorn: ^18.0.1
     husky: ^4.2.3
     lint-staged: ^10.0.10
+    normalize.css: ^8.0.1
     npm-run-all: ^4.1.5
     plop: ^2.6.0
     prettier: ^2.0.0
@@ -11091,6 +11092,13 @@ __metadata:
   version: 3.3.0
   resolution: "normalize-url@npm:3.3.0"
   checksum: 2/5704115f74833cf157a5f104477d9c8e8b4e2c00275624159bcd3c65dbdac93db4f6f008f91364d0f20f93655bd2b643afa9e8875c67b4ab8673cd1dd0fb7a5c
+  languageName: node
+  linkType: hard
+
+"normalize.css@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "normalize.css@npm:8.0.1"
+  checksum: 2/de6c137a14291c00fee60a1e9e9ab4b78f93d48dd7ab5baa2783dd62bf19b456403bf0585ad201bb84ed184348fd49b467ccfc707068bf342123d00d31801e98
   languageName: node
   linkType: hard
 
