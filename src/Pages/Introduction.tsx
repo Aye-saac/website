@@ -3,6 +3,7 @@ import React, { Fragment } from "react"
 import { Box, Button, Heading, Text } from "Components/atoms"
 
 import { FiChevronRight } from "react-icons/fi"
+import { Link } from "react-router-dom"
 
 const IntroductionPage: React.FC = () => {
   return (
@@ -21,7 +22,11 @@ const IntroductionPage: React.FC = () => {
             available here. We do not store any data as this is just for
             demonstration purposes.
           </Text>
-          <Button IconComponent={FiChevronRight}>Continue</Button>
+          <Link to="/permissions">
+            <Box variant="styles.a">
+              <Button IconComponent={FiChevronRight}>Continue</Button>
+            </Box>
+          </Link>
         </Box>
       </Box>
     </Fragment>
