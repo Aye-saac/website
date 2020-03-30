@@ -142,7 +142,7 @@ const generateStyleComponent = {
     },
     { type: "input", name: "name", message: "What is the object name?" },
   ],
-  actions() {
+  actions(data) {
     const actions = []
 
     const styleComponentPath = `${projectSrc}/Styles/{{lowerCase styleType}}s`
@@ -151,6 +151,9 @@ const generateStyleComponent = {
       type: "add",
       path: `${styleComponentPath}/{{camelCase name}}.ts`,
       templateFile: `${plopTemplates}/Component/styleComponent.ts.hbs`,
+      data: {
+        isComponent: data.styleType === "Component",
+      },
     })
 
     // Create `Styles/components/index.ts` (if it doesn't exist)

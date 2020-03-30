@@ -1,8 +1,12 @@
-import { SxStyleProp } from "theme-ui"
+{{#if isComponent}}
+  import { SxStyleProp } from "theme-ui"
+{{/if}}
 
-const {{camelCase
-  name
-}}: SxStyleProp = {
+const {{camelCase name}}
+{{#if isComponent}}
+  : SxStyleProp
+{{/if}}
+= {
   //noop
 }
 
