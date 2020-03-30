@@ -47,20 +47,6 @@
 
     "import/first": "error",
 
-    // Restrict non-macro styled components
-    "no-restricted-imports": [
-      "error",
-      {
-        "paths": [
-          {
-            "name": "styled-components",
-            "message": "Please import from styled-components/macro."
-          }
-        ],
-        "patterns": ["!styled-components/macro"]
-      }
-    ],
-
     // Sort imports
     "import/order": "off",
     "sort-imports": "off",
@@ -74,6 +60,7 @@
           // Packages.
           // Common packages
           ["^(react)$", "react-redux", "^(redux)", "@reduxjs", "react-dom"],
+          ["theme-ui"],
 
           // Alias imports
           // Anything that starts with a capital letter
