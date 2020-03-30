@@ -31,6 +31,24 @@ const buttons = {
   primary: {
     color: "onPrimary",
     bg: "primary",
+
+    borderRadius: "lg",
+
+    py: 3,
+    px: 4,
+
+    minWidth: "sm",
+    width: "fit-content",
+
+    display: "flex",
+    justifyContent: "space-between",
+
+    textAlign: "left",
+
+    cursor: "pointer",
+
+    transition: "0.15s ease background",
+
     "&:hover": {
       bg: "primaryVariant",
     },
