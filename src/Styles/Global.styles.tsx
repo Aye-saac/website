@@ -21,6 +21,10 @@ const GlobalCSS = css`
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
     font-synthesis: none;
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 const GlobalStyle: React.FC = () => <Global styles={GlobalCSS} />
