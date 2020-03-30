@@ -1,6 +1,7 @@
 import React from "react"
 
 import Introduction from "Pages/Introduction"
+import Permissions from "Pages/Permissions"
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
@@ -9,6 +10,7 @@ const App: React.FC = () => {
     <Router>
       <Switch>
         <Route path="/" component={Introduction} exact />
+        <Route path="/permissions" component={Permissions} exact />
       </Switch>
     </Router>
   )
