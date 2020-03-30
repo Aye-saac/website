@@ -2,10 +2,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 
 import { counterReducer } from "Features/counter"
+import { permissionReducer } from "Features/permission"
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    permission: permissionReducer,
   },
 })
 
