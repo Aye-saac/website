@@ -3103,6 +3103,7 @@ __metadata:
     redux: ^4.0.5
     redux-mock-store: ^1.5.4
     styled-components: ^5.0.1
+    styled-normalize: ^8.0.7
     typescript: ~3.8.0
   languageName: unknown
   linkType: soft
@@ -14961,6 +14962,15 @@ __metadata:
     react-dom: ">= 16.8.0"
     react-is: ">= 16.8.0"
   checksum: 2/1cf95ad925997f846da839cb052f104bca3a111b171c0b75647eef2335568bb20a0f2ea828c45808bf9291faca0a0b93f31975b552a2f25cade0122a5191b7d9
+  languageName: node
+  linkType: hard
+
+"styled-normalize@npm:^8.0.7":
+  version: 8.0.7
+  resolution: "styled-normalize@npm:8.0.7"
+  peerDependencies:
+    styled-components: ^4.0.0 || ^5.0.0
+  checksum: 2/e4b77af7b7263f0a416c73dbdda0deaefb7ea9db0ecfea78902740dfbb35f58f06196090e27418bbe0d8378189f8777e53b842810fcc5d51e9e55bb812baa90b
   languageName: node
   linkType: hard
 
