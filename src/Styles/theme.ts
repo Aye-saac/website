@@ -1,4 +1,4 @@
-import { buttons, layout } from "./components"
+import { buttons, layout, styles, text } from "./components"
 import {
   breakpoints,
   fontSizes,
@@ -29,35 +29,29 @@ import { fonts } from "./variables"
 
 export default {
   colors: {
-    // Theme
-    primary: "#f2c9a2",
-    primaryVariant: "#d0ad8b",
-    secondary: "#a0c8ef",
+    black: "#000000",
 
-    background: "#121212",
-    surface: "#121212",
+    underBase: "#1E202C",
+    groundBase: "#222431",
+
+    moonBase: "#41445D",
+    starBase: "#63688e",
+
+    dullWhite: "#b6b7bb",
+    starWhite: "#C5C7D4",
+
+    smokeWhite: "#e7ebff",
+    nearWhite: "#f4f4f4",
+
+    white: "#ffffff",
 
     // States
-    error: "#cf6679",
-
-    // "On" colours
-    onPrimary: "#000000",
-    onSecondary: "#000000",
-    onBackground: "#ffffff",
-    onSurface: "#ffffff",
-    onError: "#000000",
+    error: "#da677c", // AA with groundBase/underBase
+    onError: "#222431", // base
   },
 
   styles: {
-    root: {
-      fontFamily: "body",
-      lineHeight: "body",
-      fontWeight: "body",
-      backgroundColor: "background",
-      color: "onBackground",
-
-      fontSmoothing: "auto",
-    },
+    ...styles,
     ...layout,
   },
 
@@ -77,4 +71,6 @@ export default {
 
   // Components
   buttons,
+
+  text,
 }

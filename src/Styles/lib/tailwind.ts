@@ -162,12 +162,12 @@ const fonts = {
 const fontSizes = [
   "0.75rem",
   "0.875rem",
-  "1rem",
+  "1rem", // 16px
   "1.25rem",
   "1.5rem",
   "1.625rem",
-  "2.25rem",
-  "3rem",
+  "2.625rem", // 42px
+  "3.75rem", // 60px
   "4rem",
   "4.5rem",
 ]
@@ -183,8 +183,8 @@ const fontWeights = {
   extrabold: "800",
   black: "900",
 
-  body: "400",
-  heading: "700",
+  body: "500",
+  heading: "800",
 }
 
 const letterSpacings = {
@@ -198,6 +198,7 @@ const letterSpacings = {
 
 const lineHeights = {
   none: "1",
+  squeezed: "1.125",
   tight: "1.25",
   snug: "1.375",
   normal: "1.5",
@@ -301,6 +302,7 @@ const radii = {
   md: "0.25rem",
   lg: "0.5rem",
   xl: "0.625rem",
+  xxl: "0.875rem",
   full: "9999px",
   default: "0.25rem",
 }

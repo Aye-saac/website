@@ -3,7 +3,7 @@ import { SxStyleProp } from "theme-ui"
 const pageWrapper: SxStyleProp = {
   maxWidth: "5xl",
   margin: "0 auto",
-  p: 4,
+  my: 5,
 }
 
 const container: SxStyleProp = {
