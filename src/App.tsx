@@ -10,7 +10,7 @@ const App: React.FC = () => {
     <Router>
       <Switch>
         <Route path="/" component={Introduction} exact />
-        <Route path="/permissions" component={Permissions} exact />
+        <Route path="/permissions" component={Permissions} />
       </Switch>
     </Router>
   )
