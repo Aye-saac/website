@@ -2962,7 +2962,6 @@ __metadata:
     react-router-dom: ^5.1.2
     react-scripts: ^3.4.1
     redux: ^4.0.5
-    redux-devtools-extension: ^2.13.8
     redux-mock-store: ^1.5.4
     typescript: ~3.8.0
   languageName: unknown
@@ -12612,15 +12611,6 @@ __metadata:
   dependencies:
     minimatch: 3.0.4
   checksum: 2/7ca5c180a8f1158171bd68ecb8b540e3c4e187de52a724eeea5383faece2b8ccae45f99e212d69ac7af574e1014d4963bfdf13fa124f18604aa9f47563e9f086
-  languageName: node
-  linkType: hard
-
-"redux-devtools-extension@npm:^2.13.8":
-  version: 2.13.8
-  resolution: "redux-devtools-extension@npm:2.13.8"
-  peerDependencies:
-    redux: ^3.1.0 || ^4.0.0
-  checksum: 2/4375a0698238f658ca93e35209e488e2c493e1cbb449c52bbd4a6a0d118547bc38e0a0af594801cb3abe7d460508792f095614b54006bb7373e14515cd110a4f
   languageName: node
   linkType: hard
 
