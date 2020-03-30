@@ -2,7 +2,7 @@ import React from "react"
 import { Provider } from "react-redux"
 import configureStore from "redux-mock-store"
 
-import { decrement, increment } from "Features/counter/counterSlice"
+import { decrement, increment } from "Features/counter"
 
 import { mount } from "enzyme"
 
@@ -13,6 +13,11 @@ describe("Counter", () => {
   const store = mockStore({
     counter: {
       value: 42,
+    },
+    permission: {
+      camera: false,
+      microphone: false,
+      privacy: false,
     },
   })
 

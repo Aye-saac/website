@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 
 import { RootState } from "Store"
 
@@ -20,13 +20,10 @@ export const slice = createSlice({
     decrement: (state) => {
       state.value -= 1
     },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
-    },
   },
 })
 
-export const { increment, decrement, incrementByAmount } = slice.actions
+export const { increment, decrement } = slice.actions
 
 export const selectCount = (state: RootState) => state.counter.value
 
