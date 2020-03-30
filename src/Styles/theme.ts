@@ -12,21 +12,6 @@ import {
 } from "./lib/tailwind"
 import { fonts } from "./variables"
 
-// const colors = {
-//   coolGray: [
-//     "#f5f7fa",
-//     "#e4e7eb",
-//     "#cbd2d9",
-//     "#9aa5b1",
-//     "#7b8794",
-//     "#616e7c",
-//     "#52606d",
-//     "#3e4c59",
-//     "#323f4b",
-//     "#1f2933",
-//   ],
-// }
-
 export default {
   colors: {
     black: "#000000",
