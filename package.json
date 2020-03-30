@@ -30,7 +30,7 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint --fix",
+    "*.{js?(x),ts?(x)}": "eslint --fix",
     "*.{html,md,json,yml,yaml,css}": "prettier --write"
   },
   "dependencies": {
