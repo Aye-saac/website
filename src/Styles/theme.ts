@@ -1,7 +1,6 @@
 import { buttons, layout, styles, text } from "./components"
 import {
   breakpoints,
-  fontSizes,
   fontWeights,
   letterSpacings,
   lineHeights,
@@ -10,7 +9,7 @@ import {
   space,
   zIndices,
 } from "./lib/tailwind"
-import { colors, fonts } from "./variables"
+import { colors, fonts, fontSizes } from "./variables"
 
 export default {
   styles: {
@@ -20,7 +19,6 @@ export default {
 
   // Variables: Tailwind
   breakpoints,
-  fontSizes,
   fontWeights,
   letterSpacings,
   lineHeights,
@@ -32,6 +30,7 @@ export default {
   // Variables: Own set
   fonts,
   colors,
+  fontSizes,
 
   // Components
 
