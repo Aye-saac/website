@@ -28,6 +28,7 @@ const FileInput: React.FC<Props> = ({ onChange }) => {
           name="image"
           onChange={onChange}
           tabIndex={-1}
+          accept="image/*"
         />
       </Box>
       <Button
