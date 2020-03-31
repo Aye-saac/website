@@ -33,16 +33,22 @@ There are more scripts that are not listed above. The full list of scripts are w
 
 ## Technology stack
 
+### Dependencies
+
 - Built utilising [React](https://reactjs.org/) with [TypeScript (TS)](http://www.typescriptlang.org/)
 - State management with [Redux](https://redux.js.org/) through [Redux Toolkit (RTK)](https://redux-toolkit.js.org/)
 - Page routing with [React Router](https://github.com/ReactTraining/react-router)
 - Bootstrapped using [Create React App (CRA)](https://create-react-app.dev/) with [cra-template-typescript-redux](https://github.com/alexandr-g/cra-template-typescript-redux)
 - Styling with CSS-in-JSS with [Theme UI](https://theme-ui.com/) (with [Emotion](https://emotion.sh/))
+- Normalize CSS with [normalize.css](https://github.com/necolas/normalize.css/)
+
+### Developer dependencies
+
 - Testing with [Jest](https://jestjs.io/) and [Enzyme](https://enzymejs.github.io/enzyme/)
 - Code formatting with [Prettier](https://prettier.io/)
 - Code linting with [ESLint](https://eslint.org/)
-- Normalize CSS with [normalize.css](https://github.com/necolas/normalize.css/)
 - Easier file scaffolding with [plop](https://plopjs.com/)
+
 - *Hosted with (not sure yet)*
 
 ### Yarn (v2)
