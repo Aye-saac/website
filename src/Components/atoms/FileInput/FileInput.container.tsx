@@ -7,10 +7,10 @@ interface Props extends React.HTMLAttributes<HTMLInputElement> {
   url?: string
 }
 
-const FileInputContainer: React.FC<Props> = ({ onChange, url }) => {
+const FileInputContainer: React.FC<Props> = ({ onChange, url, ...props }) => {
   return (
     <>
-      <FileInput onChange={onChange} />
+      <FileInput onChange={onChange} {...props} />
       {url && <ImageWrapper src={url} alt="User upload" />}
     </>
   )

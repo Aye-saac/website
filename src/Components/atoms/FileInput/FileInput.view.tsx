@@ -16,7 +16,7 @@ const inputStyle: SxStyleProp = {
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const FileInput: React.FC<Props> = ({ onChange }) => {
+const FileInput: React.FC<Props> = ({ onChange, ...props }) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   return (
@@ -28,7 +28,7 @@ const FileInput: React.FC<Props> = ({ onChange }) => {
           name="image"
           onChange={onChange}
           tabIndex={-1}
-          accept="image/*"
+          {...props}
         />
       </Box>
       <Button
