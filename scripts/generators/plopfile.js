@@ -85,6 +85,8 @@ const generateFeature = {
     })
 
     actions.push(addExportAction(featuresPath, "name", "camelCase"))
+
+    return actions
   },
 }
 
