@@ -17,6 +17,18 @@ const PermissionsPage: React.FC = () => {
             intended. You can choose to accept any many as you want. Reasons for
             why we need each one are listed too.
           </Text>
+        </Container>
+        <Container sx={{ my: 6 }}>
+          <Heading as="h3" variant="heading.h3">
+            Can we use your device&apos;s camera?
+          </Heading>
+          <Text as="p">
+            We require some permissions in order to use the application as
+            intended. You can choose to accept any many as you want. Reasons for
+            why we need each one are listed too.
+          </Text>
+        </Container>
+        <Container>
           <RouteLink to="/question">
             <Button>Continue</Button>
           </RouteLink>
