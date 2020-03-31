@@ -1,6 +1,7 @@
 import React from "react"
 
-import { Container, FileInput, Heading, Section, Text } from "Components/atoms"
+import { Container, Heading, Section, Text } from "Components/atoms"
+import { QuestionForm } from "Components/molecules"
 
 const QuestionPage: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const QuestionPage: React.FC = () => {
           </Text>
         </Container>
         <Container>
-          <FileInput />
+          <QuestionForm />
         </Container>
       </Section>
     </>
