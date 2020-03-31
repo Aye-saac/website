@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import {
@@ -12,7 +12,7 @@ const Counter: React.FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <Fragment>
+    <>
       <div className="row">
         <div className="col s12 m6">
           <div className="card blue-grey darken-1">
@@ -49,7 +49,7 @@ const Counter: React.FC = () => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </>
   )
 }
 
