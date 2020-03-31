@@ -51,8 +51,6 @@ There are more scripts that are not listed above. The full list of scripts are w
 - Code linting with [ESLint](https://eslint.org/)
 - Easier file scaffolding with [plop](https://plopjs.com/)
 
-- *Hosted with (not sure yet)*
-
 ### Yarn (v2)
 
 [Yarn](https://yarnpkg.com/en/) was used during development, which is why there is a `yarn.lock` file instead of a `package-lock.json` file. Ultimately [use whatever you're comfortable with, but know the differences](https://yarnpkg.com/lang/en/docs/migrating-from-npm/).
