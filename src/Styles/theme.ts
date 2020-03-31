@@ -1,4 +1,4 @@
-import { buttons, layout, styles, text } from "./components"
+import { buttons, forms, image, layout, styles, text } from "./components"
 import {
   breakpoints,
   fontWeights,
@@ -33,9 +33,9 @@ export default {
   fontSizes,
 
   // Components
-
+  forms,
   layout,
-
+  image,
   buttons,
 
   text,
