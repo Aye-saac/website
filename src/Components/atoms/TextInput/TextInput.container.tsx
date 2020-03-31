@@ -16,6 +16,7 @@ const TextInput: React.FC<Props> = ({
   placeholder,
   ref,
   disableChange = false,
+  onChange,
 }) => {
   const [isFocus, setIsFocus] = React.useState(false)
   const [value, setValue] = React.useState("")
@@ -31,6 +32,10 @@ const TextInput: React.FC<Props> = ({
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!disableChange) {
       setValue(event.target.value)
+
+      if (onChange) {
+        onChange(event)
+      }
     }
   }
 

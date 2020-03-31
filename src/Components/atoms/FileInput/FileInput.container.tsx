@@ -3,23 +3,11 @@ import React from "react"
 import ImageWrapper from "../ImageWrapper"
 import FileInput from "./FileInput.view"
 
-const FileInputContainer: React.FC = () => {
-  const [url, setURL] = React.useState("")
+interface Props extends React.HTMLAttributes<HTMLInputElement> {
+  url?: string
+}
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Do nothing if no file
-    if (event.target.files === null) {
-      return
-    }
-
-    const file = event.target.files[0]
-    const fileURL = URL.createObjectURL(file)
-
-    console.log(file, fileURL)
-
-    setURL(fileURL)
-  }
-
+const FileInputContainer: React.FC<Props> = ({ onChange, url }) => {
   return (
     <>
       <FileInput onChange={onChange} />
