@@ -30,11 +30,13 @@ import FileInput from "./FileInput"
 import ImageWrapper from "./ImageWrapper"
 import Section from "./Section"
 import Text from "./Text"
+import TextInput from "./TextInput"
 
 export type SxStyleProp = ThemeUISxStyleProp
 
 export {
   /* PLOP_INJECT_EXPORT */
+  TextInput,
   ImageWrapper,
   FileInput,
   Container,
