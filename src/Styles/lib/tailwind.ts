@@ -303,6 +303,7 @@ const radii = {
   lg: "0.5rem",
   xl: "0.625rem",
   xxl: "0.875rem",
+  xxxl: "1rem",
   full: "9999px",
   default: "0.25rem",
 }
