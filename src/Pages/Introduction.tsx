@@ -23,7 +23,7 @@ const IntroductionPage: React.FC = () => {
           <Text as="p" variant="heading.projectSummary">
             An end-to-end aide for blind and partially sighted people.
           </Text>
-          <Text as="p" variant="primary">
+          <Text as="p">
             This is just a demonstration as part of a project for Heriot-Watt
             University. The full source code for this project and the system are
             available here. We do not store any data as this is just for

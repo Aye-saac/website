@@ -12,7 +12,7 @@ const PermissionsPage: React.FC = () => {
           <Heading as="h2" variant="heading.h2">
             Permissions.
           </Heading>
-          <Text variant="primary">
+          <Text>
             We require some permissions in order to use the application as
             intended. You can choose to accept any many as you want. Reasons for
             why we need each one are listed too.

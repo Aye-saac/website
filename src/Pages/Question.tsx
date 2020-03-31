@@ -10,7 +10,7 @@ const QuestionPage: React.FC = () => {
           <Heading as="h2" variant="heading.h2">
             The ask.
           </Heading>
-          <Text variant="primary">
+          <Text>
             This is some words of how it is supposed to work, including
             instructions of how to use it.
           </Text>

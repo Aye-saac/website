@@ -21,13 +21,13 @@ import {
   Slider,
   Spinner,
   SxStyleProp as ThemeUISxStyleProp,
-  Text,
   Textarea,
 } from "theme-ui"
 
 import Button from "./Button"
 import Container from "./Container"
 import Section from "./Section"
+import Text from "./Text"
 
 export type SxStyleProp = ThemeUISxStyleProp
 
