@@ -1,52 +1,60 @@
-[![yarn version](https://badge.fury.io/js/cra-template-typescript-redux.svg)](https://badge.fury.io/js/cra-template-typescript-redux)
-[![Action status](https://github.com/alexandr-g/cra-template-typescript-redux/workflows/CI/badge.svg?branch=master)](https://github.com/alexandr-g/cra-template-typescript-redux/actions)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-![yarn downloads](https://img.shields.io/npm/dm/cra-template-typescript-redux)
+# Ayesaac: Website
 
-# A quick start Redux + TypeScript Create React App template
+Description goes here.
 
-An opinionated quick start [Create React App](https://github.com/facebook/create-react-app) (CRA) _template_ with configured **Redux**, **TypeScript**, **React Router**, **Enzyme** and custom **ESlint** configuration.
+## Development
 
-Original Create React App README available [here](./README_CRA.md)
+### Installing things
 
-## Usage
+#### Prerequisites
 
-```bash
-npx create-react-app your-project-name --template typescript-redux
-```
+1. Install the **LTS version** of [Node.js](https://nodejs.org/en/).
+1. Install [Yarn](https://yarnpkg.com/en/docs/install).
 
-Or
+#### Dependencies
 
-```bash
-yarn create react-app your-project-name --template typescript-redux
-```
+1. Clone the repository
+2. Navigate to the folder
+3. Run `yarn` to install the dependencies
+4. Run `yarn start` to start the development server.
 
-`npx` command installs the most recent stable version of CRA from npm.
-
-`--template` parameter points to this template, note that `cra-template-` prefix is omitted.
-
-## Motivation
-
-You know the pain. You start a new project from scratch and need to configure it again and again. It needs routing, ok you setup Router, then you need Redux - ok, oh 😩Redux boilerplate is taking so much time to type. Wait... what if you could have all the tools you want just from the beginning? I want to focus on building amazing projects and not spending hours configuring. That's why I've created this template. It's here for you to use.
-
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
-- `yarn start` - runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- `yarn start` - Runs the app in the development mode at [http://localhost:3000](http://localhost:3000).
+- `yarn test` - Launches the test runner in the interactive watch mode.
+- `yarn build` - Builds production version to `build` folder, optimising for best performance. See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `yarn lint` - Lints project files.
+- `yarn fix` - Same as `yarn lint`, but also fixes errors where possible.
+- `yarn generate` - Scaffold files for quicker development.
 
-- `yarn test` - launches the test runner in the interactive watch mode.
+There are more scripts that are not listed above. The full list of scripts are within the `package.json` file.
 
-- `yarn build` - builds the app for production to the `build` folder.
+## Technology stack
 
-- `yarn eject` - exposes content of `react-script` package
+- Built utilising [React](https://reactjs.org/) with [TypeScript (TS)](http://www.typescriptlang.org/)
+- State management with [Redux](https://redux.js.org/) through [Redux Toolkit (RTK)](https://redux-toolkit.js.org/)
+- Page routing with [React Router](https://github.com/ReactTraining/react-router)
+- Bootstrapped using [Create React App (CRA)](https://create-react-app.dev/) with [cra-template-typescript-redux](https://github.com/alexandr-g/cra-template-typescript-redux)
+- Styling with CSS-in-JSS with [Theme UI](https://theme-ui.com/) (with [Emotion](https://emotion.sh/))
+- Testing with [Jest](https://jestjs.io/) and [Enzyme](https://enzymejs.github.io/enzyme/)
+- Code formatting with [Prettier](https://prettier.io/)
+- Code linting with [ESLint](https://eslint.org/)
+- Normalize CSS with [normalize.css](https://github.com/necolas/normalize.css/)
+- Easier file scaffolding with [plop](https://plopjs.com/)
+- *Hosted with (not sure yet)*
 
-- `yarn lint` - lints project files according to eslint rules, see below. Typical use case: continuous integration environments, Travis, CircleCI, etc.
+### Yarn (v2)
 
-- `yarn fix` - same as `yarn lint`, but also fixes errors, when possible. Typical use case: local development environment, git hooks.
+[Yarn](https://yarnpkg.com/en/) was used during development, which is why there is a `yarn.lock` file instead of a `package-lock.json` file. Ultimately [use whatever you're comfortable with, but know the differences](https://yarnpkg.com/lang/en/docs/migrating-from-npm/).
 
-Due to CRA template limitations (we can change only `scripts` and `dependencies` inside generated `package.json`) all configuration is done by adding config files where possible. Also no `devDependencies` for now, sorry.
+I've used Yarn v2 for this project, but I have **not used PnP** — I kept coming across issues during setup so I am using Yarn v2 with the [`node-modules`](https://yarnpkg.com/advanced/migration#if-required-enable-the-node-modules-plugin) plugin.
 
-## Redux configuration
+### Aliased imports
 
-The template provides basic Redux configuration with [feature based](https://redux.js.org/style-guide/style-guide/#structure-files-as-feature-folders-or-ducks) folder structure. You can use [Redux devtools browser extension](http://extension.remotedev.io/). Sample feature included in `src/features` folder, note technology agnostic `features` folder name. Based on Redux maintainers recommendation.
+I get annoyed at seeing loads of relative importing paths, so absolute import aliasing has been used. This is why there are capital letters used for the immediate directory under `src/`.
+
+### Redux configuration
+
+The template provides basic Redux configuration with [feature based](https://redux.js.org/style-guide/style-guide/#structure-files-as-feature-folders-or-ducks) folder structure. You can use [Redux devtools browser extension](http://extension.remotedev.io/). Based on Redux maintainers recommendation.
