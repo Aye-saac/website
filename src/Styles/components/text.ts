@@ -7,6 +7,11 @@ const h2 = {
   color: "nearWhite",
 }
 
+const h3 = {
+  ...h2,
+  fontSize: [4, 5, 5],
+}
+
 const projectName: SxStyleProp = {
   ...h2,
   color: "starWhite",
@@ -30,6 +35,7 @@ const text: SxStyleProp = {
   primary,
   heading: {
     h2,
+    h3,
     projectName,
     projectSummary,
   },

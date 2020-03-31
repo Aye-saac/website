@@ -165,7 +165,7 @@ const fontSizes = [
   "1rem", // 16px
   "1.25rem",
   "1.5rem",
-  "1.625rem",
+  "1.75rem",
   "2.625rem", // 42px
   "3.75rem", // 60px
   "4rem",
