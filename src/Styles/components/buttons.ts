@@ -4,7 +4,7 @@ const primary: SxStyleProp = {
   color: "groundBase",
   bg: "starWhite",
 
-  borderRadius: "xxl",
+  borderRadius: "lg",
 
   py: 3,
   px: 4,
@@ -37,7 +37,6 @@ const primary: SxStyleProp = {
 
 const input: SxStyleProp = {
   ...primary,
-  borderRadius: "lg",
 
   boxShadow: "0 21px 26px 1px #151723",
 
