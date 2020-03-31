@@ -1,15 +1,17 @@
 import React from "react"
 
-import { Box, SxProps } from "theme-ui"
+import { Box, BoxProps } from "theme-ui"
 
-interface Props extends SxProps {
+interface Props extends BoxProps {
   children: React.ReactNode
 }
 
-const Container: React.FC<Props> = ({ children, ...props }) => {
+const Container: React.FC<Props> = ({ children, variant, ...props }) => {
+  const DEFAULT_VARIANT = "styles.container"
+
   return (
     <>
-      <Box as="div" variant="styles.container" {...props}>
+      <Box as="div" variant={variant || DEFAULT_VARIANT} {...props}>
         {children}
       </Box>
     </>
