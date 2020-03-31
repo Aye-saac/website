@@ -41,6 +41,8 @@ There are more scripts that are not listed above. The full list of scripts are w
 - Bootstrapped using [Create React App (CRA)](https://create-react-app.dev/) with [cra-template-typescript-redux](https://github.com/alexandr-g/cra-template-typescript-redux)
 - Styling with CSS-in-JSS with [Theme UI](https://theme-ui.com/) (with [Emotion](https://emotion.sh/))
 - Normalize CSS with [normalize.css](https://github.com/necolas/normalize.css/)
+- Font used: [Inter](https://rsms.me/inter/)
+- Icons used: [Feather](https://feathericons.com/) through [React Icons](https://github.com/react-icons/react-icons)
 
 ### Developer dependencies
 
