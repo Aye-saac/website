@@ -1,5 +1,6 @@
 import React from "react"
 
+import ImageWrapper from "../ImageWrapper"
 import FileInput from "./FileInput.view"
 
 const FileInputContainer: React.FC = () => {
@@ -22,7 +23,7 @@ const FileInputContainer: React.FC = () => {
   return (
     <>
       <FileInput onChange={onChange} />
-      {url && <img src={url} alt="User uploaded" />}
+      {url && <ImageWrapper src={url} alt="User upload" />}
     </>
   )
 }

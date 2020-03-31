@@ -10,9 +10,14 @@ const container: SxStyleProp = {
   px: 4,
 }
 
+const content: SxStyleProp = {
+  maxWidth: ["12/12", "8/12", "7/12"],
+}
+
 const layout: SxStyleProp = {
   container,
   section,
+  content,
 }
 
 export default layout
