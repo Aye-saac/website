@@ -23,7 +23,7 @@ const primary: SxStyleProp = {
   transition: "0.15s ease background",
 
   fontWeight: 500,
-  fontSize: 3,
+  fontSize: 2,
 
   "&:hover": {
     bg: "smokeWhite",
@@ -35,8 +35,22 @@ const primary: SxStyleProp = {
   },
 }
 
+const input: SxStyleProp = {
+  ...primary,
+  borderRadius: "lg",
+
+  boxShadow: "0 21px 26px 1px #151723",
+
+  // bg: "smokeWhite",
+
+  // "&:hover": {
+  // bg: "nearWhite",
+  // },
+}
+
 const button: SxStyleProp = {
   primary,
+  input,
 }
 
 export default button

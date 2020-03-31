@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Container, Heading, Section, Text } from "Components/atoms"
+import { Container, FileInput, Heading, Section, Text } from "Components/atoms"
 
 const QuestionPage: React.FC = () => {
   return (
@@ -14,6 +14,9 @@ const QuestionPage: React.FC = () => {
             This is some words of how it is supposed to work, including
             instructions of how to use it.
           </Text>
+        </Container>
+        <Container>
+          <FileInput />
         </Container>
       </Section>
     </>

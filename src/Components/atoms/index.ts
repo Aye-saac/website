@@ -26,6 +26,7 @@ import {
 
 import Button from "./Button"
 import Container from "./Container"
+import FileInput from "./FileInput"
 import Section from "./Section"
 import Text from "./Text"
 
@@ -33,6 +34,7 @@ export type SxStyleProp = ThemeUISxStyleProp
 
 export {
   /* PLOP_INJECT_EXPORT */
+  FileInput,
   Container,
   Section,
   Button,
