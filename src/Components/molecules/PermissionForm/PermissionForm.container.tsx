@@ -13,6 +13,7 @@ interface Props {
   negativeIcon: IconType
   onNegativeClick?: () => void
   onPositiveClick?: () => void
+  permissionStatus: PermissionState
 }
 
 const PermissionFormContainer: React.FC<Props> = ({
@@ -22,9 +23,21 @@ const PermissionFormContainer: React.FC<Props> = ({
   negativeIcon,
   onNegativeClick,
   onPositiveClick,
+  permissionStatus,
 }) => {
-  const [isLeftSelected, setIsLeftSelected] = React.useState<boolean>(false)
-  const [isRightSelected, setIsRightSelected] = React.useState<boolean>(false)
+  const [isLeftSelected, setIsLeftSelected] = React.useState<boolean>()
+  const [isRightSelected, setIsRightSelected] = React.useState<boolean>()
+
+  React.useEffect(() => {
+    if (permissionStatus === "granted") {
+      setIsRightSelected(true)
+      setIsLeftSelected(false)
+    }
+    if (permissionStatus === "denied") {
+      setIsLeftSelected(true)
+      setIsRightSelected(false)
+    }
+  }, [permissionStatus])
 
   const handleSelectNegative = () => {
     setIsLeftSelected(true)
@@ -33,8 +46,8 @@ const PermissionFormContainer: React.FC<Props> = ({
   }
 
   const handleSelectPositive = () => {
-    setIsRightSelected(true)
     setIsLeftSelected(false)
+    setIsRightSelected(true)
     onPositiveClick && onPositiveClick()
   }
 

@@ -8,25 +8,11 @@ import {
   Section,
   Text,
 } from "Components/atoms"
-import { updateCamera, updateMicrophone } from "Features/permission"
-import { setPermissionChange } from "Helpers"
-import { store } from "Store"
 
 import { FiChevronRight } from "react-icons/fi"
 import { Link } from "react-router-dom"
 
 const IntroductionPage: React.FC = () => {
-  setPermissionChange({
-    name: "microphone",
-    dispatch: store.dispatch,
-    action: updateMicrophone,
-  })
-  setPermissionChange({
-    name: "camera",
-    dispatch: store.dispatch,
-    action: updateCamera,
-  })
-
   return (
     <>
       <Section>
