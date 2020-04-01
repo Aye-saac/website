@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Box, Button, FileInput, TextInput } from "Components/atoms"
+import { AudioInput, Box, Button, FileInput, TextInput } from "Components/atoms"
 
 import { FiSend } from "react-icons/fi"
 
@@ -45,6 +45,7 @@ const QuestionFormContainer: React.FC = () => {
           placeholder="Ask a question about the image."
           onChange={onInputChange}
         />
+        <AudioInput />
         <Button variant="input" IconComponent={FiSend} onClick={onSubmit}>
           Submit
         </Button>
