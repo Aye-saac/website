@@ -99,7 +99,8 @@ const generateHelper = {
   actions(data) {
     const actions = []
 
-    const helperPath = `${projectSrc}/Helpers`
+    const helpersRootPath = `${projectSrc}/Helpers`
+    const helperPath = `${helpersRootPath}/{{camelCase name}}`
 
     actions.push({
       type: "add",
@@ -123,11 +124,11 @@ const generateHelper = {
     })
 
     // Create `Helpers/index.ts` (if it doesn't exist)
-    actions.push(addInjectableIndexAction(helperPath, "name", "camelCase"))
+    actions.push(addInjectableIndexAction(helpersRootPath, "name", "camelCase"))
 
     // Add modules to `Helpers/index.ts`
-    actions.push(addImportAction(helperPath, "name", "camelCase"))
-    actions.push(addExportAction(helperPath, "name", "camelCase"))
+    actions.push(addImportAction(helpersRootPath, "name", "camelCase"))
+    actions.push(addExportAction(helpersRootPath, "name", "camelCase"))
 
     return actions
   },
