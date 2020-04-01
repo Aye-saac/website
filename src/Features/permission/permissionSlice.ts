@@ -36,16 +36,22 @@ export const slice = createSlice({
       state.camera.isAvailable = action.payload
     },
     updateCameraStatus: (state, action: PayloadAction<PermissionState>) => {
-      state.camera.status = action.payload
+      if (state.camera.isAvailable) {
+        state.camera.status = action.payload
+      }
     },
     updateMicrophoneAvailability: (state, action: PayloadAction<boolean>) => {
       state.microphone.isAvailable = action.payload
     },
     updateMicrophoneStatus: (state, action: PayloadAction<PermissionState>) => {
-      state.microphone.status = action.payload
+      if (state.microphone.isAvailable) {
+        state.microphone.status = action.payload
+      }
     },
     updatePrivacyStatus: (state, action: PayloadAction<PermissionState>) => {
-      state.privacy.status = action.payload
+      if (state.privacy.isAvailable) {
+        state.privacy.status = action.payload
+      }
     },
   },
 })
