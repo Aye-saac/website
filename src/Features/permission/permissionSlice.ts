@@ -34,6 +34,10 @@ export const slice = createSlice({
 export const { updateCamera, updateMicrophone, updatePrivacy } = slice.actions
 
 export const selectPermission = (state: RootState) => state.permission
+export const selectMicrophone = (state: RootState) =>
+  state.permission.microphone
+export const selectCamera = (state: RootState) => state.permission.camera
+export const selectPrivacy = (state: RootState) => state.permission.privacy
 
 export const permissionReducer = slice.reducer
 
