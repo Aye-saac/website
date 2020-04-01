@@ -4,20 +4,17 @@ import {
   updateCamera,
   updateMicrophone,
   updatePrivacy,
-  updateSpeaker,
 } from "./permissionSlice"
 
 const getInitialState = ({
   camera,
   microphone,
   privacy,
-  speaker,
 }: Partial<PermissionReducerState>): PermissionReducerState => {
   return {
     camera: camera || "prompt",
     microphone: microphone || "prompt",
     privacy: privacy || "prompt",
-    speaker: speaker || "prompt",
   }
 }
 
@@ -68,31 +65,6 @@ describe("Features > permission > permissionSlice", () => {
 
     const action = {
       type: updateMicrophone.type,
-      payload: "denied",
-    }
-
-    expect(permissionReducer(initialState, action)).toEqual(expectedState)
-  })
-  it(`grants speaker with ${updateSpeaker.type} action`, () => {
-    const initialState = getInitialState({})
-
-    const expectedState = getInitialState({ speaker: "granted" })
-
-    const action = {
-      type: updateSpeaker.type,
-      payload: "granted",
-    }
-
-    expect(permissionReducer(initialState, action)).toEqual(expectedState)
-  })
-
-  it(`denies speaker with ${updateSpeaker.type} action`, () => {
-    const initialState = getInitialState({})
-
-    const expectedState = getInitialState({ speaker: "denied" })
-
-    const action = {
-      type: updateSpeaker.type,
       payload: "denied",
     }
 
