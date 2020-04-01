@@ -2,17 +2,17 @@ import { ActionCreatorWithPayload } from "@reduxjs/toolkit"
 
 import { store } from "Store"
 
-interface SetPermissionChange {
+interface AddPermissionChangeListener {
   name: PermissionName
   dispatch: typeof store.dispatch
   action: ActionCreatorWithPayload<PermissionState, string>
 }
 
-const setPermissionChange = ({
+const addPermissionChangeListener = ({
   name,
   dispatch,
   action,
-}: SetPermissionChange): void => {
+}: AddPermissionChangeListener): void => {
   navigator.permissions.query({ name }).then((status) => {
     // Update the store with the permission status
     dispatch(action(status.state))
@@ -26,4 +26,4 @@ const setPermissionChange = ({
   })
 }
 
-export default setPermissionChange
+export default addPermissionChangeListener

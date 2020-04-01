@@ -1,7 +1,7 @@
 /* PLOP_INJECT_IMPORT */
-import setPermissionChange from "./setPermissionChange"
+import addPermissionChangeListener from "./addPermissionChangeListener"
 
 export {
   /* PLOP_INJECT_EXPORT */
-  setPermissionChange,
+  addPermissionChangeListener,
 }
