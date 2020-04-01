@@ -11,8 +11,8 @@ interface Props {
   children: React.ReactNode
   positiveIcon: IconType
   negativeIcon: IconType
-  onNegativeClick: () => void
-  onPositiveClick: () => void
+  onNegativeClick?: () => void
+  onPositiveClick?: () => void
 }
 
 const PermissionFormContainer: React.FC<Props> = ({
@@ -29,13 +29,13 @@ const PermissionFormContainer: React.FC<Props> = ({
   const handleSelectNegative = () => {
     setIsLeftSelected(true)
     setIsRightSelected(false)
-    onNegativeClick()
+    onNegativeClick && onNegativeClick()
   }
 
   const handleSelectPositive = () => {
     setIsRightSelected(true)
     setIsLeftSelected(false)
-    onPositiveClick()
+    onPositiveClick && onPositiveClick()
   }
 
   return (
