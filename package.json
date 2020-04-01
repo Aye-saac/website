@@ -52,6 +52,7 @@
     "typescript": "~3.8.0"
   },
   "devDependencies": {
+    "@types/dom-mediacapture-record": "^1.0.4",
     "@types/enzyme": "^3.10.4",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^25.1.1",
