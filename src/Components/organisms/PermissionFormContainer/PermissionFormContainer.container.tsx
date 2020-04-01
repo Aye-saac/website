@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { PermissionForm } from "Components/molecules"
 import {
   selectPermission,
-  updateCamera,
-  updateMicrophone,
+  updateCameraStatus,
+  updateMicrophoneStatus,
 } from "Features/permission"
 import { setPermissionChange } from "Helpers"
 import { store } from "Store"
@@ -17,12 +17,12 @@ const PermissionFormContainer: React.FC = () => {
     setPermissionChange({
       name: "microphone",
       dispatch: store.dispatch,
-      action: updateMicrophone,
+      action: updateMicrophoneStatus,
     })
     setPermissionChange({
       name: "camera",
       dispatch: store.dispatch,
-      action: updateCamera,
+      action: updateCameraStatus,
     })
   }, [])
 
@@ -35,15 +35,15 @@ const PermissionFormContainer: React.FC = () => {
         title="Can we use your camera?"
         negativeIcon={FiCameraOff}
         positiveIcon={FiCamera}
-        permissionStatus={permission.camera}
+        permissionStatus={permission.camera.status}
         onNegativeClick={() => {
-          dispatch(updateCamera("denied"))
+          dispatch(updateCameraStatus("denied"))
         }}
         onPositiveClick={() => {
           navigator.mediaDevices
             .getUserMedia({ audio: true, video: true })
             .then(() => {
-              dispatch(updateCamera("granted"))
+              dispatch(updateCameraStatus("granted"))
             })
         }}
       >
@@ -59,14 +59,14 @@ const PermissionFormContainer: React.FC = () => {
         negativeIcon={FiMicOff}
         positiveIcon={FiMic}
         onNegativeClick={() => {
-          dispatch(updateMicrophone("denied"))
+          dispatch(updateMicrophoneStatus("denied"))
         }}
         onPositiveClick={() => {
           navigator.mediaDevices.getUserMedia({ audio: true }).then(() => {
-            dispatch(updateMicrophone("granted"))
+            dispatch(updateMicrophoneStatus("granted"))
           })
         }}
-        permissionStatus={permission.microphone}
+        permissionStatus={permission.microphone.status}
       >
         <p>
           With access your microphone, you can directly record your voice into

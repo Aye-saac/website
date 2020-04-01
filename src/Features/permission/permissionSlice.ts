@@ -2,36 +2,61 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { RootState } from "Store"
 
+type DevicePermission = {
+  isAvailable: boolean
+  status: PermissionState
+}
+
 export interface PermissionReducerState {
-  camera: PermissionState
-  microphone: PermissionState
-  privacy: PermissionState
+  camera: DevicePermission
+  microphone: DevicePermission
+  privacy: DevicePermission
 }
 
 const initialState: PermissionReducerState = {
-  camera: "prompt",
-  microphone: "prompt",
-  privacy: "prompt",
+  camera: {
+    isAvailable: true,
+    status: "prompt",
+  },
+  microphone: {
+    isAvailable: true,
+    status: "prompt",
+  },
+  privacy: {
+    isAvailable: true,
+    status: "prompt",
+  },
 }
 
 export const slice = createSlice({
   name: "permission",
   initialState,
   reducers: {
-    updateCamera: (state, action: PayloadAction<PermissionState>) => {
-      state.camera = action.payload
+    updateCameraAvailability: (state, action: PayloadAction<boolean>) => {
+      state.camera.isAvailable = action.payload
     },
-    updateMicrophone: (state, action: PayloadAction<PermissionState>) => {
-      state.microphone = action.payload
+    updateCameraStatus: (state, action: PayloadAction<PermissionState>) => {
+      state.camera.status = action.payload
     },
-
-    updatePrivacy: (state, action: PayloadAction<PermissionState>) => {
-      state.privacy = action.payload
+    updateMicrophoneAvailability: (state, action: PayloadAction<boolean>) => {
+      state.microphone.isAvailable = action.payload
+    },
+    updateMicrophoneStatus: (state, action: PayloadAction<PermissionState>) => {
+      state.microphone.status = action.payload
+    },
+    updatePrivacyStatus: (state, action: PayloadAction<PermissionState>) => {
+      state.privacy.status = action.payload
     },
   },
 })
 
-export const { updateCamera, updateMicrophone, updatePrivacy } = slice.actions
+export const {
+  updateCameraAvailability,
+  updateMicrophoneAvailability,
+  updateCameraStatus,
+  updateMicrophoneStatus,
+  updatePrivacyStatus,
+} = slice.actions
 
 export const selectPermission = (state: RootState) => state.permission
 export const selectMicrophone = (state: RootState) =>
