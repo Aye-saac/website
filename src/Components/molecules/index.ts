@@ -1,9 +1,9 @@
 /* PLOP_INJECT_IMPORT */
-import PermissionRequest from "./PermissionRequest"
+import PermissionForm from "./PermissionForm"
 import QuestionForm from "./QuestionForm"
 
 export {
   /* PLOP_INJECT_EXPORT */
+  PermissionForm,
   QuestionForm,
-  PermissionRequest,
 }

@@ -9,6 +9,7 @@ const h2 = {
 
 const h3 = {
   ...h2,
+  color: "nearWhite",
   fontSize: [4, 5, 5],
 }
 

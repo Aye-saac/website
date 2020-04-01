@@ -20,16 +20,21 @@ const primary: SxStyleProp = {
 
   cursor: "pointer",
 
-  transition: "0.15s ease background",
+  transitionDuration: "150ms",
+  transitionTimingFunction: "ease",
+  transitionProperty: "background border color",
 
   fontWeight: 500,
   fontSize: 2,
+
+  outline: "none",
 
   "&:hover": {
     bg: "smokeWhite",
   },
 
   ">svg": {
+    stroke: "groundBase",
     height: "1.3em",
     width: "1.3em",
   },
@@ -47,9 +52,48 @@ const input: SxStyleProp = {
   // },
 }
 
+const outline: SxStyleProp = {
+  ...primary,
+
+  boxShadow: "none",
+
+  backgroundColor: "underBase",
+  color: "starWhite",
+
+  borderWidth: "2px",
+  borderStyle: "solid",
+  borderColor: "moonBase",
+
+  "&:hover": {
+    borderColor: "starBase",
+    backgroundColor: "groundBase",
+  },
+
+  svg: {
+    stroke: "starWhite",
+  },
+}
+
+const outlineSelected: SxStyleProp = {
+  ...outline,
+  backgroundColor: "starWhite",
+  color: "groundBase",
+  borderColor: "none",
+
+  "&:hover": {
+    backgroundColor: "smokeWhite",
+  },
+
+  svg: {
+    stroke: "groundBase",
+  },
+}
+
 const button: SxStyleProp = {
   primary,
   input,
+  outline,
+  outlineSelected,
 }
 
 export default button

@@ -13,15 +13,22 @@ const description: SxStyleProp = {
   maxWidth: ["11/12", "8/12", "6/12"],
 }
 
-const buttonWrapper: SxStyleProp = {
-  // todo: Flex or column or grid?
+const buttonContainer: SxStyleProp = {
+  columnCount: 2,
+  columnGap: 4,
+  maxWidth: ["12/12", "8/12", "6/12"],
+
+  button: {
+    minWidth: 0,
+    width: "100%",
+  },
 }
 
-const permissionRequest: SxStyleProp = {
+const permissionForm: SxStyleProp = {
   container,
   title,
   description,
-  buttonWrapper,
+  buttonContainer,
 }
 
-export default permissionRequest
+export default permissionForm

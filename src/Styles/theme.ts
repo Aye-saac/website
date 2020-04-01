@@ -1,4 +1,12 @@
-import { buttons, forms, image, layout, styles, text } from "./components"
+import {
+  buttons,
+  forms,
+  image,
+  layout,
+  permissionForm,
+  styles,
+  text,
+} from "./components"
 import {
   breakpoints,
   fontWeights,
@@ -37,6 +45,10 @@ export default {
   layout,
   image,
   buttons,
-
   text,
+
+  // Specific components
+  components: {
+    permissionForm,
+  },
 }
