@@ -1,51 +1,46 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { RootState } from "Store"
 
-interface PermissionState {
-  camera: boolean
-  microphone: boolean
-  privacy: boolean
+export interface PermissionReducerState {
+  camera: PermissionState
+  microphone: PermissionState
+  speaker: PermissionState
+  privacy: PermissionState
 }
 
-const initialState: PermissionState = {
-  camera: false,
-  microphone: false,
-  privacy: false,
+const initialState: PermissionReducerState = {
+  camera: "prompt",
+  microphone: "prompt",
+  privacy: "prompt",
+  // Speaker is granted by default
+  speaker: "granted",
 }
 
 export const slice = createSlice({
   name: "permission",
   initialState,
   reducers: {
-    enableCamera: (state) => {
-      state.camera = true
+    updateCamera: (state, action: PayloadAction<PermissionState>) => {
+      state.camera = action.payload
     },
-    disableCamera: (state) => {
-      state.camera = false
+    updateMicrophone: (state, action: PayloadAction<PermissionState>) => {
+      state.microphone = action.payload
     },
-    enableMicrophone: (state) => {
-      state.microphone = true
+    updateSpeaker: (state, action: PayloadAction<PermissionState>) => {
+      state.speaker = action.payload
     },
-    disableMicrophone: (state) => {
-      state.microphone = false
-    },
-    enablePrivacy: (state) => {
-      state.privacy = true
-    },
-    disablePrivacy: (state) => {
-      state.privacy = false
+    updatePrivacy: (state, action: PayloadAction<PermissionState>) => {
+      state.privacy = action.payload
     },
   },
 })
 
 export const {
-  enableCamera,
-  enableMicrophone,
-  enablePrivacy,
-  disableCamera,
-  disableMicrophone,
-  disablePrivacy,
+  updateCamera,
+  updateMicrophone,
+  updatePrivacy,
+  updateSpeaker,
 } = slice.actions
 
 export const selectPermission = (state: RootState) => state.permission
