@@ -106,7 +106,18 @@
     "unicorn/prefer-text-content": "error",
     "unicorn/prefer-trim-start-end": "error",
     "unicorn/prefer-type-error": "error",
-    "unicorn/regex-shorthand": "error"
+    "unicorn/regex-shorthand": "error",
+
+    // Handle unused expressions
+    "no-unused-expressions": "off",
+    "@typescript-eslint/no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true,
+        "allowTaggedTemplates": true
+      }
+    ]
   },
 
   "overrides": [
