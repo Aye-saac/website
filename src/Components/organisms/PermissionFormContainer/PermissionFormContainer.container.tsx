@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { PermissionForm } from "Components/molecules"
 import {
   selectPermission,
+  updateCameraAvailability,
   updateCameraStatus,
+  updateMicrophoneAvailability,
   updateMicrophoneStatus,
 } from "Features/permission"
 import { addPermissionChangeListener } from "Helpers"
@@ -17,12 +19,14 @@ const PermissionFormContainer: React.FC = () => {
     addPermissionChangeListener({
       name: "microphone",
       dispatch: store.dispatch,
-      action: updateMicrophoneStatus,
+      statusAction: updateMicrophoneStatus,
+      availabilityAction: updateMicrophoneAvailability,
     })
     addPermissionChangeListener({
       name: "camera",
       dispatch: store.dispatch,
-      action: updateCameraStatus,
+      statusAction: updateCameraStatus,
+      availabilityAction: updateCameraAvailability,
     })
   }, [])
 
