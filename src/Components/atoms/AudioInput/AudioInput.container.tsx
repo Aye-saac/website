@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from "react"
 
+import AudioPlayer from "../AudioPlayer"
 import Button from "../Button"
 
 interface ChunkState {
@@ -102,8 +103,8 @@ const AudioInputContainer: React.FC = () => {
 
   return (
     <>
-      <audio ref={previewRef} autoPlay muted />
-      <audio ref={capturedRef} controls />
+      <AudioPlayer ref={previewRef} autoPlay muted />
+      <AudioPlayer ref={capturedRef} controls />
       <Button onClick={toggleRecording}>
         {isRecording ? "Stop recording" : "Start recording"}
       </Button>

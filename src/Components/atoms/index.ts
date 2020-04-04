@@ -25,6 +25,7 @@ import {
 } from "theme-ui"
 
 import AudioInput from "./AudioInput"
+import AudioPlayer from "./AudioPlayer"
 import Button from "./Button"
 import Container from "./Container"
 import FileInput from "./FileInput"
@@ -37,6 +38,7 @@ export type SxStyleProp = ThemeUISxStyleProp
 
 export {
   /* PLOP_INJECT_EXPORT */
+  AudioPlayer,
   AudioInput,
   TextInput,
   ImageWrapper,
