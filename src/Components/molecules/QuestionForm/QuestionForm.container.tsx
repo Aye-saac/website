@@ -40,7 +40,12 @@ const QuestionFormContainer: React.FC = () => {
   return (
     <>
       <Box>
-        <FileInput onChange={onFileChange} url={fileUrl} accept="image/*" />
+        <FileInput
+          onChange={onFileChange}
+          url={fileUrl}
+          accept="image/*"
+          capture
+        />
         <TextInput
           placeholder="Ask a question about the image."
           onChange={onInputChange}
