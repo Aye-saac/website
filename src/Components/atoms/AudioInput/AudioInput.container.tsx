@@ -48,14 +48,17 @@ const AudioInputContainer: React.FC = () => {
     blob: null,
   })
 
+  const previewRef = React.useRef<any>()
+  const capturedRef = React.useRef<any>()
+
   // Setup and connect the media stream to the state
   const setupStream = () => {
     navigator.mediaDevices.getUserMedia({ audio: true }).then(setMediaStream)
   }
 
-  // On mount, get the media stream
-  React.useEffect(setupStream, [])
-
+  /**
+   * When new data is available, save it in the state
+   */
   const handleDataAvailable = ({ data }: any) => {
     dispatchChunks({
       type: "updateChunks",
@@ -63,6 +66,9 @@ const AudioInputContainer: React.FC = () => {
     })
   }
 
+  /**
+   * When the recording is stopped, update the blob from the data
+   */
   const handleStop = () => {
     dispatchChunks({
       type: "updateBlob",
@@ -80,8 +86,6 @@ const AudioInputContainer: React.FC = () => {
     }
   }
 
-  React.useEffect(getMediaRecorder, [mediaStream])
-
   const toggleRecording = (): void => {
     if (mediaRecorder) {
       isRecording ? mediaRecorder.stop() : mediaRecorder.start()
@@ -89,14 +93,9 @@ const AudioInputContainer: React.FC = () => {
     }
   }
 
-  const previewRef = React.useRef<any>()
-  const capturedRef = React.useRef<any>()
-
   const setupPreview = () => {
     previewRef.current.srcObject = mediaStream
   }
-
-  React.useEffect(setupPreview, [mediaStream])
 
   const setupCaptured = () => {
     if (stateChunks.blob) {
@@ -104,6 +103,17 @@ const AudioInputContainer: React.FC = () => {
       capturedRef.current.src = url
     }
   }
+
+  // On mount, get the media stream
+  React.useEffect(setupStream, [])
+
+  // On media stream change, update the media recorder
+  React.useEffect(getMediaRecorder, [mediaStream])
+
+  // On media stream change, update the audio preview
+  React.useEffect(setupPreview, [mediaStream])
+
+  // When the captured audio is updated, update the player for it
   React.useEffect(setupCaptured, [stateChunks])
 
   return (
