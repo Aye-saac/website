@@ -26,7 +26,7 @@ const QuestionFormContainer: React.FC = () => {
     setMessage(event.target.value)
   }
 
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLDivElement>) => {
     event.preventDefault()
 
     // Guard clause
@@ -39,7 +39,7 @@ const QuestionFormContainer: React.FC = () => {
 
   return (
     <>
-      <Box as="form">
+      <Box as="form" onSubmit={handleSubmit}>
         <FileInput
           name="image"
           onChange={handleFileChange}
@@ -52,12 +52,7 @@ const QuestionFormContainer: React.FC = () => {
           placeholder="Ask a question about the image."
           onChange={handleInputChange}
         />
-        <Button
-          variant="input"
-          type="submit"
-          IconComponent={FiSend}
-          onClick={handleSubmit}
-        >
+        <Button variant="input" type="submit" IconComponent={FiSend}>
           Submit
         </Button>
       </Box>
