@@ -24,7 +24,6 @@ import {
   Textarea,
 } from "theme-ui"
 
-import AudioInput from "./AudioInput"
 import AudioPlayer from "./AudioPlayer"
 import Button from "./Button"
 import Container from "./Container"
@@ -39,7 +38,6 @@ export type SxStyleProp = ThemeUISxStyleProp
 export {
   /* PLOP_INJECT_EXPORT */
   AudioPlayer,
-  AudioInput,
   TextInput,
   ImageWrapper,
   FileInput,

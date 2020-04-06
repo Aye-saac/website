@@ -3,11 +3,9 @@
  *  [1] https://stackoverflow.com/q/55499621
  */
 
-/* eslint-disable jsx-a11y/media-has-caption */
 import React from "react"
 
-import AudioPlayer from "../AudioPlayer"
-import Button from "../Button"
+import { AudioPlayer, Button } from "Components/atoms"
 
 interface ChunkState {
   chunks: any[]
@@ -38,7 +36,9 @@ const chunkReducer = (state: ChunkState, action: ChunkAction) => {
   }
 }
 
-const AudioInputContainer: React.FC = () => {
+type AudioElementRef = React.MutableRefObject<HTMLAudioElement>
+
+const AudioRecorderContainer: React.FC = () => {
   const [mediaStream, setMediaStream] = React.useState<MediaStream>()
   const [mediaRecorder, setMediaRecorder] = React.useState<MediaRecorder>()
   const [isRecording, setIsRecording] = React.useState(false)
@@ -48,12 +48,8 @@ const AudioInputContainer: React.FC = () => {
     blob: null,
   })
 
-  const previewRef = React.useRef<HTMLAudioElement>() as React.MutableRefObject<
-    HTMLAudioElement
-  >
-  const capturedRef = React.useRef<
-    HTMLAudioElement
-  >() as React.MutableRefObject<HTMLAudioElement>
+  const previewRef = React.useRef<HTMLAudioElement>() as AudioElementRef
+  const capturedRef = React.useRef<HTMLAudioElement>() as AudioElementRef
 
   // Setup and connect the media stream to the state
   const setupStream = () => {
@@ -133,4 +129,4 @@ const AudioInputContainer: React.FC = () => {
   )
 }
 
-export default AudioInputContainer
+export default AudioRecorderContainer
