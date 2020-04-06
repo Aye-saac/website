@@ -21,7 +21,7 @@
 
     // Project metadata
     "CHANGELOG.md": false,
-    "LICENSE": false,
+    "LICENSE": true,
 
     // Testing side effects
     "coverage/": true,
