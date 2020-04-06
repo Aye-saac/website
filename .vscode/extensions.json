@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "formulahendry.auto-rename-tag",
+    "mgmcdermott.vscode-language-babel",
+    "visualstudioexptteam.vscodeintellicode",
+    "esbenp.prettier-vscode",
+    "christian-kohler.path-intellisense",
+    "christian-kohler.npm-intellisense",
+    "eg2.vscode-npm-script",
+    "philsinatra.nested-comments",
+    "nhoizey.gremlins",
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "editorconfig.editorconfig",
+    "coenraads.bracket-pair-colorizer-2"
+  ]
+}
