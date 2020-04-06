@@ -153,7 +153,7 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
           onPause={() => setIsPlaying(false)}
           onDurationChange={handleDurationChange}
           onTimeUpdate={handleTimeUpdate}
-          sx={{ display: "none" }}
+          css={{ display: "none" }}
         />
       </React.Fragment>
     )
