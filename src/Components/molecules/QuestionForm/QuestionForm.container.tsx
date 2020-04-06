@@ -70,7 +70,9 @@ const QuestionFormContainer: React.FC = () => {
           placeholder="Ask a question about the image."
           onChange={handleInputChange}
         />
-        <AudioRecorder />
+        <Box variant="audio.wrapper">
+          <AudioRecorder />
+        </Box>
         <Button variant="input" type="submit" IconComponent={FiSend}>
           Submit
         </Button>

@@ -5,7 +5,9 @@
 
 import React from "react"
 
-import { AudioPlayer, Button } from "Components/atoms"
+import { AudioPlayer, Box, Button } from "Components/atoms"
+
+import { FiMic, FiMicOff } from "react-icons/fi"
 
 interface ChunkState {
   chunks: any[]
@@ -121,10 +123,23 @@ const AudioRecorderContainer: React.FC = () => {
   return (
     <>
       <AudioPlayer ref={previewRef} autoPlay muted />
-      <AudioPlayer ref={capturedRef} controls />
-      <Button variant="outline" onClick={toggleRecording}>
-        {isRecording ? "Stop recording" : "Start recording"}
-      </Button>
+      <Box
+        sx={{
+          columnCount: 2,
+          gap: "1rem",
+        }}
+      >
+        <AudioPlayer ref={capturedRef} controls />
+        <Button
+          variant={isRecording ? "outlineRecording" : "outlineInteraction"}
+          onClick={toggleRecording}
+          IconComponent={isRecording ? FiMicOff : FiMic}
+        >
+          {isRecording
+            ? "Click to stop recording"
+            : "Click to record a question"}
+        </Button>
+      </Box>
     </>
   )
 }

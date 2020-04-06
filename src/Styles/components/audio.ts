@@ -2,6 +2,7 @@ import { SxStyleProp } from "theme-ui"
 
 const wrapper: SxStyleProp = {
   maxWidth: ["12/12", "10/12", "9/12"],
+  my: 4,
 }
 
 const container: SxStyleProp = {
@@ -21,8 +22,6 @@ const container: SxStyleProp = {
 
   px: 3,
   py: "0.75rem",
-
-  my: 3,
 
   svg: {
     width: "1.3em",

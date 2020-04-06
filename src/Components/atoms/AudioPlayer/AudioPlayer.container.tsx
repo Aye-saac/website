@@ -19,7 +19,7 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
 
     const [isPlayable, setIsPlayable] = React.useState<boolean>(false)
     const [isPlaying, setIsPlaying] = React.useState<boolean>(false)
-    const [duration, setDuration] = React.useState<number>(100)
+    const [duration, setDuration] = React.useState<number>(0)
     const [currentTime, setCurrentTime] = React.useState<number>(0)
 
     const currentRef = ref as React.RefObject<HTMLAudioElement>

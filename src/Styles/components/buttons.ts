@@ -40,18 +40,6 @@ const primary: SxStyleProp = {
   },
 }
 
-const input: SxStyleProp = {
-  ...primary,
-
-  boxShadow: "0 21px 26px 1px #151723",
-
-  // bg: "smokeWhite",
-
-  // "&:hover": {
-  // bg: "nearWhite",
-  // },
-}
-
 const outline: SxStyleProp = {
   ...primary,
 
@@ -89,11 +77,47 @@ const outlineSelected: SxStyleProp = {
   },
 }
 
+const input: SxStyleProp = {
+  ...primary,
+}
+
+const outlineInteraction: SxStyleProp = {
+  ...outline,
+
+  fontSize: 1,
+  letterSpacing: "wide",
+
+  px: 3,
+  py: "0.9rem",
+
+  borderRadius: "xxxl",
+}
+
+const outlineRecording: SxStyleProp = {
+  ...outlineInteraction,
+
+  borderColor: "groundBase",
+
+  backgroundColor: "error",
+
+  color: "groundBase",
+
+  "&:hover": {
+    boxShadow: "0 21px 26px 1px #151723",
+  },
+
+  svg: {
+    stroke: "groundBase",
+  },
+}
+
 const button: SxStyleProp = {
   primary,
   input,
   outline,
   outlineSelected,
+  outlineInteraction,
+  outlineRecording,
 }
 
 export default button
