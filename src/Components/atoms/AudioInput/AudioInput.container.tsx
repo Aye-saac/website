@@ -48,8 +48,12 @@ const AudioInputContainer: React.FC = () => {
     blob: null,
   })
 
-  const previewRef = React.useRef<any>()
-  const capturedRef = React.useRef<any>()
+  const previewRef = React.useRef<HTMLAudioElement>() as React.MutableRefObject<
+    HTMLAudioElement
+  >
+  const capturedRef = React.useRef<
+    HTMLAudioElement
+  >() as React.MutableRefObject<HTMLAudioElement>
 
   // Setup and connect the media stream to the state
   const setupStream = () => {
@@ -94,7 +98,9 @@ const AudioInputContainer: React.FC = () => {
   }
 
   const setupPreview = () => {
-    previewRef.current.srcObject = mediaStream
+    if (mediaStream) {
+      previewRef.current.srcObject = mediaStream
+    }
   }
 
   const setupCaptured = () => {
@@ -120,7 +126,7 @@ const AudioInputContainer: React.FC = () => {
     <>
       <AudioPlayer ref={previewRef} autoPlay muted />
       <AudioPlayer ref={capturedRef} controls />
-      <Button onClick={toggleRecording}>
+      <Button variant="outline" onClick={toggleRecording}>
         {isRecording ? "Stop recording" : "Start recording"}
       </Button>
     </>
