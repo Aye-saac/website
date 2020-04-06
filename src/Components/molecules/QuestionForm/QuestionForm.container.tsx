@@ -5,6 +5,8 @@ import { Box, Button, FileInput, TextInput } from "Components/atoms"
 import fetch from "node-fetch"
 import { FiSend } from "react-icons/fi"
 
+import AudioRecorder from "../AudioRecorder"
+
 const QuestionFormContainer: React.FC = () => {
   const [file, setFile] = React.useState<File>()
   const [fileUrl, setFileUrl] = React.useState<string>("")
@@ -68,6 +70,7 @@ const QuestionFormContainer: React.FC = () => {
           placeholder="Ask a question about the image."
           onChange={handleInputChange}
         />
+        <AudioRecorder />
         <Button variant="input" type="submit" IconComponent={FiSend}>
           Submit
         </Button>

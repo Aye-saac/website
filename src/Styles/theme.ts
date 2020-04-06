@@ -1,4 +1,5 @@
 import {
+  audio,
   buttons,
   forms,
   image,
@@ -46,6 +47,7 @@ export default {
   image,
   buttons,
   text,
+  audio,
 
   // Specific components
   components: {
