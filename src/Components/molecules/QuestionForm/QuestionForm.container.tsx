@@ -2,6 +2,7 @@ import React from "react"
 
 import { Box, Button, FileInput, TextInput } from "Components/atoms"
 
+import fetch from "node-fetch"
 import { FiSend } from "react-icons/fi"
 
 const QuestionFormContainer: React.FC = () => {
@@ -34,7 +35,22 @@ const QuestionFormContainer: React.FC = () => {
       return
     }
 
-    console.log(file, message)
+    const fileAsBlob = new Blob([file])
+
+    const formData = new FormData()
+
+    formData.append("message", message)
+    formData.append("file", fileAsBlob, "image")
+
+    console.log(formData.get("message"), formData.get("file"))
+
+    const test = fetch("http://localhost:3001/submit", {
+      method: "POST",
+      // @ts-ignore: https://github.com/Microsoft/TypeScript/issues/30584
+      body: formData,
+    })
+
+    console.log(test)
   }
 
   return (
