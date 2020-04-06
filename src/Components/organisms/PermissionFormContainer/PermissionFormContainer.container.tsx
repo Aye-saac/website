@@ -12,7 +12,7 @@ import {
 import { addPermissionChangeListener } from "Helpers"
 import { store } from "Store"
 
-import { FiCamera, FiCameraOff, FiMic, FiMicOff } from "react-icons/fi"
+import { FiMic, FiMicOff } from "react-icons/fi"
 
 const PermissionFormContainer: React.FC = () => {
   React.useEffect(() => {
@@ -35,29 +35,6 @@ const PermissionFormContainer: React.FC = () => {
 
   return (
     <>
-      <PermissionForm
-        title="Can we use your camera?"
-        negativeIcon={FiCameraOff}
-        positiveIcon={FiCamera}
-        permissionStatus={permission.camera.status}
-        onNegativeClick={() => {
-          dispatch(updateCameraStatus("denied"))
-        }}
-        onPositiveClick={() => {
-          navigator.mediaDevices
-            .getUserMedia({ audio: true, video: true })
-            .then(() => {
-              dispatch(updateCameraStatus("granted"))
-            })
-        }}
-      >
-        <p>
-          With access your camera, you can directly take pictures and submit
-          them to the application. It just makes things easier. As mentioned
-          above, because this is a demo, we do not store any data after you
-          close the session.
-        </p>
-      </PermissionForm>
       <PermissionForm
         title="Can we use your microphone?"
         negativeIcon={FiMicOff}
