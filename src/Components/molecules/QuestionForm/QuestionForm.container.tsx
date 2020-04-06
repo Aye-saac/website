@@ -1,6 +1,6 @@
 import React from "react"
 
-import { AudioInput, Box, Button, FileInput, TextInput } from "Components/atoms"
+import { Box, Button, FileInput, TextInput } from "Components/atoms"
 
 import { FiSend } from "react-icons/fi"
 
@@ -9,7 +9,7 @@ const QuestionFormContainer: React.FC = () => {
   const [fileUrl, setFileUrl] = React.useState<string>("")
   const [message, setMessage] = React.useState<string>("")
 
-  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Do nothing if no file
     if (event.target.files === null) {
       return
@@ -22,11 +22,11 @@ const QuestionFormContainer: React.FC = () => {
     setFileUrl(uploadedFileUrl)
   }
 
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(event.target.value)
   }
 
-  const onSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
 
     // Guard clause
@@ -39,19 +39,25 @@ const QuestionFormContainer: React.FC = () => {
 
   return (
     <>
-      <Box>
+      <Box as="form">
         <FileInput
-          onChange={onFileChange}
+          name="image"
+          onChange={handleFileChange}
           url={fileUrl}
           accept="image/*"
           capture
         />
         <TextInput
+          name="message"
           placeholder="Ask a question about the image."
-          onChange={onInputChange}
+          onChange={handleInputChange}
         />
-        <AudioInput />
-        <Button variant="input" IconComponent={FiSend} onClick={onSubmit}>
+        <Button
+          variant="input"
+          type="submit"
+          IconComponent={FiSend}
+          onClick={handleSubmit}
+        >
           Submit
         </Button>
       </Box>
