@@ -1,6 +1,7 @@
 import {
   audio,
   buttons,
+  codeBlock,
   forms,
   image,
   layout,
@@ -49,6 +50,7 @@ export default {
   text,
   audio,
 
+  codeBlock,
   // Specific components
   components: {
     permissionForm,
