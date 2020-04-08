@@ -1,13 +1,6 @@
 import React from "react"
 
-import {
-  Box,
-  Button,
-  Container,
-  Heading,
-  Section,
-  Text,
-} from "Components/atoms"
+import { Box, Button, Container, Heading, Section, Text } from "Components"
 
 import { FiChevronRight } from "react-icons/fi"
 import { Link } from "react-router-dom"

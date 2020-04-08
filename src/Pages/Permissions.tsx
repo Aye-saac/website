@@ -1,7 +1,13 @@
 import React from "react"
 
-import { Button, Container, Heading, Section, Text } from "Components/atoms"
-import { PermissionFormContainer } from "Components/organisms"
+import {
+  Button,
+  Container,
+  Heading,
+  PermissionFormContainer,
+  Section,
+  Text,
+} from "Components"
 
 import { Link as RouteLink } from "react-router-dom"
 

@@ -1,7 +1,6 @@
 import React from "react"
 
-import { Container, Heading, Section, Text } from "Components/atoms"
-import { QuestionForm } from "Components/molecules"
+import { Container, Heading, QuestionForm, Section, Text } from "Components"
 
 const QuestionPage: React.FC = () => {
   return (

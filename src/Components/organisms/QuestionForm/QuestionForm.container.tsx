@@ -5,7 +5,7 @@ import { Box, Button, FileInput, TextInput } from "Components/atoms"
 import fetch from "node-fetch"
 import { FiSend } from "react-icons/fi"
 
-import AudioRecorder from "../AudioRecorder"
+import AudioRecorder from "../../molecules/AudioRecorder"
 
 const QuestionFormContainer: React.FC = () => {
   const [file, setFile] = React.useState<File>()
