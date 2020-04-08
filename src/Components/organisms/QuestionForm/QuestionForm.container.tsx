@@ -1,28 +1,28 @@
 import React from "react"
 
 import { Box, Button, FileInput, TextInput } from "Components/atoms"
+import { AudioRecorder } from "Components/molecules"
 
 import fetch from "node-fetch"
 import { FiSend } from "react-icons/fi"
 
-import AudioRecorder from "../../molecules/AudioRecorder"
-
 const QuestionFormContainer: React.FC = () => {
-  const [file, setFile] = React.useState<File>()
-  const [fileUrl, setFileUrl] = React.useState<string>("")
+  const [image, setImage] = React.useState<File>()
+  const [imageUrl, setImageUrl] = React.useState<string>("")
+
   const [message, setMessage] = React.useState<string>("")
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Do nothing if no file
+    // Do nothing if no image
     if (event.target.files === null) {
       return
     }
 
-    const uploadedFile = event.target.files[0]
-    const uploadedFileUrl = URL.createObjectURL(uploadedFile)
+    const uploadedImage = event.target.files[0]
+    const uploadedImageUrl = URL.createObjectURL(uploadedImage)
 
-    setFile(uploadedFile)
-    setFileUrl(uploadedFileUrl)
+    setImage(uploadedImage)
+    setImageUrl(uploadedImageUrl)
   }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,26 +33,22 @@ const QuestionFormContainer: React.FC = () => {
     event.preventDefault()
 
     // Guard clause
-    if (!file || message.length === 0) {
+    if (!image || message.length === 0) {
       return
     }
 
-    const fileAsBlob = new Blob([file])
+    const imageAsBlob = new Blob([image])
 
     const formData = new FormData()
 
     formData.append("message", message)
-    formData.append("file", fileAsBlob, "image")
+    formData.append("image", imageAsBlob, "image")
 
-    console.log(formData.get("message"), formData.get("file"))
-
-    const test = fetch("http://localhost:3001/submit", {
+    fetch("http://127.0.0.1:5000/submit", {
       method: "POST",
       // @ts-ignore: https://github.com/Microsoft/TypeScript/issues/30584
       body: formData,
     })
-
-    console.log(test)
   }
 
   return (
@@ -61,7 +57,7 @@ const QuestionFormContainer: React.FC = () => {
         <FileInput
           name="image"
           onChange={handleFileChange}
-          url={fileUrl}
+          url={imageUrl}
           accept="image/*"
           capture
         />
