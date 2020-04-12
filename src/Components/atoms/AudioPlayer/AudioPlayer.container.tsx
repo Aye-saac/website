@@ -22,7 +22,12 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
     const [duration, setDuration] = React.useState<number>(0)
     const [currentTime, setCurrentTime] = React.useState<number>(0)
 
-    const currentRef = ref as React.RefObject<HTMLAudioElement>
+    const innerRef = React.useRef<HTMLAudioElement>()
+
+    const forwardedRef = ref as React.RefObject<HTMLAudioElement> | null
+
+    const currentRef =
+      forwardedRef || (innerRef as React.RefObject<HTMLAudioElement>)
     const { current } = currentRef
 
     const handleDurationChange = () => {
@@ -44,6 +49,7 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
     const handlePlay = () => {
       if (isPlayable && current) {
         current.play()
+        handleDurationChange()
       }
     }
 
@@ -74,7 +80,7 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
         </Box>
         <Box sx={{ display: "none" }}>
           <audio
-            ref={ref}
+            ref={currentRef}
             {...props}
             onCanPlay={() => setIsPlayable(true)}
             onPlay={() => setIsPlaying(true)}
