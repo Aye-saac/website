@@ -4,15 +4,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { PermissionForm } from "Components/molecules"
 import {
   selectPermission,
-  updateCameraAvailability,
   updateCameraStatus,
-  updateMicrophoneAvailability,
   updateMicrophoneStatus,
 } from "Features/permission"
 import { addPermissionChangeListener } from "Helpers"
 import { store } from "Store"
 
-import { FiMic, FiMicOff } from "react-icons/fi"
+import { FiCamera, FiCameraOff, FiMic, FiMicOff } from "react-icons/fi"
 
 const PermissionFormContainer: React.FC = () => {
   React.useEffect(() => {
@@ -20,13 +18,6 @@ const PermissionFormContainer: React.FC = () => {
       name: "microphone",
       dispatch: store.dispatch,
       statusAction: updateMicrophoneStatus,
-      availabilityAction: updateMicrophoneAvailability,
-    })
-    addPermissionChangeListener({
-      name: "camera",
-      dispatch: store.dispatch,
-      statusAction: updateCameraStatus,
-      availabilityAction: updateCameraAvailability,
     })
   }, [])
 
@@ -35,6 +26,20 @@ const PermissionFormContainer: React.FC = () => {
 
   return (
     <>
+      <PermissionForm
+        title="Can we use your camera?"
+        negativeIcon={FiCamera}
+        positiveIcon={FiCameraOff}
+        onNegativeClick={() => {
+          dispatch(updateCameraStatus("denied"))
+        }}
+        onPositiveClick={() => {
+          dispatch(updateCameraStatus("granted"))
+        }}
+        permissionStatus={permission.camera.status}
+      >
+        <p>Camera blurb</p>
+      </PermissionForm>
       <PermissionForm
         title="Can we use your microphone?"
         negativeIcon={FiMicOff}

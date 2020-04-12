@@ -4,8 +4,11 @@
  */
 
 import React from "react"
+import { useDispatch } from "react-redux"
 
 import { AudioPlayer, Box, Button } from "Components/atoms"
+import { replaceMessage } from "Features/dialogue"
+import { serializeBlob } from "Helpers"
 
 import { FiMic, FiMicOff } from "react-icons/fi"
 
@@ -49,6 +52,8 @@ const AudioRecorderContainer: React.FC = () => {
     chunks: [],
     blob: null,
   })
+
+  const dispatchMessage = useDispatch()
 
   const previewRef = React.useRef<HTMLAudioElement>() as AudioElementRef
   const capturedRef = React.useRef<HTMLAudioElement>() as AudioElementRef
@@ -105,6 +110,12 @@ const AudioRecorderContainer: React.FC = () => {
     if (stateChunks.blob) {
       const url = URL.createObjectURL(stateChunks.blob)
       capturedRef.current.src = url
+
+      const addFileToStore = (result: FileReader["result"]) => {
+        dispatchMessage(replaceMessage({ type: "audio", data: result, url }))
+      }
+
+      serializeBlob(stateChunks.blob, addFileToStore)
     }
   }
 

@@ -1,78 +1,92 @@
 import React from "react"
+import { useSelector } from "react-redux"
 
-import { Box, Button, FileInput, TextInput } from "Components/atoms"
-import { AudioRecorder } from "Components/molecules"
+import { Box, Button } from "Components/atoms"
+import {
+  AudioRecorder,
+  ImageUploader,
+  MessageInput,
+} from "Components/molecules"
+import { selectImage, selectMessage, selectResponses } from "Features/dialogue"
+import { selectPermission } from "Features/permission"
 
-import fetch from "node-fetch"
 import { FiSend } from "react-icons/fi"
 
 const QuestionFormContainer: React.FC = () => {
-  const [image, setImage] = React.useState<File>()
-  const [imageUrl, setImageUrl] = React.useState<string>("")
+  const [image, setImage] = React.useState<Blob>()
+  const [message, setMessage] = React.useState<Blob | string>()
 
-  const [message, setMessage] = React.useState<string>("")
+  const permissions = useSelector(selectPermission)
+  const imageState = useSelector(selectImage)
+  const messageState = useSelector(selectMessage)
+  const responseState = useSelector(selectResponses)
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Do nothing if no image
-    if (event.target.files === null) {
-      return
+  React.useEffect(() => {
+    if (imageState) {
+      fetch(imageState.url)
+        .then((response) => response.blob())
+        .then(setImage)
     }
+  }, [imageState])
 
-    const uploadedImage = event.target.files[0]
-    const uploadedImageUrl = URL.createObjectURL(uploadedImage)
+  React.useEffect(() => {
+    if (messageState) {
+      if (messageState.type === "audio") {
+        fetch(messageState.url)
+          .then((response) => response.blob())
+          .then(setMessage)
+      }
+      if (messageState.type === "text") {
+        setMessage(messageState.data)
+      }
+    }
+  }, [messageState])
 
-    setImage(uploadedImage)
-    setImageUrl(uploadedImageUrl)
-  }
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMessage(event.target.value)
-  }
-
-  const handleSubmit = (event: React.FormEvent<HTMLDivElement>) => {
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
 
-    // Guard clause
-    if (!image || message.length === 0) {
+    if (!image || !message || !responseState) {
       return
     }
 
-    const imageAsBlob = new Blob([image])
+    const responses = new Blob(responseState)
 
     const formData = new FormData()
-
     formData.append("message", message)
-    formData.append("image", imageAsBlob, "image")
+    formData.append("image", image)
+    formData.append("responses", responses)
 
-    fetch("http://127.0.0.1:5000/submit", {
-      method: "POST",
-      // @ts-ignore: https://github.com/Microsoft/TypeScript/issues/30584
-      body: formData,
-    })
+    // fetch("http://127.0.0.1:5000/submit", {
+    //   method: "POST",
+    //   // @ts-ignore: https://github.com/Microsoft/TypeScript/issues/30584
+    //   body: formData,
+    // })
   }
 
   return (
     <>
-      <Box as="form" onSubmit={handleSubmit}>
-        <FileInput
-          name="image"
-          onChange={handleFileChange}
-          url={imageUrl}
-          accept="image/*"
-          capture
+      <Button>
+        <ImageUploader
+          isCameraAllowed={permissions.camera.status === "granted"}
         />
-        <TextInput
-          name="message"
-          placeholder="Ask a question about the image."
-          onChange={handleInputChange}
-        />
-        <Box variant="audio.wrapper">
-          <AudioRecorder />
-        </Box>
-        <Button variant="input" type="submit" IconComponent={FiSend}>
+
+        {permissions.microphone.status === "granted" ? (
+          <Box variant="audio.wrapper">
+            <AudioRecorder />
+          </Box>
+        ) : (
+          <MessageInput />
+        )}
+
+        <Button
+          variant="input"
+          type="submit"
+          IconComponent={FiSend}
+          onClick={handleSubmit}
+        >
           Submit
         </Button>
-      </Box>
+      </Button>
     </>
   )
 }

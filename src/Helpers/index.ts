@@ -1,11 +1,9 @@
 /* PLOP_INJECT_IMPORT */
 import addPermissionChangeListener from "./addPermissionChangeListener"
-import getDeviceList from "./getDeviceList"
-import verifyDeviceAvailability from "./verifyDeviceAvailability"
+import serializeBlob from "./serializeBlob"
 
 export {
   /* PLOP_INJECT_EXPORT */
-  verifyDeviceAvailability,
-  getDeviceList,
+  serializeBlob,
   addPermissionChangeListener,
 }

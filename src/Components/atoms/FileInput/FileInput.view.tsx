@@ -16,7 +16,7 @@ const inputStyle: SxStyleProp = {
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const FileInput: React.FC<Props> = ({ onChange, ...props }) => {
+const FileInput: React.FC<Props> = ({ onChange, children, ...props }) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   return (
@@ -38,7 +38,7 @@ const FileInput: React.FC<Props> = ({ onChange, ...props }) => {
           inputRef.current?.click()
         }}
       >
-        Upload file
+        {children}
       </Button>
     </>
   )
