@@ -65,7 +65,7 @@ const QuestionFormContainer: React.FC = () => {
 
   return (
     <>
-      <Button>
+      <Box>
         <ImageUploader
           isCameraAllowed={permissions.camera.status === "granted"}
         />
@@ -86,7 +86,7 @@ const QuestionFormContainer: React.FC = () => {
         >
           Submit
         </Button>
-      </Button>
+      </Box>
     </>
   )
 }
