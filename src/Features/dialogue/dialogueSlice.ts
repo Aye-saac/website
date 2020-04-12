@@ -23,12 +23,14 @@ export interface DialogueState {
   image: DialogueFile | null
   message: DialogueMessage | null
   responses: any[]
+  showResponse: boolean
 }
 
 const initialState: DialogueState = {
   image: null,
   message: null,
   responses: [],
+  showResponse: false,
 }
 
 export const slice = createSlice({
@@ -44,15 +46,29 @@ export const slice = createSlice({
     addResponse: (state, action: PayloadAction<any>) => {
       state.responses = [...state.responses, action.payload]
     },
+    hideReponse: (state) => {
+      state.showResponse = false
+    },
+    showResponse: (state) => {
+      state.showResponse = true
+    },
   },
 })
 
-export const { replaceImage, replaceMessage, addResponse } = slice.actions
+export const {
+  replaceImage,
+  replaceMessage,
+  addResponse,
+  hideReponse,
+  showResponse,
+} = slice.actions
 
 export const selectDialogue = (state: RootState) => state.dialogue
 export const selectImage = (state: RootState) => state.dialogue.image
 export const selectMessage = (state: RootState) => state.dialogue.message
 export const selectResponses = (state: RootState) => state.dialogue.responses
+export const selectShowResponse = (state: RootState) =>
+  state.dialogue.showResponse
 
 export const dialogueReducer = slice.reducer
 
