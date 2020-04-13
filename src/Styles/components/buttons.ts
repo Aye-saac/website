@@ -7,7 +7,7 @@ const primary: SxStyleProp = {
   borderRadius: "xxxl",
 
   py: 3,
-  px: 4,
+  px: "1.5rem",
 
   minWidth: ["100%", "sm", "sm"],
   width: "fit-content",
