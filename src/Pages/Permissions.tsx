@@ -1,6 +1,7 @@
 import React from "react"
 
 import {
+  Box,
   Button,
   Container,
   Heading,
@@ -9,7 +10,8 @@ import {
   Text,
 } from "Components"
 
-import { Link as RouteLink } from "react-router-dom"
+import { FiChevronRight } from "react-icons/fi"
+import { Link } from "react-router-dom"
 
 const PermissionsPage: React.FC = () => {
   return (
@@ -35,9 +37,11 @@ const PermissionsPage: React.FC = () => {
             that all software here is without warranty and we hold no liability
             for any issues that can go wrong.
           </Text>
-          <RouteLink to="/question">
-            <Button>Continue</Button>
-          </RouteLink>
+          <Link to="/question">
+            <Box variant="styles.a">
+              <Button IconComponent={FiChevronRight}>Continue</Button>
+            </Box>
+          </Link>
         </Container>
       </Section>
     </>
