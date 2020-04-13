@@ -14,7 +14,7 @@ const container: SxStyleProp = {
 
   borderStyle: "solid",
   borderWidth: "2px",
-  borderColor: "starBase",
+  borderColor: "moonBase",
 
   display: "flex",
   flexDirection: "row",
@@ -22,6 +22,14 @@ const container: SxStyleProp = {
 
   px: 3,
   py: "0.75rem",
+
+  transitionDuration: "150ms",
+  transitionTimingFunction: "ease",
+  transitionProperty: "background border color",
+
+  "&:hover": {
+    borderColor: "starBase",
+  },
 
   svg: {
     width: "1.3em",

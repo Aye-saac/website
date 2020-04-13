@@ -3,7 +3,7 @@ import React from "react"
 
 import { Box, Text } from "theme-ui"
 
-import { FiPause, FiPlay } from "react-icons/fi"
+import { FiPause, FiPlay, FiSlash } from "react-icons/fi"
 
 interface Props extends React.HTMLProps<HTMLAudioElement> {}
 
@@ -64,8 +64,10 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
         <Box variant="audio.container">
           {isPlaying ? (
             <FiPause onClick={handlePause} />
-          ) : (
+          ) : isPlayable ? (
             <FiPlay onClick={handlePlay} />
+          ) : (
+            <FiSlash />
           )}
           <Box variant="audio.timeline.container">
             <Box
@@ -76,7 +78,9 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
             />
             <Box variant="audio.timeline.base" />
           </Box>
-          <Text>{currentTime.toFixed(0)}s</Text>
+          <Text sx={{ flexShrink: 0 }}>
+            {isPlayable ? currentTime.toFixed(0) : "-"}s
+          </Text>
         </Box>
         <Box sx={{ display: "none" }}>
           <audio
@@ -87,7 +91,6 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
             onPause={() => setIsPlaying(false)}
             onDurationChange={handleDurationChange}
             onTimeUpdate={handleTimeUpdate}
-            css={{ display: "none" }}
           />
         </Box>
       </>

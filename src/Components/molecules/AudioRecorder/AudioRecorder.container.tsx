@@ -6,7 +6,7 @@
 import React from "react"
 import { useDispatch } from "react-redux"
 
-import { AudioPlayer, Box, Button } from "Components/atoms"
+import { AudioPlayer, Box, Button, Text } from "Components/atoms"
 import { replaceMessage } from "Features/dialogue"
 import { serializeBlob } from "Helpers"
 
@@ -134,22 +134,30 @@ const AudioRecorderContainer: React.FC = () => {
   return (
     <>
       <AudioPlayer ref={previewRef} autoPlay muted />
+      <Text variant="caption" sx={{ p: { m: 0 } }}>
+        <p>You can listen to yourself if you want.</p>
+        <Text as="p" sx={{ pb: 1 }}>
+          If you can&apos;t hear yourself, we can&apos;t either.
+        </Text>
+      </Text>
       <Box
         sx={{
-          columnCount: 2,
-          gap: "1rem",
+          display: "flex",
+          flexDirection: "row",
         }}
       >
-        <AudioPlayer ref={capturedRef} controls />
-        <Button
-          variant={isRecording ? "outlineRecording" : "outlineInteraction"}
-          onClick={toggleRecording}
-          IconComponent={isRecording ? FiMicOff : FiMic}
-        >
-          {isRecording
-            ? "Click to stop recording"
-            : "Click to record a question"}
-        </Button>
+        <Box sx={{ flexGrow: 1 }}>
+          <AudioPlayer ref={capturedRef} controls />
+        </Box>
+        <Box sx={{ width: ["50%", "50%", "35%"], pl: 2, whiteSpace: "nowrap" }}>
+          <Button
+            variant={isRecording ? "outlineRecording" : "outline"}
+            onClick={toggleRecording}
+            IconComponent={isRecording ? FiMicOff : FiMic}
+          >
+            {isRecording ? "Stop recording" : "Start recording"}
+          </Button>
+        </Box>
       </Box>
     </>
   )
