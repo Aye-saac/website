@@ -1,24 +1,24 @@
 import React from "react"
+import { useSelector } from "react-redux"
 
-import { Container, Heading, QuestionForm, Section, Text } from "Components"
+import { FormWrapper, QuestionForm, QuestionResponse } from "Components"
+import { selectShowResponse } from "Features/dialogue"
 
 const QuestionPage: React.FC = () => {
+  const showResponse = useSelector(selectShowResponse)
+
   return (
     <>
-      <Section>
-        <Container>
-          <Heading as="h2" variant="heading.h2">
-            The ask.
-          </Heading>
-          <Text>
-            This is some words of how it is supposed to work, including
-            instructions of how to use it.
-          </Text>
-        </Container>
-        <Container>
-          <QuestionForm />
-        </Container>
-      </Section>
+      {!showResponse ? (
+        <FormWrapper title="The ask." FormComponent={<QuestionForm />}>
+          This is some words of how it is supposed to work, including
+          instructions of how to use it.
+        </FormWrapper>
+      ) : (
+        <FormWrapper title="An answer." FormComponent={<QuestionResponse />}>
+          This is the answer. Hopefully it&apos;s right.
+        </FormWrapper>
+      )}
     </>
   )
 }
