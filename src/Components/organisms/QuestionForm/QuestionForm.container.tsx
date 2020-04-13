@@ -24,8 +24,9 @@ const QuestionFormContainer: React.FC = () => {
         />
 
         <InputModeChoice
+          handleInputChoiceAudio={() => setInputChoice("audio")}
+          handleInputChoiceText={() => setInputChoice("text")}
           inputChoice={inputChoice}
-          setInputChoice={setInputChoice}
           isMicGranted={permissions.microphone.status === "granted"}
         />
 

@@ -6,29 +6,27 @@ interface Props {
   isMicGranted: boolean
   inputChoice: "text" | "audio" | undefined
 
-  setInputChoice: React.Dispatch<
-    React.SetStateAction<"text" | "audio" | undefined>
-  >
+  handleInputChoiceText: () => void
+  handleInputChoiceAudio: () => void
 }
 
 const InputModeChoiceContainer: React.FC<Props> = ({
   inputChoice,
-  setInputChoice,
   isMicGranted,
+  handleInputChoiceText,
+  handleInputChoiceAudio,
 }) => {
   if (!isMicGranted) {
-    setInputChoice("text")
-
     return (
       <>
         <InputModeChoiceView
           leftButton={{
-            onClick: () => setInputChoice("audio"),
+            onClick: handleInputChoiceAudio,
             disabled: !isMicGranted,
             selected: inputChoice === "audio",
           }}
           rightButton={{
-            onClick: () => setInputChoice("text"),
+            onClick: handleInputChoiceText,
             disabled: false,
             selected: inputChoice === "text",
           }}
@@ -41,12 +39,12 @@ const InputModeChoiceContainer: React.FC<Props> = ({
     <>
       <InputModeChoiceView
         leftButton={{
-          onClick: () => setInputChoice("audio"),
+          onClick: handleInputChoiceAudio,
           disabled: false,
           selected: inputChoice === "audio",
         }}
         rightButton={{
-          onClick: () => setInputChoice("text"),
+          onClick: handleInputChoiceText,
           disabled: false,
           selected: inputChoice === "text",
         }}
