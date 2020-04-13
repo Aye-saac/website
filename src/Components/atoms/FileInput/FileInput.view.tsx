@@ -32,7 +32,7 @@ const FileInput: React.FC<Props> = ({ onChange, children, ...props }) => {
         />
       </Box>
       <Button
-        variant="input"
+        variant="outline"
         IconComponent={FiUpload}
         onClick={() => {
           inputRef.current?.click()

@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Button, Spinner } from "Components/atoms"
+import { Button, Spinner, Text } from "Components/atoms"
 
 import { FiAlertCircle, FiSend } from "react-icons/fi"
 
@@ -37,8 +37,11 @@ const QuestionSubmitView: React.FC<Props> = ({ loading, error, ...props }) => {
 
   return (
     <>
+      <Text as="p" variant="caption">
+        Just a note: it might take us a minute to get your answer.
+      </Text>
       <Button variant="input" type="submit" IconComponent={FiSend} {...props}>
-        Something went wrong
+        Submit
       </Button>
     </>
   )

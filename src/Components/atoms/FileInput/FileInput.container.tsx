@@ -1,22 +1,13 @@
 import React from "react"
 
-import ImageWrapper from "../ImageWrapper"
 import FileInput from "./FileInput.view"
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  url?: string
-}
+export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const FileInputContainer: React.FC<Props> = ({
-  onChange,
-  url,
-  accept,
-  ...props
-}) => {
+export const FileInputContainer: React.FC<Props> = ({ ...props }) => {
   return (
     <>
-      <FileInput onChange={onChange} {...props} />
-      {url && <ImageWrapper src={url} alt="User upload" />}
+      <FileInput {...props} />
     </>
   )
 }

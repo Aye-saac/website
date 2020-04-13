@@ -27,13 +27,14 @@ import {
 import AudioPlayer from "./AudioPlayer"
 import Button from "./Button"
 import Container from "./Container"
-import FileInput from "./FileInput"
+import { FileInput, FileInputProps as AtomsFileInputProps } from "./FileInput"
 import ImageWrapper from "./ImageWrapper"
 import Section from "./Section"
 import Text from "./Text"
 import TextInput from "./TextInput"
 
 export type SxStyleProp = ThemeUISxStyleProp
+export type FileInputProps = AtomsFileInputProps
 
 export {
   /* PLOP_INJECT_EXPORT */

@@ -4,7 +4,7 @@ const primary: SxStyleProp = {
   color: "groundBase",
   bg: "starWhite",
 
-  borderRadius: "lg",
+  borderRadius: "xxxl",
 
   py: 3,
   px: 4,
@@ -26,6 +26,7 @@ const primary: SxStyleProp = {
 
   fontWeight: 500,
   fontSize: 2,
+  lineHeight: "1",
 
   outline: "none",
 
@@ -35,13 +36,18 @@ const primary: SxStyleProp = {
 
   ">svg": {
     stroke: "groundBase",
-    height: "1.3em",
-    width: "1.3em",
+    height: "1.1em",
+    width: "1.1em",
   },
 }
 
 const outline: SxStyleProp = {
   ...primary,
+
+  minWidth: ["100%"],
+
+  fontSize: 1,
+  fontWeight: 400,
 
   boxShadow: "none",
 

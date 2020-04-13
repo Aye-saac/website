@@ -1,3 +1,5 @@
-import FileInput from "./FileInput.container"
+import { FileInputContainer as FileInput, Props } from "./FileInput.container"
 
-export default FileInput
+export type FileInputProps = Props
+
+export { FileInput }

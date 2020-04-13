@@ -29,6 +29,7 @@ const submitQuestion = async (requestData: Request) => {
   if (!response.ok) {
     return {
       status: 404,
+      ok: false,
       body: {
         success: false,
       },
@@ -37,6 +38,7 @@ const submitQuestion = async (requestData: Request) => {
 
   return {
     status: 200,
+    ok: true,
     body: {
       message: data.response,
       data,

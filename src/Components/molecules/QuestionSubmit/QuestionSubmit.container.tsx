@@ -1,20 +1,31 @@
 import React from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
-import { Button } from "Components/atoms"
-import { selectImage, selectMessage, selectResponses } from "Features/dialogue"
+import {
+  addResponse,
+  hideResponse,
+  selectImage,
+  selectMessage,
+  selectResponses,
+  showResponse,
+} from "Features/dialogue"
+import { submitQuestion } from "Helpers"
 
-import { FiSend } from "react-icons/fi"
+import QuestionSubmitButton from "./QuestionSubmit.view"
 
 const QuestionSubmitContainer: React.FC = () => {
   // Local state
   const [image, setImage] = React.useState<Blob>()
   const [message, setMessage] = React.useState<Blob | string>()
+  const [loading, setLoading] = React.useState<boolean>(false)
+  const [error, setError] = React.useState<boolean>(false)
 
   // Application state
   const imageState = useSelector(selectImage)
   const messageState = useSelector(selectMessage)
   const responseState = useSelector(selectResponses)
+
+  const dispatch = useDispatch()
 
   /**
    * When new image uploaded, update local state
@@ -53,7 +64,7 @@ const QuestionSubmitContainer: React.FC = () => {
 
   React.useEffect(updateLocalMessageState, [messageState])
 
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
 
     if (!image || !message || !responseState) {
@@ -63,27 +74,39 @@ const QuestionSubmitContainer: React.FC = () => {
     const responses = new Blob(responseState)
 
     const formData = new FormData()
-    formData.append("message", message)
+    if (messageState && messageState.type === "audio") {
+      formData.append("audio", message)
+    } else {
+      formData.append("message", message)
+    }
     formData.append("image", image)
     formData.append("responses", responses)
 
-    // fetch("http://127.0.0.1:5000/submit", {
-    //   method: "POST",
-    //   // @ts-ignore: https://github.com/Microsoft/TypeScript/issues/30584
-    //   body: formData,
-    // })
+    try {
+      const response = await submitQuestion({ body: formData })
+
+      if (!response.ok) {
+        setLoading(false)
+        setError(true)
+        dispatch(hideResponse())
+      }
+
+      dispatch(showResponse())
+      dispatch(addResponse(response.body.data))
+    } catch (error_) {
+      dispatch(hideResponse())
+      setError(true)
+      setLoading(false)
+    }
   }
 
   return (
     <>
-      <Button
-        variant="input"
-        type="submit"
-        IconComponent={FiSend}
+      <QuestionSubmitButton
         onClick={handleSubmit}
-      >
-        Submit
-      </Button>
+        loading={loading}
+        error={error}
+      />
     </>
   )
 }

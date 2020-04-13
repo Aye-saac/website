@@ -32,8 +32,17 @@ const primary: SxStyleProp = {
   maxWidth: ["12/12", "8/12", "7/12"],
 }
 
+const caption: SxStyleProp = {
+  m: 0,
+  mb: 1,
+  fontSize: 1,
+  lineHeight: "snug",
+  fontWeight: "medium",
+}
+
 const text: SxStyleProp = {
   primary,
+  caption,
   heading: {
     h2,
     h3,

@@ -1,23 +1,37 @@
 import React from "react"
 import { useDispatch } from "react-redux"
 
-import { TextInput } from "Components/atoms"
+import { Box, Text, TextInput } from "Components/atoms"
 import { replaceMessage } from "Features/dialogue"
 
-const MessageInputContainer: React.FC = () => {
+interface Props {
+  placeholder: string
+  caption?: string
+}
+
+const MessageInputContainer: React.FC<Props> = ({ placeholder, caption }) => {
   const dispatch = useDispatch()
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(replaceMessage({ type: "text", data: event.target.value }))
+    const message = event.target.value
+
+    dispatch(replaceMessage({ type: "text", data: message }))
   }
 
   return (
     <>
-      <TextInput
-        name="message"
-        placeholder="Ask a question about the image."
-        onChange={handleInputChange}
-      />
+      <Box variant="forms.inputMarginWrapper">
+        {caption && (
+          <Text as="p" variant="caption">
+            {caption}
+          </Text>
+        )}
+        <TextInput
+          name="message"
+          placeholder={placeholder}
+          onChange={handleInputChange}
+        />
+      </Box>
     </>
   )
 }

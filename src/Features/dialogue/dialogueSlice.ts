@@ -46,7 +46,7 @@ export const slice = createSlice({
     addResponse: (state, action: PayloadAction<any>) => {
       state.responses = [...state.responses, action.payload]
     },
-    hideReponse: (state) => {
+    hideResponse: (state) => {
       state.showResponse = false
     },
     showResponse: (state) => {
@@ -59,7 +59,7 @@ export const {
   replaceImage,
   replaceMessage,
   addResponse,
-  hideReponse,
+  hideResponse,
   showResponse,
 } = slice.actions
 

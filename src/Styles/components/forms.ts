@@ -1,5 +1,9 @@
 import { SxStyleProp } from "theme-ui"
 
+const inputMarginWrapper: SxStyleProp = {
+  my: 4,
+}
+
 const inputWrapper: SxStyleProp = {
   display: "flex",
   flexDirection: "row",
@@ -18,8 +22,6 @@ const inputWrapper: SxStyleProp = {
   px: 3,
 
   maxWidth: ["100%", "10/12", "9/12"],
-
-  my: 4,
 
   svg: {
     stroke: "starWhite",
@@ -46,6 +48,7 @@ const input = {
 }
 
 const forms: SxStyleProp = {
+  inputMarginWrapper,
   inputWrapper,
   input,
 }

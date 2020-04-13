@@ -1,8 +1,6 @@
 import { SxStyleProp } from "theme-ui"
 
 const container: SxStyleProp = {
-  variant: "layout.content",
-
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -13,9 +11,9 @@ const container: SxStyleProp = {
 
   lineHeight: 1,
 
-  padding: 2,
+  padding: 1,
 
-  mt: 4,
+  mt: 2,
 
   boxShadow: "0 21px 26px 1px #151723",
 

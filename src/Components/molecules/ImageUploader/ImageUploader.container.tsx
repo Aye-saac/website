@@ -1,8 +1,9 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { FileInput } from "Components/atoms"
 import { replaceImage, selectImage } from "Features/dialogue"
+
+import ImageUploaderView from "./ImageUploader.view"
 
 interface Props {
   isCameraAllowed: boolean
@@ -30,15 +31,21 @@ const ImageUploaderContainer: React.FC<Props> = ({ isCameraAllowed }) => {
 
   return (
     <>
-      <FileInput
+      <ImageUploaderView
         name="image"
         onChange={handleImageUpload}
         url={image ? image.url : ""}
         accept="image/*"
         capture={isCameraAllowed}
-      >
-        {isCameraAllowed ? "Capture and upload photo" : "Upload file"}
-      </FileInput>
+        text={image === null ? "Upload an image" : "Upload a different image"}
+        caption={
+          !image
+            ? isCameraAllowed
+              ? "This will open your device camera."
+              : "Make sure it's a nice clear image."
+            : "Something wrong with the image?"
+        }
+      />
     </>
   )
 }

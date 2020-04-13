@@ -24,7 +24,10 @@ const QuestionFormContainer: React.FC = () => {
             <AudioRecorder />
           </Box>
         ) : (
-          <MessageInput />
+          <MessageInput
+            caption="Watch out for spelling and stuff."
+            placeholder="Ask a question about the image."
+          />
         )}
         <QuestionSubmit />
       </Box>
