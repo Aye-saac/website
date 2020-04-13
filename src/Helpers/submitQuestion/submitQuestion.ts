@@ -14,7 +14,7 @@ interface ResponseState {
 const submitQuestion = async (requestData: Request) => {
   const { body } = requestData
 
-  const href = "http://127.0.0.1:5000/submit"
+  const href = "http://157.245.32.208:5000/submit"
 
   const response = await fetch(href, {
     method: "POST",
