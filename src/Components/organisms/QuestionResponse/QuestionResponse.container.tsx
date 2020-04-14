@@ -14,7 +14,9 @@ const QuestionResponseContainer: React.FC = () => {
   return (
     <>
       <Box sx={{ maxWidth: "xxl" }}>
-        {image && <ImageWrapper src={image.url} alt="User upload" />}
+        <Box sx={{ maxWidth: "lg" }}>
+          {image && <ImageWrapper src={image.url} alt="User upload" />}
+        </Box>
         {latestResponse && (
           <>
             <AudioResponse message={latestResponse.response} />
