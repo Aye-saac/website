@@ -10,6 +10,7 @@ interface Props extends InputProps {
   placeholder?: string
   ref?: InputRef
   disableChange?: boolean
+  noBorder?: boolean
 }
 
 const TextInput: React.FC<Props> = ({
@@ -17,9 +18,11 @@ const TextInput: React.FC<Props> = ({
   ref,
   disableChange = false,
   onChange,
+  noBorder,
+  value,
 }) => {
   const [isFocus, setIsFocus] = React.useState(false)
-  const [value, setValue] = React.useState("")
+  const [fieldValue, setFieldValue] = React.useState(value || "")
 
   const handleFocus = () => {
     setIsFocus(true)
@@ -31,7 +34,7 @@ const TextInput: React.FC<Props> = ({
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!disableChange) {
-      setValue(event.target.value)
+      setFieldValue(event.target.value)
 
       if (onChange) {
         onChange(event)
@@ -42,18 +45,21 @@ const TextInput: React.FC<Props> = ({
   return (
     <>
       <Box
-        variant="forms.inputWrapper"
+        variant={!noBorder ? "forms.inputWrapper" : ""}
         sx={{ borderColor: isFocus ? "starBase" : "moonBase" }}
       >
-        <FiMessageSquare />
-        <Input
-          placeholder={placeholder}
-          ref={ref}
-          value={value}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={handleChange}
-        />
+        <Box variant="forms.inputWrapperPosition">
+          <FiMessageSquare />
+          <Input
+            type="text"
+            placeholder={placeholder}
+            ref={ref}
+            value={fieldValue}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+        </Box>
       </Box>
     </>
   )

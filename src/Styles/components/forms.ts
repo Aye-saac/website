@@ -5,10 +5,7 @@ const inputMarginWrapper: SxStyleProp = {
 }
 
 const inputWrapper: SxStyleProp = {
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "nowrap",
-  alignItems: "center",
+  maxWidth: ["100%", "10/12", "9/12"],
 
   borderWidth: "2px",
   borderStyle: "solid",
@@ -19,15 +16,20 @@ const inputWrapper: SxStyleProp = {
 
   transition: "0.15s ease all",
 
-  px: 3,
-
-  maxWidth: ["100%", "10/12", "9/12"],
-
   svg: {
     stroke: "starWhite",
     width: "1.3em",
     height: "1.3em",
   },
+}
+
+const inputWrapperPosition: SxStyleProp = {
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "nowrap",
+  alignItems: "center",
+
+  px: 3,
 }
 
 const input = {
@@ -48,6 +50,7 @@ const input = {
 }
 
 const forms: SxStyleProp = {
+  inputWrapperPosition,
   inputMarginWrapper,
   inputWrapper,
   input,

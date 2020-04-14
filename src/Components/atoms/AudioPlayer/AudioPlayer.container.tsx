@@ -5,7 +5,9 @@ import { Box, Text } from "theme-ui"
 
 import { FiPause, FiPlay, FiSlash } from "react-icons/fi"
 
-interface Props extends React.HTMLProps<HTMLAudioElement> {}
+interface Props extends React.HTMLProps<HTMLAudioElement> {
+  noBorder?: boolean
+}
 
 const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
   (props, ref) => {
@@ -16,6 +18,8 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
         </>
       )
     }
+
+    const { noBorder, ...audioProps } = props
 
     const [isPlayable, setIsPlayable] = React.useState<boolean>(false)
     const [isPlaying, setIsPlaying] = React.useState<boolean>(false)
@@ -61,37 +65,42 @@ const AudioPlayerContainer = React.forwardRef<HTMLAudioElement, Props>(
 
     return (
       <>
-        <Box variant="audio.container">
-          {isPlaying ? (
-            <FiPause onClick={handlePause} />
-          ) : isPlayable ? (
-            <FiPlay onClick={handlePlay} />
-          ) : (
-            <FiSlash />
-          )}
-          <Box variant="audio.timeline.container">
-            <Box
-              sx={{
-                variant: "audio.timeline.elapsed",
-                flexBasis: `${(currentTime / duration) * 100}%`,
-              }}
-            />
-            <Box variant="audio.timeline.base" />
+        <Box
+          variant={!noBorder ? "audio.container" : ""}
+          sx={{ width: "100%" }}
+        >
+          <Box variant="audio.player">
+            {isPlaying ? (
+              <FiPause onClick={handlePause} />
+            ) : isPlayable ? (
+              <FiPlay onClick={handlePlay} />
+            ) : (
+              <FiSlash />
+            )}
+            <Box variant="audio.timeline.container">
+              <Box
+                sx={{
+                  variant: "audio.timeline.elapsed",
+                  flexBasis: `${(currentTime / duration) * 100}%`,
+                }}
+              />
+              <Box variant="audio.timeline.base" />
+            </Box>
+            <Text sx={{ flexShrink: 0 }}>
+              {isPlayable ? currentTime.toFixed(0) : "-"}s
+            </Text>
           </Box>
-          <Text sx={{ flexShrink: 0 }}>
-            {isPlayable ? currentTime.toFixed(0) : "-"}s
-          </Text>
-        </Box>
-        <Box sx={{ display: "none" }}>
-          <audio
-            ref={currentRef}
-            {...props}
-            onCanPlay={() => setIsPlayable(true)}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            onDurationChange={handleDurationChange}
-            onTimeUpdate={handleTimeUpdate}
-          />
+          <Box sx={{ display: "none" }}>
+            <audio
+              ref={currentRef}
+              {...audioProps}
+              onCanPlay={() => setIsPlayable(true)}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onDurationChange={handleDurationChange}
+              onTimeUpdate={handleTimeUpdate}
+            />
+          </Box>
         </Box>
       </>
     )

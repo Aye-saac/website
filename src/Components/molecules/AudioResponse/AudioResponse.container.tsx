@@ -1,6 +1,6 @@
 import React from "react"
 
-import { AudioPlayer } from "Components/atoms"
+import { AudioPlayer, Box, TextInput } from "Components/atoms"
 
 const santiseMessage = (message: string) => {
   return encodeURIComponent(message)
@@ -23,11 +23,21 @@ const AudioResponseContainer: React.FC<Props> = ({ message }) => {
 
   return (
     <>
-      <AudioPlayer
-        controls
-        ref={audioRef}
-        src={`${gttsUrl}${santiseMessage(message)}`}
-      />
+      <Box variant="audio.responseWrapper">
+        <AudioPlayer
+          noBorder
+          controls
+          ref={audioRef}
+          src={`${gttsUrl}${santiseMessage(message)}`}
+        />
+        <TextInput
+          disabled
+          noBorder
+          disableChange
+          placeholder={message}
+          value={message}
+        />
+      </Box>
     </>
   )
 }

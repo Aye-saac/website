@@ -16,13 +16,6 @@ const container: SxStyleProp = {
   borderWidth: "2px",
   borderColor: "moonBase",
 
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-
-  px: 3,
-  py: "0.75rem",
-
   transitionDuration: "150ms",
   transitionTimingFunction: "ease",
   transitionProperty: "background border color",
@@ -36,6 +29,17 @@ const container: SxStyleProp = {
     height: "1.3em",
     stroke: "starWhite",
   },
+}
+
+const player: SxStyleProp = {
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  width: "100%",
+  height: "100%",
+
+  px: 3,
+  py: "0.75rem",
 }
 
 const timelineContainer: SxStyleProp = {
@@ -83,9 +87,17 @@ const timelineElapsed: SxStyleProp = {
   flexBasis: "20px",
 }
 
+const responseWrapper: SxStyleProp = {
+  variant: "forms.inputWrapper",
+  px: 0,
+  flexDirection: "column",
+}
+
 const audio: SxStyleProp = {
   wrapper,
   container,
+  player,
+  responseWrapper,
   timeline: {
     container: timelineContainer,
     base: timelineBase,

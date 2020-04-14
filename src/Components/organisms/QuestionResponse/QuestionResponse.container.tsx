@@ -1,7 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux"
 
-import { Box, Heading, ImageWrapper } from "Components/atoms"
+import { Box, ImageWrapper } from "Components/atoms"
 import { AudioResponse, CodeBlock } from "Components/molecules"
 import { selectImage, selectResponses } from "Features/dialogue"
 
@@ -13,13 +13,14 @@ const QuestionResponseContainer: React.FC = () => {
 
   return (
     <>
-      <Box>
-        <Heading as="h3" variant="heading.h3">
-          The answer
-        </Heading>
+      <Box sx={{ maxWidth: "xxl" }}>
         {image && <ImageWrapper src={image.url} alt="User upload" />}
-        <AudioResponse message={latestResponse.response} />
-        <CodeBlock>{JSON.stringify(latestResponse, null, 2)}</CodeBlock>
+        {latestResponse && (
+          <>
+            <AudioResponse message={latestResponse.response} />
+            <CodeBlock>{JSON.stringify(latestResponse, null, 2)}</CodeBlock>
+          </>
+        )}
       </Box>
     </>
   )
