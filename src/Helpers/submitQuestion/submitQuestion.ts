@@ -1,7 +1,11 @@
 import fetch from "node-fetch"
+import { v4 as uuidv4 } from "uuid"
 
 interface Request {
-  body: FormData
+  image: Blob
+  message: string | Blob
+  responses: Blob
+  messageType: "text" | "audio"
 }
 
 interface ResponseState {
@@ -11,15 +15,32 @@ interface ResponseState {
   }
 }
 
-const submitQuestion = async (requestData: Request) => {
-  const { body } = requestData
+const submitQuestion = async ({
+  image,
+  message,
+  responses,
+  messageType,
+}: Request) => {
+  const formData = new FormData()
+
+  if (messageType === "text") {
+    formData.append("message", message)
+  }
+
+  if (messageType === "audio") {
+    formData.append("audio", message)
+  }
+
+  formData.append("image", image)
+  formData.append("responses", responses)
+  formData.append("request_id", uuidv4())
 
   const href = "http://157.245.32.208:5000/submit"
 
   const response = await fetch(href, {
     method: "POST",
     // @ts-ignore: https://github.com/Microsoft/TypeScript/issues/30584
-    body,
+    body: formData,
   })
 
   const json: ResponseState = await response.json()
@@ -30,9 +51,7 @@ const submitQuestion = async (requestData: Request) => {
     return {
       status: 404,
       ok: false,
-      body: {
-        success: false,
-      },
+      body: {},
     }
   }
 

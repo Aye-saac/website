@@ -67,23 +67,19 @@ const QuestionSubmitContainer: React.FC = () => {
   const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
 
-    if (!image || !message || !responseState) {
+    if (!image || !message || !responseState || !messageState) {
       return
     }
 
     const responses = new Blob(responseState)
 
-    const formData = new FormData()
-    if (messageState && messageState.type === "audio") {
-      formData.append("audio", message)
-    } else {
-      formData.append("message", message)
-    }
-    formData.append("image", image)
-    formData.append("responses", responses)
-
     try {
-      const response = await submitQuestion({ body: formData })
+      const response = await submitQuestion({
+        image,
+        message,
+        responses,
+        messageType: messageState.type,
+      })
 
       if (!response.ok) {
         setLoading(false)
