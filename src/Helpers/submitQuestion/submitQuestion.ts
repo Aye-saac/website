@@ -47,6 +47,8 @@ const submitQuestion = async ({
 
   const { data } = json
 
+  console.log("Response", data)
+
   if (!response.ok) {
     return {
       status: 404,
