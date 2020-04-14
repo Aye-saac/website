@@ -5,7 +5,7 @@ interface Request {
 }
 
 interface ResponseState {
-  data: {
+  data: Record<string, any> & {
     query: string
     response: string
   }
