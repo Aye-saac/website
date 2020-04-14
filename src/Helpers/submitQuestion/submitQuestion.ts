@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid"
 interface Request {
   image: Blob
   message: string | Blob
-  responses: Blob
+  responses: string
   messageType: "text" | "audio"
 }
 
@@ -35,7 +35,7 @@ const submitQuestion = async ({
   formData.append("responses", responses)
   formData.append("request_id", uuidv4())
 
-  const href = "http://157.245.32.208:5000/submit"
+  const href = "http://127.0.0.1:5000/submit"
 
   const response = await fetch(href, {
     method: "POST",

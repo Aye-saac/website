@@ -71,7 +71,7 @@ const QuestionSubmitContainer: React.FC = () => {
       return
     }
 
-    const responses = new Blob(responseState)
+    const responses = JSON.stringify(responseState)
 
     try {
       const response = await submitQuestion({
