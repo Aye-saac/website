@@ -19,9 +19,6 @@ const QuestionPage: React.FC = () => {
           This is the answer. Hopefully it&apos;s right.
         </FormWrapper>
       )}
-      <FormWrapper title="An answer." FormComponent={<QuestionResponse />}>
-        This is the answer. Hopefully it&apos;s right.
-      </FormWrapper>
     </>
   )
 }
