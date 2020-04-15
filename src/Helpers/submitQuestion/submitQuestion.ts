@@ -8,11 +8,9 @@ interface Request {
   messageType: "text" | "audio"
 }
 
-interface ResponseState {
-  data: Record<string, any> & {
-    query: string
-    response: string
-  }
+type ResponseState = Record<string, any> & {
+  query: string
+  response: string
 }
 
 const submitQuestion = async ({
@@ -36,6 +34,7 @@ const submitQuestion = async ({
   formData.append("request_id", uuidv4())
 
   const href = "http://157.245.32.208:5000/submit"
+  // const href = "http://127.0.0.1:5000/submit"
 
   const response = await fetch(href, {
     method: "POST",
@@ -43,9 +42,7 @@ const submitQuestion = async ({
     body: formData,
   })
 
-  const json: ResponseState = await response.json()
-
-  const { data } = json
+  const data: ResponseState = await response.json()
 
   console.log("Response", data)
 
