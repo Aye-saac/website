@@ -1,4 +1,5 @@
 import React from "react"
+import { useSelector } from "react-redux"
 
 import {
   Box,
@@ -9,11 +10,14 @@ import {
   Section,
   Text,
 } from "Components"
+import { selectAllPermissionsDecided } from "Features/permission"
 
 import { FiChevronRight } from "react-icons/fi"
 import { Link } from "react-router-dom"
 
 const PermissionsPage: React.FC = () => {
+  const allPermissionsDecided = useSelector(selectAllPermissionsDecided)
+
   return (
     <>
       <Section>
@@ -30,19 +34,21 @@ const PermissionsPage: React.FC = () => {
         <Container>
           <PermissionFormContainer />
         </Container>
-        <Container>
-          <Text>
-            By clicking continue, you agree to use, and not abuse, the
-            application. You also agree to abide by other privacy stuff. Note
-            that all software here is without warranty and we hold no liability
-            for any issues that can go wrong.
-          </Text>
-          <Link to="/question">
-            <Box variant="styles.a">
-              <Button IconComponent={FiChevronRight}>Continue</Button>
-            </Box>
-          </Link>
-        </Container>
+        {allPermissionsDecided && (
+          <Container>
+            <Text>
+              By clicking continue, you agree to use, and not abuse, the
+              application. You also agree to abide by other privacy stuff. Note
+              that all software here is without warranty and we hold no
+              liability for any issues that can go wrong.
+            </Text>
+            <Link to="/question">
+              <Box variant="styles.a">
+                <Button IconComponent={FiChevronRight}>Continue</Button>
+              </Box>
+            </Link>
+          </Container>
+        )}
       </Section>
     </>
   )

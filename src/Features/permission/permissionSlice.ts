@@ -24,7 +24,7 @@ const initialState: PermissionReducerState = {
   },
   privacy: {
     isAvailable: true,
-    status: "prompt",
+    status: "granted",
   },
 }
 
@@ -75,6 +75,14 @@ export const selectMicrophone = (state: RootState) =>
   state.permission.microphone
 export const selectCamera = (state: RootState) => state.permission.camera
 export const selectPrivacy = (state: RootState) => state.permission.privacy
+
+export const selectAllPermissionsDecided = (state: RootState) => {
+  return (
+    Object.values(state.permission)
+      .filter((permission) => permission.isAvailable)
+      .filter((permission) => permission.status === "prompt").length === 0
+  )
+}
 
 export const permissionReducer = slice.reducer
 
