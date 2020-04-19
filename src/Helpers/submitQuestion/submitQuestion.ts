@@ -33,18 +33,24 @@ const submitQuestion = async ({
   formData.append("responses", responses)
   formData.append("request_id", uuidv4())
 
-  const href = "http://157.245.32.208:5000/submit"
-  // const href = "http://127.0.0.1:5000/submit"
+  // const href = "http://157.245.32.208:5000/submit"
+  const href = "http://127.0.0.1:5000/submit"
 
-  const response = await fetch(href, {
+  const request = await fetch(href, {
     method: "POST",
     // @ts-ignore: https://github.com/Microsoft/TypeScript/issues/30584
     body: formData,
   })
 
+  const responseLocation = request.headers.get("location")
+
+  // console.log("Request", request, responseLocation)
+
+  const response = await fetch(responseLocation, { method: "GET" })
+
   const data: ResponseState = await response.json()
 
-  console.log("Response", data)
+  // console.log("Response", data)
 
   if (!response.ok) {
     return {
