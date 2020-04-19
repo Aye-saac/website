@@ -46,7 +46,9 @@ const submitQuestion = async ({
 
   // console.log("Request", request, responseLocation)
 
-  const response = await fetch(responseLocation, { method: "GET" })
+  const response = await fetch(responseLocation, {
+    method: "GET",
+  })
 
   const data: ResponseState = await response.json()
 
