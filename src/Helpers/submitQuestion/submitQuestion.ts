@@ -33,8 +33,8 @@ const submitQuestion = async ({
   formData.append("responses", responses)
   formData.append("request_id", uuidv4())
 
-  // const href = "http://157.245.32.208:5000/submit"
-  const href = "http://127.0.0.1:5000/submit"
+  const href = "http://droplet.ayesaac.xyz:5000/submit"
+  // const href = "http://127.0.0.1:5000/submit"
 
   const request = await fetch(href, {
     method: "POST",
