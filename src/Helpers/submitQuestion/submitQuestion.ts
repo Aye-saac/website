@@ -1,6 +1,17 @@
 import fetch from "node-fetch"
 import { v4 as uuidv4 } from "uuid"
 
+const fixLocationSecurity = (url: string) => {
+  // Check if the location is http or https
+  const isHttps = url.startsWith("https")
+
+  if (isHttps) {
+    return url
+  }
+
+  return url.replace(/(http)/gi, "https")
+}
+
 interface Request {
   image: Blob
   message: string | Blob
@@ -33,7 +44,9 @@ const submitQuestion = async ({
   formData.append("responses", responses)
   formData.append("request_id", uuidv4())
 
-  const href = "http://droplet.ayesaac.xyz:5000/submit"
+  const domain = "https://droplet.ayesaac.xyz"
+
+  const href = `${domain}/submit`
   // const href = "http://127.0.0.1:5000/submit"
 
   const request = await fetch(href, {
@@ -42,7 +55,7 @@ const submitQuestion = async ({
     body: formData,
   })
 
-  const responseLocation = request.headers.get("location")
+  const responseLocation = fixLocationSecurity(request.headers.get("location"))
 
   // console.log("Request", request, responseLocation)
 
