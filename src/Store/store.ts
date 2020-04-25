@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 
-import { dialogue, permission } from "Features"
+import { dialogue, navigation, permission } from "Features"
 
 export const store = configureStore({
   reducer: {
     permission: permission.permissionReducer,
     dialogue: dialogue.dialogueReducer,
+    navigation: navigation.navigationReducer,
   },
 })
 

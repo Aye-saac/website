@@ -30,3 +30,14 @@ export interface DialogueState {
   responses: any[]
   showResponse: boolean
 }
+
+export enum Page {
+  Introduction,
+  Permission,
+  Question,
+  Response,
+}
+
+export type NavigationState = {
+  current: Page
+}
