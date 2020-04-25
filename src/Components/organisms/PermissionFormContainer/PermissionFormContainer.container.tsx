@@ -7,20 +7,10 @@ import {
   updateCameraStatus,
   updateMicrophoneStatus,
 } from "Features/permission"
-import { addPermissionChangeListener } from "Helpers"
-import { store } from "Store"
 
 import { FiCamera, FiCameraOff, FiMic, FiMicOff } from "react-icons/fi"
 
 const PermissionFormContainer: React.FC = () => {
-  React.useEffect(() => {
-    addPermissionChangeListener({
-      name: "microphone",
-      dispatch: store.dispatch,
-      statusAction: updateMicrophoneStatus,
-    })
-  }, [])
-
   const permission = useSelector(selectPermission)
   const dispatch = useDispatch()
 

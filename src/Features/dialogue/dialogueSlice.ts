@@ -1,30 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { RootState } from "Store"
-
-interface DialogueFile {
-  url: string
-}
-
-interface DialogueMessageText {
-  type: "text"
-  data: string
-}
-
-interface DialogueMessageAudio {
-  type: "audio"
-  url: string
-  data: FileReader["result"]
-}
-
-type DialogueMessage = DialogueMessageText | DialogueMessageAudio
-
-export interface DialogueState {
-  image: DialogueFile | null
-  message: DialogueMessage | null
-  responses: any[]
-  showResponse: boolean
-}
+import { DialogueFile, DialogueMessage, DialogueState } from "Typings"
 
 const initialState: DialogueState = {
   image: null,
@@ -52,6 +29,12 @@ export const slice = createSlice({
     showResponse: (state) => {
       state.showResponse = true
     },
+    resetQuestion: (state) => {
+      state.image = initialState.image
+      state.message = initialState.message
+      state.responses = initialState.responses
+      state.showResponse = initialState.showResponse
+    },
   },
 })
 
@@ -61,6 +44,7 @@ export const {
   addResponse,
   hideResponse,
   showResponse,
+  resetQuestion,
 } = slice.actions
 
 export const selectDialogue = (state: RootState) => state.dialogue

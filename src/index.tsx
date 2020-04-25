@@ -6,10 +6,13 @@ import ReactDOM from "react-dom"
 
 import { Styled, ThemeProvider } from "theme-ui"
 
+import Introduction from "Pages/Introduction"
+import Permissions from "Pages/Permissions"
+import Question from "Pages/Question"
 import { store } from "Store"
 import theme, { GlobalStyle } from "Styles"
 
-import App from "./App"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,7 +20,13 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Styled.root>
-          <App />
+          <Router>
+            <Switch>
+              <Route path="/" component={Introduction} />
+              <Route path="/permissions" component={Permissions} exact />
+              <Route path="/question" component={Question} exact />
+            </Switch>
+          </Router>
         </Styled.root>
       </Provider>
     </ThemeProvider>
