@@ -18,8 +18,8 @@ const PermissionFormContainer: React.FC = () => {
     <>
       <PermissionForm
         title="Can we use your camera?"
-        negativeIcon={FiCamera}
-        positiveIcon={FiCameraOff}
+        negativeIcon={FiCameraOff}
+        positiveIcon={FiCamera}
         onNegativeClick={() => {
           dispatch(updateCameraStatus("denied"))
         }}
