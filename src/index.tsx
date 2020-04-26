@@ -22,9 +22,9 @@ ReactDOM.render(
         <Styled.root>
           <Router>
             <Switch>
-              <Route path="/" component={Introduction} />
-              <Route path="/permissions" component={Permissions} exact />
-              <Route path="/question" component={Question} exact />
+              <Route path="/" component={Introduction} exact />
+              <Route path="/permissions" component={Permissions} />
+              <Route path="/question" component={Question} />
             </Switch>
           </Router>
         </Styled.root>
