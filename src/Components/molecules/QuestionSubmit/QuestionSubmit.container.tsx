@@ -74,6 +74,8 @@ const QuestionSubmitContainer: React.FC = () => {
     const responses = JSON.stringify(responseState)
 
     try {
+      setLoading(true)
+
       const response = await submitQuestion({
         image,
         message,
