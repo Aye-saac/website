@@ -1,6 +1,8 @@
 import { SxStyleProp } from "theme-ui"
 
 const container: SxStyleProp = {
+  height: "100%",
+
   backgroundColor: "underBase",
   borderColor: "starBase",
   borderWidth: "2px",
@@ -41,49 +43,34 @@ const overlay: SxStyleProp = {
   position: "absolute",
 }
 
-const code: SxStyleProp = {
-  transition: "0.35s height ease-in-out",
-  willChange: "height",
-
-  height: "200px",
+const overlayText: SxStyleProp = {
+  position: "absolute",
+  display: "flex",
+  alignItems: "flex-end",
+  justifyContent: "center",
   width: "100%",
+  height: "100%",
+  padding: 2,
 
-  pre: {
-    overflow: "hidden",
-  },
+  cursor: "default",
 
-  "&.open": {
-    height: "1000px",
-
-    pre: {
-      overflow: "scroll",
-    },
-  },
+  textTransform: "uppercase",
+  fontWeight: 600,
+  letterSpacing: "widest",
+  color: "starBase",
+  zIndex: 100,
 }
 
 const iconContainer: SxStyleProp = {
-  svg: {
-    width: "2em",
-    height: "2em",
-    stroke: "starWhite",
-
-    transition: "0.15s transform ease",
-    willChange: "transform",
-  },
-
-  "&.open": {
-    svg: {
-      transform: "rotate(90deg)",
-    },
-  },
+  stroke: "starWhite",
 }
 
 const codeBlock: SxStyleProp = {
   container,
   content,
   overlay,
+  overlayText,
   iconContainer,
-  code,
 }
 
 export default codeBlock
