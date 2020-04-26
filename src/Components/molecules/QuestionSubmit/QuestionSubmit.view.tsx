@@ -2,6 +2,7 @@ import React from "react"
 
 import { Button, Spinner, Text } from "Components/atoms"
 
+import { motion } from "framer-motion"
 import { FiAlertCircle, FiSend } from "react-icons/fi"
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
@@ -40,9 +41,15 @@ const QuestionSubmitView: React.FC<Props> = ({ loading, error, ...props }) => {
       <Text as="p" variant="caption">
         Just a note: it might take us a minute to get your answer.
       </Text>
-      <Button variant="input" type="submit" IconComponent={FiSend} {...props}>
-        Submit
-      </Button>
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        style={{ width: "max-content" }}
+      >
+        <Button variant="input" type="submit" IconComponent={FiSend} {...props}>
+          Submit
+        </Button>
+      </motion.div>
     </>
   )
 }

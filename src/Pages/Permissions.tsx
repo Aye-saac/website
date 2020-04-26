@@ -12,6 +12,7 @@ import {
 } from "Components"
 import { selectAllPermissionsDecided } from "Features/permission"
 
+import { motion } from "framer-motion"
 import { FiChevronRight } from "react-icons/fi"
 import { Link } from "react-router-dom"
 
@@ -42,11 +43,17 @@ const PermissionsPage: React.FC = () => {
               that all software here is without warranty and we hold no
               liability for any issues that can go wrong.
             </Text>
-            <Link to="/question">
-              <Box variant="styles.a">
-                <Button IconComponent={FiChevronRight}>Continue</Button>
-              </Box>
-            </Link>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{ width: "max-content" }}
+            >
+              <Link to="/question">
+                <Box variant="styles.a">
+                  <Button IconComponent={FiChevronRight}>Continue</Button>
+                </Box>
+              </Link>
+            </motion.div>
           </Container>
         )}
       </Section>
