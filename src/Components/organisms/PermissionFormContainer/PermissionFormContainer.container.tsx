@@ -43,6 +43,7 @@ const PermissionFormContainer: React.FC = () => {
           })
         }}
         permissionStatus={permission.microphone.status}
+        delay={1}
       >
         <p>
           With access your microphone, you can directly record your voice into

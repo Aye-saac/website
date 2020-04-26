@@ -14,6 +14,7 @@ interface Props {
   onNegativeClick?: () => void
   onPositiveClick?: () => void
   permissionStatus: PermissionState
+  delay?: number
 }
 
 const PermissionFormContainer: React.FC<Props> = ({
@@ -24,6 +25,7 @@ const PermissionFormContainer: React.FC<Props> = ({
   onNegativeClick,
   onPositiveClick,
   permissionStatus,
+  delay,
 }) => {
   const [isLeftSelected, setIsLeftSelected] = React.useState<boolean>()
   const [isRightSelected, setIsRightSelected] = React.useState<boolean>()
@@ -54,6 +56,7 @@ const PermissionFormContainer: React.FC<Props> = ({
   return (
     <>
       <PermissionForm
+        delay={delay}
         title={title}
         description={children}
         negativeButton={
