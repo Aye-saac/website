@@ -1,15 +1,24 @@
 import React from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { Box, ImageWrapper } from "Components/atoms"
-import { AudioResponse, CodeBlock } from "Components/molecules"
-import { selectImage, selectResponses } from "Features/dialogue"
+import { AudioResponse, CodeBlock, InputModeChoice } from "Components/molecules"
+import {
+  resetDialogue,
+  resetMessage,
+  selectImage,
+  selectResponses,
+} from "Features/dialogue"
+
+import { FiCornerUpLeft, FiRefreshCw } from "react-icons/fi"
 
 const QuestionResponseContainer: React.FC = () => {
+  const dispatch = useDispatch()
+
   const image = useSelector(selectImage)
   const responses = useSelector(selectResponses)
 
-  const latestResponse = responses.reverse()[0]
+  const latestResponse = responses[responses.length - 1]
 
   return (
     <>
@@ -19,8 +28,30 @@ const QuestionResponseContainer: React.FC = () => {
         </Box>
         {latestResponse && (
           <>
-            <AudioResponse message={latestResponse.response} />
-            <CodeBlock>{JSON.stringify(latestResponse, null, 2)}</CodeBlock>
+            <Box sx={{ mt: 4 }}>
+              <AudioResponse message={latestResponse.response} />
+              <CodeBlock>{JSON.stringify(latestResponse, null, 2)}</CodeBlock>
+            </Box>
+            <Box sx={{ mt: 4 }}>
+              <InputModeChoice
+                leftButton={{
+                  onClick: () => dispatch(resetMessage()),
+                  disabled: false,
+                  selected: false,
+                  text: "Ask another question",
+                  positiveIcon: FiCornerUpLeft,
+                  negativeIcon: FiCornerUpLeft,
+                }}
+                rightButton={{
+                  onClick: () => dispatch(resetDialogue()),
+                  disabled: false,
+                  selected: false,
+                  text: "Start again",
+                  positiveIcon: FiRefreshCw,
+                  negativeIcon: FiRefreshCw,
+                }}
+              />
+            </Box>
           </>
         )}
       </Box>
