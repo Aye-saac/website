@@ -3554,7 +3554,7 @@ __metadata:
     eslint-plugin-react-hooks: ^2.5.1
     eslint-plugin-simple-import-sort: ^5.0.2
     eslint-plugin-unicorn: ^18.0.1
-    framer-motion: ^1.10.3
+    framer-motion: beta
     husky: ^4.2.5
     lint-staged: ^10.1.7
     node-fetch: ^2.6.0
@@ -7373,9 +7373,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^1.10.3":
-  version: 1.10.3
-  resolution: "framer-motion@npm:1.10.3"
+"framer-motion@npm:beta":
+  version: 2.0.0-beta.55
+  resolution: "framer-motion@npm:2.0.0-beta.55"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@popmotion/easing": ^1.0.2
@@ -7384,7 +7384,7 @@ __metadata:
     hey-listen: ^1.0.8
     popmotion: 9.0.0-beta-8
     style-value-types: ^3.1.6
-    stylefire: ^7.0.2
+    stylefire: 7.0.3
     tslib: ^1.10.0
   peerDependencies:
     react: ^16.8
@@ -7392,7 +7392,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 2/eec2698eb159f7ebdbf202e40f2bc74d330455ca2fe56dca74866487aecac0b15924fe0bf4fb210caa8f8b936ac35e757e61d34e54b54b8f326a69dec86d0a0c
+  checksum: 2/1852df5c49edf6dc7e56b7469cb6ed0b99f4f0019bc3407d09cf6352c6bcef50e35ac8e0c1c10bf1eb9996b9a5854323e83bfe70019c6eea5155165e903dabb7
   languageName: node
   linkType: hard
 
@@ -15538,7 +15538,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylefire@npm:^7.0.2":
+"stylefire@npm:7.0.3":
   version: 7.0.3
   resolution: "stylefire@npm:7.0.3"
   dependencies:
