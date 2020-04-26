@@ -2,7 +2,7 @@ import { SxStyleProp } from "theme-ui"
 
 const primary: SxStyleProp = {
   color: "groundBase",
-  bg: "starWhite",
+  bg: "smokeWhite",
 
   borderRadius: "xxxl",
 
