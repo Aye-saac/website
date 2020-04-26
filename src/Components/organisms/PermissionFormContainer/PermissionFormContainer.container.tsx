@@ -28,7 +28,12 @@ const PermissionFormContainer: React.FC = () => {
         }}
         permissionStatus={permission.camera.status}
       >
-        <p>Camera blurb</p>
+        <p>
+          When using this application on a mobile device, you take and upload
+          photos direct from your camera. Unfortunately, due to time, this
+          functionality was not included in the desktop versions of the
+          application.
+        </p>
       </PermissionForm>
       <PermissionForm
         title="Can we use your microphone?"
