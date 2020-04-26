@@ -11,6 +11,9 @@ import {
 } from "Components/molecules"
 import { selectPermission } from "Features/permission"
 
+import { AnimateSharedLayout, motion } from "framer-motion"
+import { FiMessageSquare, FiMic, FiMicOff } from "react-icons/fi"
+
 const QuestionFormContainer: React.FC = () => {
   const [inputChoice, setInputChoice] = React.useState<"text" | "audio">()
 
@@ -19,31 +22,53 @@ const QuestionFormContainer: React.FC = () => {
   return (
     <>
       <Box>
-        <ImageUploader
-          isCameraAllowed={permissions.camera.status === "granted"}
-        />
-
-        <InputModeChoice
-          handleInputChoiceAudio={() => setInputChoice("audio")}
-          handleInputChoiceText={() => setInputChoice("text")}
-          inputChoice={inputChoice}
-          isMicGranted={permissions.microphone.status === "granted"}
-        />
-
-        <Box sx={{ maxWidth: "xxl" }}>
-          {inputChoice === "audio" && (
-            <Box variant="audio.wrapper">
-              <AudioRecorder />
-            </Box>
-          )}
-          {inputChoice === "text" && (
-            <MessageInput
-              caption="Watch out for spelling and stuff."
-              placeholder="Ask a question about the image."
+        <AnimateSharedLayout>
+          <motion.div layoutId="imageUploader" animate>
+            <ImageUploader
+              isCameraAllowed={permissions.camera.status === "granted"}
             />
-          )}
-        </Box>
-        <QuestionSubmit />
+          </motion.div>
+
+          <motion.div layoutId="inputModeSelector" animate>
+            <InputModeChoice
+              leftButton={{
+                onClick: () => setInputChoice("audio"),
+                disabled: permissions.microphone.status !== "granted",
+                selected: inputChoice === "audio",
+                text: "Record your question",
+                positiveIcon: FiMic,
+                negativeIcon: FiMicOff,
+              }}
+              rightButton={{
+                onClick: () => setInputChoice("text"),
+                disabled: false,
+                selected: inputChoice === "text",
+                text: "Write your question",
+                positiveIcon: FiMessageSquare,
+                negativeIcon: FiMessageSquare,
+              }}
+            />
+          </motion.div>
+
+          <Box sx={{ maxWidth: "xxl" }}>
+            {inputChoice === "audio" && (
+              <Box variant="audio.wrapper">
+                <AudioRecorder />
+              </Box>
+            )}
+            {inputChoice === "text" && (
+              <motion.div animate layoutId="textInput">
+                <MessageInput
+                  caption="Watch out for spelling and stuff."
+                  placeholder="Ask a question about the image."
+                />
+              </motion.div>
+            )}
+          </Box>
+          <motion.div animate layoutId="submitButton">
+            <QuestionSubmit />
+          </motion.div>
+        </AnimateSharedLayout>
       </Box>
     </>
   )

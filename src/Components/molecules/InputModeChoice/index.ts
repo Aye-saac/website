@@ -1,3 +1,3 @@
-import InputModeChoice from "./InputModeChoice.container"
+import InputModeChoice from "./InputModeChoice.view"
 
 export default InputModeChoice
