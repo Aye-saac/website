@@ -16,6 +16,8 @@ export const slice = createSlice({
   reducers: {
     replaceImage: (state, action: PayloadAction<DialogueFile>) => {
       state.image = action.payload
+      state.responses = initialState.responses
+      state.showResponse = initialState.showResponse
     },
     replaceMessage: (state, action: PayloadAction<DialogueMessage>) => {
       state.message = action.payload
@@ -29,10 +31,14 @@ export const slice = createSlice({
     showResponse: (state) => {
       state.showResponse = true
     },
-    resetQuestion: (state) => {
+    resetDialogue: (state) => {
       state.image = initialState.image
       state.message = initialState.message
       state.responses = initialState.responses
+      state.showResponse = initialState.showResponse
+    },
+    resetMessage: (state) => {
+      state.message = initialState.message
       state.showResponse = initialState.showResponse
     },
   },
@@ -44,7 +50,8 @@ export const {
   addResponse,
   hideResponse,
   showResponse,
-  resetQuestion,
+  resetDialogue,
+  resetMessage,
 } = slice.actions
 
 export const selectDialogue = (state: RootState) => state.dialogue
