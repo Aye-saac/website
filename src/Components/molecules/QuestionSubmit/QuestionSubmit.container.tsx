@@ -13,6 +13,11 @@ import { submitQuestion } from "Helpers"
 
 import QuestionSubmitButton from "./QuestionSubmit.view"
 
+const objectWithoutKey = (object: Record<string, any>, key: string) => {
+  const { [key]: deletedKey, ...otherKeys } = object
+  return otherKeys
+}
+
 const QuestionSubmitContainer: React.FC = () => {
   // Local state
   const [image, setImage] = React.useState<Blob>()
@@ -89,8 +94,10 @@ const QuestionSubmitContainer: React.FC = () => {
         dispatch(hideResponse())
       }
 
-      dispatch(showResponse())
-      dispatch(addResponse(response.body.data))
+      if (response.body.data) {
+        dispatch(showResponse())
+        dispatch(addResponse(objectWithoutKey(response.body.data, "responses")))
+      }
     } catch (error_) {
       dispatch(hideResponse())
       setError(true)
