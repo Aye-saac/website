@@ -12,6 +12,12 @@ const fixLocationSecurity = (url: string) => {
   return url.replace(/(http)/gi, "https")
 }
 
+const getUTCTime = () => {
+  const now = new Date()
+
+  return now.toUTCString()
+}
+
 interface Request {
   image: Blob
   message: string | Blob
@@ -49,6 +55,8 @@ const submitQuestion = async ({
   const href = `${domain}/submit`
   // const href = "http://127.0.0.1:5000/submit"
 
+  const timeSent = getUTCTime()
+
   const request = await fetch(href, {
     method: "POST",
     // @ts-ignore: https://github.com/Microsoft/TypeScript/issues/30584
@@ -65,6 +73,8 @@ const submitQuestion = async ({
 
   const data: ResponseState = await response.json()
 
+  const timeReceived = getUTCTime()
+
   // console.log("Response", data)
 
   if (!response.ok) {
@@ -80,7 +90,11 @@ const submitQuestion = async ({
     ok: true,
     body: {
       message: data.response,
-      data,
+      data: {
+        ...data,
+        messageSent: timeSent,
+        messageRecieved: timeReceived,
+      },
     },
   }
 }
