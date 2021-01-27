@@ -50,10 +50,10 @@ const submitQuestion = async ({
   formData.append("responses", responses)
   formData.append("request_id", uuidv4())
 
-  const domain = "https://droplet.ayesaac.xyz"
+  const domain = "http://localhost:5000"
+//   const domain = "https://droplet.ayesaac.xyz"
 
   const href = `${domain}/submit`
-  // const href = "http://127.0.0.1:5000/submit"
 
   const timeSent = getUTCTime()
 
