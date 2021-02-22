@@ -36,8 +36,15 @@ export enum Page {
   Permission,
   Question,
   Response,
+  Live,
 }
 
 export type NavigationState = {
   current: Page
+}
+
+export type LiveState = {
+  speechDetection: string
+  recording: boolean
+  error?: string
 }
