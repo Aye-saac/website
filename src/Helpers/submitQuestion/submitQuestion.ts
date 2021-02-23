@@ -5,7 +5,7 @@ const fixLocationSecurity = (url: string) => {
   // Check if the location is http or https
   const isHttps = url.startsWith("https")
 
-  if (isHttps) {
+  if (isHttps || url.includes("localhost")) {
     return url
   }
 
@@ -51,7 +51,7 @@ const submitQuestion = async ({
   formData.append("request_id", uuidv4())
 
   const domain = "http://localhost:5000"
-//   const domain = "https://droplet.ayesaac.xyz"
+  //   const domain = "https://droplet.ayesaac.xyz"
 
   const href = `${domain}/submit`
 
