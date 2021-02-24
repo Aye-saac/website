@@ -50,8 +50,7 @@ const submitQuestion = async ({
   formData.append("responses", responses)
   formData.append("request_id", uuidv4())
 
-  const domain = "http://localhost:5000"
-  //   const domain = "https://droplet.ayesaac.xyz"
+  const domain = process.env.REACT_APP_API_URL || "http://localhost:5000"
 
   const href = `${domain}/submit`
 

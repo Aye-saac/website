@@ -1,0 +1,10 @@
+# yarn
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
