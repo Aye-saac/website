@@ -8,3 +8,7 @@ export const selectSpeechDetectionText = createSelector(
   selectLiveState,
   (state): string => state.speechDetection,
 )
+export const selectLiveSpeechDetectionError = createSelector(
+  selectLiveState,
+  (state): string | undefined => state.error,
+)

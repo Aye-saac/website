@@ -5,14 +5,14 @@ import { PermissionCheck } from "Components/molecules/PermissionCheck/Permission
 import { SpeechRecognitionCheck } from "Components/molecules/SpeechRecognitionCheck/SpeechRecognitionCheck"
 import { SpeechRecognitionDisplay } from "Components/molecules/SpeechRecognitionDisplay/SpeechRecognitionDisplay"
 
-import { SpeechRecognitionWorker } from "./SpeechRecognitionWorker"
+import { SpeechRecognitionManager } from "./SpeechRecognitionManager"
 
 export const LivePage = () => {
   return (
     <Container>
-      <PermissionCheck audio video>
+      <PermissionCheck>
         <SpeechRecognitionCheck>
-          <SpeechRecognitionWorker />
+          <SpeechRecognitionManager />
           <SpeechRecognitionDisplay />
         </SpeechRecognitionCheck>
       </PermissionCheck>
