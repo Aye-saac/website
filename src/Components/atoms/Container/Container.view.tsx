@@ -7,7 +7,7 @@ interface Props extends BoxProps {
 }
 
 const Container: React.FC<Props> = ({ children, variant, ...props }) => {
-  const DEFAULT_VARIANT = "styles.container"
+  const DEFAULT_VARIANT = "styles.tsx.container"
 
   return (
     <>
