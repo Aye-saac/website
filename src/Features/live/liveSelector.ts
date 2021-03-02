@@ -12,3 +12,7 @@ export const selectLiveSpeechDetectionError = createSelector(
   selectLiveState,
   (state): string | undefined => state.error,
 )
+export const selectLiveRecordingStatus = createSelector(
+  selectLiveState,
+  (state): boolean => state.recording,
+)
