@@ -1,13 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
+import { objectWithoutKey } from "Helpers/objectWithoutKey"
 import { RootState } from "Store"
 import { DialogueFile, DialogueMessage, DialogueState } from "Typings"
+
+import { sendQuestion } from "./dialogueThunk"
 
 const initialState: DialogueState = {
   image: null,
   message: null,
   responses: [],
   showResponse: false,
+  loading: false,
 }
 
 export const slice = createSlice({
@@ -41,6 +45,28 @@ export const slice = createSlice({
       state.message = initialState.message
       state.showResponse = initialState.showResponse
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(sendQuestion.pending, (state) => {
+      state.loading = false
+      state.error = undefined
+      state.showResponse = false
+    })
+    builder.addCase(sendQuestion.rejected, (state, action) => {
+      console.error(action.error)
+      state.error = action.error.message || "An error occured"
+      state.showResponse = false
+    })
+    builder.addCase(sendQuestion.fulfilled, (state, action) => {
+      console.log(action.payload.body.data)
+      if (!action.payload.body.data) return
+      state.showResponse = true
+      const newResponses = objectWithoutKey(
+        action.payload.body.data,
+        "responses",
+      )
+      state.responses = [...state.responses, newResponses]
+    })
   },
 })
 

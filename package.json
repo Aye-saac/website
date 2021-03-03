@@ -28,12 +28,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npx lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js?(x),ts?(x)}": "eslint --fix",
-    "*.{html,md,json,yml,yaml,css}": "prettier --write"
+    "*.{js?(x),ts?(x)}": "npx eslint --fix",
+    "*.{html,md,json,yml,yaml,css}": "npx prettier --write"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -54,6 +54,7 @@
     "react-scripts": "^3.4.1",
     "redux": "^4.0.5",
     "redux-mock-store": "^1.5.4",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.1",
     "theme-ui": "^0.3.1",
     "typescript": "~3.8.3",

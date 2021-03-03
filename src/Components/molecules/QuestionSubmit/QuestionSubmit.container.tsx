@@ -10,13 +10,9 @@ import {
   showResponse,
 } from "Features/dialogue"
 import { submitQuestion } from "Helpers"
+import { objectWithoutKey } from "Helpers/objectWithoutKey"
 
 import QuestionSubmitButton from "./QuestionSubmit.view"
-
-const objectWithoutKey = (object: Record<string, any>, key: string) => {
-  const { [key]: deletedKey, ...otherKeys } = object
-  return otherKeys
-}
 
 const QuestionSubmitContainer: React.FC = () => {
   // Local state

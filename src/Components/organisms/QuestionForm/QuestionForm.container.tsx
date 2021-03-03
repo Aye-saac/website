@@ -53,7 +53,7 @@ const QuestionFormContainer: React.FC = () => {
           <Box sx={{ maxWidth: "xxl" }}>
             {inputChoice === "audio" && (
               <Box variant="audio.wrapper">
-                <AudioRecorder />
+                <AudioRecorder infoText />
               </Box>
             )}
             {inputChoice === "text" && (

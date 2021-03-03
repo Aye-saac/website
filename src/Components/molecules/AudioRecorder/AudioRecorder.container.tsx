@@ -3,7 +3,7 @@
  *  [1] https://stackoverflow.com/q/55499621
  */
 
-import React from "react"
+import React, { useCallback, useEffect } from "react"
 import { useDispatch } from "react-redux"
 
 import { AudioPlayer, Box, Button, Text } from "Components/atoms"
@@ -43,7 +43,17 @@ const chunkReducer = (state: ChunkState, action: ChunkAction) => {
 
 type AudioElementRef = React.MutableRefObject<HTMLAudioElement>
 
-const AudioRecorderContainer: React.FC = () => {
+interface AudioRecorderProps {
+  controlled?: boolean
+  record?: boolean
+  infoText?: boolean
+}
+
+const AudioRecorderContainer: React.FC<AudioRecorderProps> = ({
+  infoText,
+  controlled,
+  record,
+}) => {
   const [mediaStream, setMediaStream] = React.useState<MediaStream>()
   const [mediaRecorder, setMediaRecorder] = React.useState<MediaRecorder>()
   const [isRecording, setIsRecording] = React.useState(false)
@@ -93,12 +103,23 @@ const AudioRecorderContainer: React.FC = () => {
     }
   }
 
-  const toggleRecording = (): void => {
+  const toggleRecording = useCallback(() => {
     if (mediaRecorder) {
+      if (isRecording) {
+        dispatchChunks({ type: "resetChunks" })
+      }
       isRecording ? mediaRecorder.stop() : mediaRecorder.start()
       setIsRecording(!isRecording)
     }
-  }
+  }, [isRecording, mediaRecorder])
+
+  useEffect(() => {
+    if (controlled) {
+      if (isRecording !== record) {
+        toggleRecording()
+      }
+    }
+  }, [setIsRecording, controlled, record, isRecording, toggleRecording])
 
   const setupPreview = () => {
     if (mediaStream) {
@@ -134,12 +155,14 @@ const AudioRecorderContainer: React.FC = () => {
   return (
     <>
       <AudioPlayer ref={previewRef} autoPlay muted />
-      <Text variant="caption" sx={{ p: { m: 0 } }}>
-        <p>You can listen to yourself if you want.</p>
-        <Text as="p" sx={{ pb: 1 }}>
-          If you can&apos;t hear yourself, we can&apos;t either.
+      {infoText && (
+        <Text variant="caption" sx={{ p: { m: 0 } }}>
+          <p>You can listen to yourself if you want.</p>
+          <Text as="p" sx={{ pb: 1 }}>
+            If you can&apos;t hear yourself, we can&apos;t either.
+          </Text>
         </Text>
-      </Text>
+      )}
       <Box
         sx={{
           display: "flex",
@@ -153,9 +176,16 @@ const AudioRecorderContainer: React.FC = () => {
           <Button
             variant={isRecording ? "outlineRecording" : "outline"}
             onClick={toggleRecording}
+            disabled={controlled}
             IconComponent={isRecording ? FiMicOff : FiMic}
           >
-            {isRecording ? "Stop recording" : "Start recording"}
+            {!controlled
+              ? isRecording
+                ? "Stop recording"
+                : "Start recording"
+              : isRecording
+              ? "Recording"
+              : "Not recording"}
           </Button>
         </Box>
       </Box>
