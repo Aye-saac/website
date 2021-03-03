@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { submitQuestion } from "Helpers"
+import submitQuestion from "Helpers/submitQuestion"
 import { RootState } from "Store"
 
 const blobFromUrl = async (url: string) => (await fetch(url)).blob()
