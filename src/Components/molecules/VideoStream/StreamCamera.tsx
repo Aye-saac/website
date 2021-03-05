@@ -35,10 +35,13 @@ export const StreamCamera = forwardRef(
     const videoRef = useRef<HTMLVideoElement | null>(null)
     const canvasRef = useRef<HTMLCanvasElement | null>(null)
     const mediaStream = MediaStreamGetter(CAPTURE_OPTIONS)
+    const [height, setHeight] = React.useState(
+      Math.round(window.innerHeight - window.innerHeight * 0.1),
+    )
     const [container, setContainer] = useState({ height: 0, width: 0 })
     const [isVideoPlaying, setIsVideoPlaying] = useState(false)
     const [isCanvasEmpty, setIsCanvasEmpty] = useState(true)
-    const [aspectRatio, calculateRatio] = useCardRatio(1.586)
+    const [aspectRatio, calculateRatio] = useCardRatio(1.33)
     const offsets = useOffsets(
       videoRef.current && videoRef.current.videoWidth,
       videoRef.current && videoRef.current.videoHeight,
@@ -115,6 +118,7 @@ export const StreamCamera = forwardRef(
     }
 
     function handleResize(contentRect: any) {
+      setHeight(Math.round(window.innerHeight - window.innerHeight * 0.1))
       setContainer({
         height: Math.round(contentRect.bounds.width / aspectRatio),
         width: contentRect.bounds.width,
@@ -129,6 +133,7 @@ export const StreamCamera = forwardRef(
               ref={measureRef}
               style={{
                 height: `${container.height}px`,
+                maxHeight: height,
               }}
             >
               <Video
@@ -139,6 +144,8 @@ export const StreamCamera = forwardRef(
                 playsInline
                 muted
                 style={{
+                  width: "100%",
+                  height: "100%",
                   top: `-${offsets.y}px`,
                   left: `-${offsets.x}px`,
                 }}
