@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { Container } from "Components"
+import { AudioRecorder, Container } from "Components"
 import { PermissionCheck } from "Components/molecules/PermissionCheck/PermissionCheck"
+import { QuestionImageViewer } from "Components/molecules/QuestionImageViewer/QuestionImageViewer"
 import { SpeechRecognitionCheck } from "Components/molecules/SpeechRecognitionCheck/SpeechRecognitionCheck"
 import { SpeechRecognitionDisplay } from "Components/molecules/SpeechRecognitionDisplay/SpeechRecognitionDisplay"
 import { SpeechToTextRecoder } from "Components/molecules/SpeechToTextRecoder/SpeechToTextRecoder"
-import { StreamCamera } from "Components/molecules/VideoStream/StreamCamera"
 import {
   replaceImage,
   resetDialogue,
@@ -18,9 +18,19 @@ import {
   setRecording,
 } from "Features/live"
 
+import Webcam from "react-webcam"
+
 import { useQuestionManager, useRecordTimeLimit } from "./hooks"
 import { QuestionReader } from "./QuestionReader"
 import { SpeechRecognitionManager } from "./SpeechRecognitionManager"
+
+const videoContraints = {
+  width: 1280,
+  height: 720,
+  facingMode: "environment",
+}
+
+const MESSAGE_TYPE: "text" | "audio" = "text"
 
 export const LivePage = () => {
   const dispatch = useDispatch()
@@ -31,20 +41,14 @@ export const LivePage = () => {
   useRecordTimeLimit()
   useQuestionManager()
 
-  const onCapture = useCallback(
-    (blob: Blob) => {
-      dispatch(replaceImage({ url: URL.createObjectURL(blob) }))
-    },
-    [dispatch],
-  )
-
   useEffect(() => {
     if (speechRecognitionText.includes("go") && !isRecording) {
       dispatch(resetDialogue)
       dispatch(setRecording(true))
       if (videoRef && videoRef.current) {
         const handle = videoRef.current as any
-        handle.handleCapture()
+        const image = handle.getScreenshot()
+        dispatch(replaceImage({ url: image }))
       }
     }
   }, [speechRecognitionText, videoRef, isRecording, dispatch])
@@ -55,10 +59,21 @@ export const LivePage = () => {
         <SpeechRecognitionCheck>
           {dialogueError && <div>An error occured</div>}
           Recording: {isRecording ? "true" : "false"}
-          <SpeechRecognitionManager />
-          {/* <AudioRecorder controlled record={isRecording} /> */}
+          {MESSAGE_TYPE === "text" ? (
+            <SpeechRecognitionManager />
+          ) : (
+            <AudioRecorder controlled record={isRecording} />
+          )}
           <SpeechToTextRecoder recording={isRecording} />
-          <StreamCamera ref={videoRef} onCapture={onCapture} />
+          <Webcam
+            ref={videoRef}
+            audio={false}
+            screenshotFormat="image/jpeg"
+            videoConstraints={videoContraints}
+            width="100%"
+            height="100%"
+          />
+          <QuestionImageViewer />
           <SpeechRecognitionDisplay />
           <QuestionReader />
         </SpeechRecognitionCheck>
