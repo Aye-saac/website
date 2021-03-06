@@ -48,16 +48,18 @@ export const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(sendQuestion.pending, (state) => {
-      state.loading = false
+      state.loading = true
       state.error = undefined
       state.showResponse = false
     })
     builder.addCase(sendQuestion.rejected, (state, action) => {
+      state.loading = false
       console.error(action.error)
       state.error = action.error.message || "An error occured"
       state.showResponse = false
     })
     builder.addCase(sendQuestion.fulfilled, (state, action) => {
+      state.loading = false
       console.log(action.payload.body.data)
       if (!action.payload.body.data) return
       state.showResponse = true
@@ -87,6 +89,7 @@ export const selectResponses = (state: RootState) => state.dialogue.responses
 export const selectShowResponse = (state: RootState) =>
   state.dialogue.showResponse
 export const selectDialogueError = (state: RootState) => state.dialogue.error
+export const selectLoading = (state: RootState) => state.dialogue.loading
 
 export const dialogueReducer = slice.reducer
 

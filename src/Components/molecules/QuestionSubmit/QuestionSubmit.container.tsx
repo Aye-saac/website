@@ -2,15 +2,13 @@ import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import {
-  addResponse,
-  hideResponse,
+  selectDialogueError,
   selectImage,
+  selectLoading,
   selectMessage,
   selectResponses,
-  showResponse,
 } from "Features/dialogue"
-import { submitQuestion } from "Helpers"
-import { objectWithoutKey } from "Helpers/objectWithoutKey"
+import { sendQuestion } from "Features/dialogue/dialogueThunk"
 
 import QuestionSubmitButton from "./QuestionSubmit.view"
 
@@ -18,8 +16,8 @@ const QuestionSubmitContainer: React.FC = () => {
   // Local state
   const [image, setImage] = React.useState<Blob>()
   const [message, setMessage] = React.useState<Blob | string>()
-  const [loading, setLoading] = React.useState<boolean>(false)
-  const [error, setError] = React.useState<boolean>(false)
+  const loading = useSelector(selectLoading)
+  const error = useSelector(selectDialogueError)
 
   // Application state
   const imageState = useSelector(selectImage)
@@ -71,34 +69,7 @@ const QuestionSubmitContainer: React.FC = () => {
     if (!image || !message || !responseState || !messageState) {
       return
     }
-
-    const responses = JSON.stringify(responseState)
-
-    try {
-      setLoading(true)
-
-      const response = await submitQuestion({
-        image,
-        message,
-        responses,
-        messageType: messageState.type,
-      })
-
-      if (!response.ok) {
-        setLoading(false)
-        setError(true)
-        dispatch(hideResponse())
-      }
-
-      if (response.body.data) {
-        dispatch(showResponse())
-        dispatch(addResponse(objectWithoutKey(response.body.data, "responses")))
-      }
-    } catch (error_) {
-      dispatch(hideResponse())
-      setError(true)
-      setLoading(false)
-    }
+    dispatch(sendQuestion())
   }
 
   return (
@@ -106,7 +77,7 @@ const QuestionSubmitContainer: React.FC = () => {
       <QuestionSubmitButton
         onClick={handleSubmit}
         loading={loading}
-        error={error}
+        error={Boolean(error)}
       />
     </>
   )

@@ -28,7 +28,7 @@ export const SpeechToTextRecoder = ({
         }),
       )
     }
-  }, [transcript])
+  }, [transcript, dispatch])
 
   useEffect(() => {
     if (recording) {
