@@ -9,7 +9,7 @@ export const QuestionReader = () => {
     .getVoices()
     .filter((v) => v.lang.includes("en"))
   const [selectedVoice, setSelectedVoice] = useState(voices[0])
-  const { questionRead } = useSelector(selectLiveState)
+  const { questionRead, recording } = useSelector(selectLiveState)
   const responses = useSelector(selectResponses)
   const dispatch = useDispatch()
 
@@ -23,14 +23,16 @@ export const QuestionReader = () => {
   }
 
   useEffect(() => {
-    if (!questionRead && responses.length > 0) {
+    if (!recording && !questionRead && responses.length > 0) {
       dispatch(setQuestionRead(true))
       console.log(responses)
-      const utter = new SpeechSynthesisUtterance("Hello world")
-      utter.voice = selectedVoice
-      window.speechSynthesis.speak(utter)
+      responses.forEach((response) => {
+        const utter = new SpeechSynthesisUtterance(response.response)
+        utter.voice = selectedVoice
+        window.speechSynthesis.speak(utter)
+      })
     }
-  }, [questionRead, responses, dispatch, selectedVoice])
+  }, [questionRead, responses, dispatch, selectedVoice, recording])
 
   return (
     <select

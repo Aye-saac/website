@@ -86,6 +86,7 @@ export const selectMessage = (state: RootState) => state.dialogue.message
 export const selectResponses = (state: RootState) => state.dialogue.responses
 export const selectShowResponse = (state: RootState) =>
   state.dialogue.showResponse
+export const selectDialogueError = (state: RootState) => state.dialogue.error
 
 export const dialogueReducer = slice.reducer
 
