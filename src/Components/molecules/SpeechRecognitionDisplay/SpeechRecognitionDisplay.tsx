@@ -12,5 +12,5 @@ export const SpeechRecognitionDisplay = () => {
   if (error) {
     return <div>{error}</div>
   }
-  return <div>{text}</div>
+  return <div>Keyword detection: {text}</div>
 }

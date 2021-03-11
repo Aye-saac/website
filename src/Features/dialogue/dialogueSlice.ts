@@ -86,6 +86,12 @@ export const selectDialogue = (state: RootState) => state.dialogue
 export const selectImage = (state: RootState) => state.dialogue.image
 export const selectMessage = (state: RootState) => state.dialogue.message
 export const selectResponses = (state: RootState) => state.dialogue.responses
+export const selectResponseText = (state: RootState): string | null => {
+  if (state.dialogue.responses.length > 0) {
+    return state.dialogue.responses[0].response || null
+  }
+  return null
+}
 export const selectShowResponse = (state: RootState) =>
   state.dialogue.showResponse
 export const selectDialogueError = (state: RootState) => state.dialogue.error
