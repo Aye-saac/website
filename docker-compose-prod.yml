@@ -2,6 +2,8 @@ version: "3"
 
 services:
   client:
+    ports: 
+      - "5051:3000"
     entrypoint: npx serve -s build/ -l 3000
     environment:
       NODE_ENV: production
