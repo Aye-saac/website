@@ -3,13 +3,23 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "Store"
 import { PermissionReducerState } from "Typings"
 
+const PREMISSION_CAMERA_KEY = "permission:camera"
+const PERMISSION_MICRO_KEY = "permission:micro"
+
+const getInitialPermission = (key: string): PermissionState => {
+  if (localStorage.getItem(key)) {
+    return localStorage.getItem(key) as PermissionState
+  }
+  return "prompt"
+}
+
 const initialState: PermissionReducerState = {
   camera: {
-    status: "prompt",
+    status: getInitialPermission(PREMISSION_CAMERA_KEY),
     mobileOnly: true,
   },
   microphone: {
-    status: "prompt",
+    status: getInitialPermission(PERMISSION_MICRO_KEY),
     mobileOnly: false,
   },
 }
@@ -20,10 +30,12 @@ export const slice = createSlice({
   reducers: {
     updateCameraStatus: (state, action: PayloadAction<PermissionState>) => {
       state.camera.status = action.payload
+      localStorage.setItem(PREMISSION_CAMERA_KEY, action.payload)
     },
 
     updateMicrophoneStatus: (state, action: PayloadAction<PermissionState>) => {
       state.microphone.status = action.payload
+      localStorage.setItem(PERMISSION_MICRO_KEY, action.payload)
     },
   },
 })

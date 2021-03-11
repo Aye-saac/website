@@ -10,14 +10,27 @@ import {
   Section,
   Text,
 } from "Components"
-import { selectAllPermissionsDecided } from "Features/permission"
+import {
+  selectAllPermissionsDecided,
+  selectPermission,
+} from "Features/permission"
 
 import { motion } from "framer-motion"
 import { FiChevronRight } from "react-icons/fi"
 import { Link } from "react-router-dom"
 
+import styles from "./Permissions.module.css"
+
 const PermissionsPage: React.FC = () => {
   const allPermissionsDecided = useSelector(selectAllPermissionsDecided)
+  const { camera, microphone } = useSelector(selectPermission)
+  const liveVersionAvailable =
+    camera.status === "granted" && microphone.status === "granted"
+
+  const buttonMotion = {
+    whileHover: { scale: 1.05 },
+    whileTap: { scale: 0.95 },
+  }
 
   return (
     <>
@@ -38,22 +51,40 @@ const PermissionsPage: React.FC = () => {
         {allPermissionsDecided && (
           <Container>
             <Text>
-              By clicking continue, you agree to use, and not abuse, the
+              By clicking Demo or Live, you agree to use, and not abuse, the
               application. You also agree to abide by other privacy stuff. Note
               that all software here is without warranty and we hold no
               liability for any issues that can go wrong.
+              <br />
+              <br />
+              You must grant microphone and camera permission to access the live
+              version
             </Text>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{ width: "max-content" }}
-            >
-              <Link to="/question">
-                <Box variant="styles.a">
-                  <Button IconComponent={FiChevronRight}>Continue</Button>
-                </Box>
-              </Link>
-            </motion.div>
+            <Box variant="components.permissionForm.buttonContainer">
+              <motion.div {...buttonMotion} className={styles.demoButton}>
+                <Link to="/question">
+                  <Box variant="styles.a">
+                    <Button IconComponent={FiChevronRight}>Demo</Button>
+                  </Box>
+                </Link>
+              </motion.div>
+              {!liveVersionAvailable && <div />}
+              <motion.div {...(liveVersionAvailable ? buttonMotion : {})}>
+                <Link to="/live">
+                  <Box variant="styles.a">
+                    <Button
+                      variant={
+                        liveVersionAvailable ? "primary" : "outlineDisabled"
+                      }
+                      disabled={!liveVersionAvailable}
+                      IconComponent={FiChevronRight}
+                    >
+                      Live
+                    </Button>
+                  </Box>
+                </Link>
+              </motion.div>
+            </Box>
           </Container>
         )}
       </Section>

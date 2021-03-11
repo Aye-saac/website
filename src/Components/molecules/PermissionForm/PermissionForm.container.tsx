@@ -27,29 +27,14 @@ const PermissionFormContainer: React.FC<Props> = ({
   permissionStatus,
   delay,
 }) => {
-  const [isLeftSelected, setIsLeftSelected] = React.useState<boolean>()
-  const [isRightSelected, setIsRightSelected] = React.useState<boolean>()
-
-  React.useEffect(() => {
-    if (permissionStatus === "granted") {
-      setIsRightSelected(true)
-      setIsLeftSelected(false)
-    }
-    if (permissionStatus === "denied") {
-      setIsLeftSelected(true)
-      setIsRightSelected(false)
-    }
-  }, [permissionStatus])
+  const isLeftSelected = permissionStatus !== "granted"
+  const isRightSelected = !isLeftSelected
 
   const handleSelectNegative = () => {
-    setIsLeftSelected(true)
-    setIsRightSelected(false)
     onNegativeClick && onNegativeClick()
   }
 
   const handleSelectPositive = () => {
-    setIsLeftSelected(false)
-    setIsRightSelected(true)
     onPositiveClick && onPositiveClick()
   }
 

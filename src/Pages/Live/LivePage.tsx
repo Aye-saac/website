@@ -57,7 +57,7 @@ export const LivePage = () => {
 
   return (
     <div className={styles.bodyContainer}>
-      <PermissionCheck>
+      <PermissionCheck video audio>
         <SpeechRecognitionCheck>
           <div className={styles.columnContainer}>
             <h2>Recording infos</h2>
