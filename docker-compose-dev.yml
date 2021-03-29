@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  client:
+    build: .
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    environment:
+      NODE_ENV: development
+      REACT_APP_API_URL: http://localhost:5000
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public

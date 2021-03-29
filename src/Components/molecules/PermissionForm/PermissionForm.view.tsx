@@ -64,7 +64,6 @@ const PermissionForm: React.FC<Props> = ({
             <motion.div
               custom={3}
               variants={variants}
-              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               {negativeButton}
@@ -72,7 +71,6 @@ const PermissionForm: React.FC<Props> = ({
             <motion.div
               custom={3.3}
               variants={variants}
-              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               {positiveButton}

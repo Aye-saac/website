@@ -1,0 +1,9 @@
+.demoButton {
+  margin-bottom: 10px;
+}
+
+.endButtons {
+  display: flex;
+  flex-direction: row;
+  max-width: 400px;
+}

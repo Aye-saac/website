@@ -1,13 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
+import { objectWithoutKey } from "Helpers/objectWithoutKey"
 import { RootState } from "Store"
 import { DialogueFile, DialogueMessage, DialogueState } from "Typings"
+
+import { sendQuestion } from "./dialogueThunk"
 
 const initialState: DialogueState = {
   image: null,
   message: null,
   responses: [],
   showResponse: false,
+  loading: false,
 }
 
 export const slice = createSlice({
@@ -42,6 +46,30 @@ export const slice = createSlice({
       state.showResponse = initialState.showResponse
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(sendQuestion.pending, (state) => {
+      state.loading = true
+      state.error = undefined
+      state.showResponse = false
+    })
+    builder.addCase(sendQuestion.rejected, (state, action) => {
+      state.loading = false
+      console.error(action.error)
+      state.error = action.error.message || "An error occured"
+      state.showResponse = false
+    })
+    builder.addCase(sendQuestion.fulfilled, (state, action) => {
+      state.loading = false
+      console.log(action.payload.body.data)
+      if (!action.payload.body.data) return
+      state.showResponse = true
+      const newResponses = objectWithoutKey(
+        action.payload.body.data,
+        "responses",
+      )
+      state.responses = [...state.responses, newResponses]
+    })
+  },
 })
 
 export const {
@@ -58,8 +86,16 @@ export const selectDialogue = (state: RootState) => state.dialogue
 export const selectImage = (state: RootState) => state.dialogue.image
 export const selectMessage = (state: RootState) => state.dialogue.message
 export const selectResponses = (state: RootState) => state.dialogue.responses
+export const selectResponseText = (state: RootState): string | null => {
+  if (state.dialogue.responses.length > 0) {
+    return state.dialogue.responses[0].response || null
+  }
+  return null
+}
 export const selectShowResponse = (state: RootState) =>
   state.dialogue.showResponse
+export const selectDialogueError = (state: RootState) => state.dialogue.error
+export const selectLoading = (state: RootState) => state.dialogue.loading
 
 export const dialogueReducer = slice.reducer
 

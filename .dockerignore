@@ -1,3 +1,4 @@
+pocketsphinx.js/
 # yarn
 .yarn/*
 !.yarn/cache

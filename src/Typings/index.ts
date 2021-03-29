@@ -29,6 +29,8 @@ export interface DialogueState {
   message: DialogueMessage | null
   responses: any[]
   showResponse: boolean
+  error?: string
+  loading: boolean
 }
 
 export enum Page {
@@ -36,8 +38,17 @@ export enum Page {
   Permission,
   Question,
   Response,
+  Live,
 }
 
 export type NavigationState = {
   current: Page
+}
+
+export type LiveState = {
+  speechDetection: string
+  recording: boolean
+  questionSent: boolean
+  questionRead: boolean
+  error?: string
 }

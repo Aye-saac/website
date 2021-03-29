@@ -14,7 +14,9 @@ RUN yarn install
 
 COPY . .
 
-RUN if [ "$NODE_ENV" = "production" ]; then REACT_APP_API_URL=${REACT_APP_API_URL} npm yarn build; fi
+ARG NODE_ENV
+ARG REACT_APP_API_URL
 
+RUN if [ "$NODE_ENV" = "production" ]; then REACT_APP_API_URL=${REACT_APP_API_URL} yarn build; fi
 
 CMD ["yarn", "start"]

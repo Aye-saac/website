@@ -7,6 +7,7 @@ import ReactDOM from "react-dom"
 import { Styled, ThemeProvider } from "theme-ui"
 
 import Introduction from "Pages/Introduction"
+import { LivePage } from "Pages/Live/LivePage"
 import Permissions from "Pages/Permissions"
 import Question from "Pages/Question"
 import { store } from "Store"
@@ -25,6 +26,7 @@ ReactDOM.render(
               <Route path="/" component={Introduction} exact />
               <Route path="/permissions" component={Permissions} />
               <Route path="/question" component={Question} />
+              <Route path="/live" component={LivePage} />
             </Switch>
           </Router>
         </Styled.root>
